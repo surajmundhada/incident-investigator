@@ -1,0 +1,13 @@
+{
+  "starts_at": "2024-01-15T21:36:07+00:00",
+  "ends_at": "2024-01-15T21:36:07.500000+00:00",
+  "covered_services": [
+    "adservice",
+    "cartservice",
+    "currencyservice",
+    "frontend",
+    "recommendationservice",
+    "shippingservice"
+  ],
+  "synthetic_example": true
+}

@@ -1,0 +1,21 @@
+# Apply AFTER compose.artifacts.yaml only after the operator configures a private bucket.
+# This override performs object requests; it never provisions a bucket or IAM policy.
+services:
+  api:
+    image: incident-investigator-s3:local
+    build:
+      target: s3
+    environment: &s3-runtime
+      ARTIFACT_BACKEND: s3
+      ARTIFACT_S3_BUCKET: ${ARTIFACT_S3_BUCKET:?Configure an existing private bucket}
+      ARTIFACT_S3_PRIVATE_CONFIRMED: ${ARTIFACT_S3_PRIVATE_CONFIRMED:?Confirm private bucket settings}
+      AWS_REGION: ${AWS_REGION:?Configure the bucket region}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-}
+      AWS_SESSION_TOKEN: ${AWS_SESSION_TOKEN:-}
+      AWS_EC2_METADATA_DISABLED: 'true'
+  artifact-uploader:
+    image: incident-investigator-s3:local
+    build:
+      target: s3
+    environment: *s3-runtime

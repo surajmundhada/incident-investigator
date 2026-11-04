@@ -1,0 +1,93 @@
+{
+  "study_sha256": "f940a2237b4d219bde89f455c72f550344687088275a721681c6d5ebd09c751f",
+  "reviewer": "implementation assistant; not independent",
+  "review_type": "qualitative pilot review, no accuracy or faithfulness percentage",
+  "root_service_metric": "Not computed: hypothesis.service mixes affected-service and hypothesized-source semantics. Define a dedicated rubric before a responsible-service score.",
+  "findings": [
+    {
+      "case_id": "129a2744bd47467ab2ca1f7df457a860",
+      "family": "healthy",
+      "method": "logs_only",
+      "structural_status": "structurally_valid",
+      "note": "Recognizes observed 200 completions; normal-operation hypothesis is not a root-cause label and does not prove health outside the window."
+    },
+    {
+      "case_id": "129a2744bd47467ab2ca1f7df457a860",
+      "family": "healthy",
+      "method": "all_context",
+      "structural_status": "structurally_valid",
+      "note": "Recognizes observed successful requests. General normal-operation language must remain scoped to the capture."
+    },
+    {
+      "case_id": "129a2744bd47467ab2ca1f7df457a860",
+      "family": "healthy",
+      "method": "baseline_rag",
+      "structural_status": "structurally_valid",
+      "note": "Recognizes captured 200s. No diagnostic quality gain over logs-only is established."
+    },
+    {
+      "case_id": "a2783e843d9b4864a9f9f913a1466de2",
+      "family": "unavailable",
+      "method": "logs_only",
+      "structural_status": "structurally_valid",
+      "note": "Correctly describes 503-to-502 propagation and missing underlying reason. Hypothesis cites caller 503 plus payment 503 but omits the directly supporting caller 502 completion; per-claim citation coverage is partial."
+    },
+    {
+      "case_id": "a2783e843d9b4864a9f9f913a1466de2",
+      "family": "unavailable",
+      "method": "all_context",
+      "structural_status": "invalid_schema_or_references",
+      "note": "Rejected: a 64-character runbook passage ID was put in a 32-character observation evidence-ID field. Raw parsed action retained. Also overstates both requests while directly citing one record."
+    },
+    {
+      "case_id": "a2783e843d9b4864a9f9f913a1466de2",
+      "family": "unavailable",
+      "method": "baseline_rag",
+      "structural_status": "structurally_valid",
+      "note": "Describes payment 503 and checkout 502, withholding underlying cause. Hypothesis lacks a direct citation to the checkout 502 completion; full context contains it."
+    },
+    {
+      "case_id": "e08df425e17c4c9e9362af9cf8ecdf4d",
+      "family": "slow",
+      "method": "logs_only",
+      "structural_status": "structurally_valid",
+      "note": "Describes caller deadline and later 1500ms payment success. Generic database-metrics suggestion is poorly matched to trusted no-business-database context, even with if-applicable wording."
+    },
+    {
+      "case_id": "e08df425e17c4c9e9362af9cf8ecdf4d",
+      "family": "slow",
+      "method": "all_context",
+      "structural_status": "structurally_valid",
+      "note": "Describes deadline, 504s and later 200s. The precise configured timeout is not an independently supplied configuration observation; observed timings support an approximate inference."
+    },
+    {
+      "case_id": "e08df425e17c4c9e9362af9cf8ecdf4d",
+      "family": "slow",
+      "method": "baseline_rag",
+      "structural_status": "structurally_valid",
+      "note": "Correlates caller roughly 1s deadline and payment roughly 1.5s successful completion. Does not establish why payment was slow."
+    },
+    {
+      "case_id": "0f588a9f1e0941fea98b152c68f96f1a",
+      "family": "application_error",
+      "method": "logs_only",
+      "structural_status": "structurally_valid",
+      "note": "Observed handler-error event, payment 500 and checkout 502 are described. Hypothesis direct references show status propagation but omit the handler-error message supporting that specific phrase."
+    },
+    {
+      "case_id": "0f588a9f1e0941fea98b152c68f96f1a",
+      "family": "application_error",
+      "method": "all_context",
+      "structural_status": "structurally_valid",
+      "note": "Observed propagation is described. Specific charge-handler failure in the hypothesis is not directly cited there although the full context/observation section contains it."
+    },
+    {
+      "case_id": "0f588a9f1e0941fea98b152c68f96f1a",
+      "family": "application_error",
+      "method": "baseline_rag",
+      "structural_status": "structurally_valid",
+      "note": "Handler-failure wording cites payment completion 500s rather than handler-error messages; direct per-claim citation support is partial. Underlying exception/trigger remains missing despite an empty missing-evidence list."
+    }
+  ],
+  "decision": "No RAG superiority established; no production ranking or prompt change selected from this pilot."
+}

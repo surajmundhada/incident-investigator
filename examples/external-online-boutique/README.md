@@ -1,0 +1,9 @@
+# Independently produced Online Boutique log excerpt
+
+Source: [RCAEval dataset](https://huggingface.co/datasets/phamquiluan/RCAEval), RE2 Online Boutique, MIT licensed. Copyright (c) 2024 Luan Pham; the license is preserved in LICENSE-RCAEval.txt. The pinned dataset revision, raw/normalized hashes and operator case identity are under evaluation/external-online-boutique/provenance.json, excluded from application images. The case label is not in these normalized records.
+
+This is a 120-record, six-service, 0.5-second excerpt from an external controlled benchmark, not a production incident, complete fault window or proof of independent developer usefulness. Timestamp/container/message fields are preserved. The source has no severity, HTTP status or request-ID fields. INFO is an explicitly marked schema placeholder; every message says the original severity was not supplied. Do not interpret that placeholder or the lack of explicit errors as proof of healthy operation. No status codes, traces, request IDs or cause observations were fabricated.
+
+No version-matched dependency graph was supplied. Services are conservatively registered without guessed dependencies. The root scope therefore cannot automatically expand to every observed service. Supply a reviewed configuration revision before claiming cross-service diagnosis capability on this application. No app-specific runbooks were invented.
+
+The real API accepted application registration and snapshot upload, and exact repeat upload reused the same snapshot. That check submitted no incident and invoked no model. In the dashboard, open Applications, select external-online-boutique, and review the registered capture. Treat investigation of this limited excerpt as an uncertainty/coverage exercise, not a benchmark accuracy result.

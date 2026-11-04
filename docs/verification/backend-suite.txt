@@ -1,0 +1,9 @@
+Observed local verification output, 5 November 2026.
+Command: Docker Compose verification profile, python scripts/verify_postgres.py tests /evaluation/diagnosis-v2/test_scoring.py
+Environment: separate PostgreSQL/Redis test project; no hosted-model/AWS credentials.
+
+........................................................................ [ 25%]
+........................................................................ [ 50%]
+........................................................................ [ 75%]
+......................................................................   [100%]
+286 passed in 23.13s

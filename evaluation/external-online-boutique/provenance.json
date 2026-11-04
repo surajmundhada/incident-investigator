@@ -1,0 +1,21 @@
+{
+  "dataset": "RCAEval RE2 Online Boutique",
+  "source": "https://huggingface.co/datasets/phamquiluan/RCAEval",
+  "revision": "afeacb11bcc94dadfd1c8f483ee4377b2b8b614e",
+  "operator_case": "re2ob_checkoutservice_cpu_1",
+  "downloaded_log_sha256": "e1a25e50c8b0beae4b2886df54d86d2f28877d0b611fed98411e9c0b0c77dad3",
+  "normalized_excerpt_sha256": "57baa49a8f0b26cd0d418023944c43f25cfdf4e64ac28176e61dd356abfff281",
+  "records": 120,
+  "services": [
+    "adservice",
+    "cartservice",
+    "currencyservice",
+    "frontend",
+    "recommendationservice",
+    "shippingservice"
+  ],
+  "license": "MIT; Copyright (c) 2024 Luan Pham",
+  "scope": "0.5 second declared excerpt; independently produced controlled-fault benchmark, not production-user evidence",
+  "normalization": "source has timestamp/container_name/message, no severity/status/request IDs; INFO is explicitly marked placeholder, not observed severity; no missing fields invented",
+  "topology": "No version-matched dependency graph supplied; services registered without guessed dependencies. Agent cannot expand root scope based on unreviewed assumptions."
+}

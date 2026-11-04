@@ -1,0 +1,33 @@
+[project]
+name = "incident-investigator"
+version = "0.1.0"
+description = "Evidence-first incident investigation, built in verifiable increments"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+  "fastapi>=0.115,<1",
+  "uvicorn>=0.34,<1",
+  "sqlalchemy>=2.0,<2.1",
+  "psycopg[binary]>=3.2,<4",
+  "alembic>=1.14,<2",
+  "httpx>=0.28,<1",
+]
+
+[project.optional-dependencies]
+retrieval = ["fastembed==0.9.1"]
+cache = ["redis==7.4.1"]
+mcp = ["mcp==2.3.0"]
+artifacts = ["boto3==1.43.123"]
+agent = ["fastembed==0.9.1", "langgraph==1.2.19"]
+dev = ["pytest>=8,<10", "ruff>=0.11,<1"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["backend", "demo-app"]
+markers = ["postgres: requires an explicitly configured disposable PostgreSQL database"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]

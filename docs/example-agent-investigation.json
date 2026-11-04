@@ -1,0 +1,333 @@
+{
+  "id": "b508df980ba84db8b96a96ca7199b48e",
+  "status": "complete",
+  "report": {
+    "summary": "During the incident window, checkout request ff8639897f0b42ec99a2381912e93246 failed due to a downstream error from the payment dependency returning HTTP 503, resulting in checkout returning HTTP 502.",
+    "observations": [
+      {
+        "text": "Checkout request ff8639897f0b42ec99a2381912e93246 encountered a downstream failure calling payment and returned HTTP 502.",
+        "references": [
+          {
+            "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+            "record_index": 1
+          },
+          {
+            "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+            "record_index": 2
+          }
+        ]
+      },
+      {
+        "text": "Payment service recorded an HTTP request completed with status 503 for request ff8639897f0b42ec99a2381912e93246.",
+        "references": [
+          {
+            "evidence_id": "60398daaaf48406f8e5f64798291965d",
+            "record_index": 0
+          }
+        ]
+      }
+    ],
+    "hypotheses": [
+      {
+        "explanation": "Checkout returned HTTP 502 because the payment dependency failed with status 503 for request ff8639897f0b42ec99a2381912e93246.",
+        "service": "checkout",
+        "supporting": [
+          {
+            "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+            "record_index": 1
+          },
+          {
+            "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+            "record_index": 2
+          },
+          {
+            "evidence_id": "60398daaaf48406f8e5f64798291965d",
+            "record_index": 0
+          }
+        ],
+        "contradicting": []
+      }
+    ],
+    "runbook_references": [
+      {
+        "evidence_id": "1c77750ade3d41b88365f69386af159f",
+        "passage_id": "6266b660b9edf1b3616677a5e9b3a91178d34e1e4adeeabaac4140b9ad7a4d53"
+      }
+    ],
+    "missing_evidence": [
+      "inventory service logs for the same request or time window to confirm inventory participation"
+    ],
+    "suggested_checks": [
+      "Inspect inventory logs during the incident window to verify whether inventory was called or succeeded prior to the payment failure."
+    ],
+    "conclusion": "supported_hypothesis",
+    "mode": "agent_investigation",
+    "provider_origin": "gemini",
+    "model": "gemini:gemini-3.5-flash-lite",
+    "served_model_versions": [
+      "gemini-3.5-flash-lite"
+    ],
+    "workflow_version": "bounded-investigator-v1",
+    "prompt_hash": "f25c079eedffdbe922b1382b6f4122aa3c44df514dc930ecd0a6f721b3283cfc",
+    "termination_reason": "report_completed",
+    "evidence_ids": [
+      "272e94bd6ada4672ade629d4f6aeb61c",
+      "1c77750ade3d41b88365f69386af159f",
+      "60398daaaf48406f8e5f64798291965d"
+    ],
+    "limits": {
+      "model_calls": 8,
+      "tool_calls": 12,
+      "active_seconds": 120,
+      "request_bytes": 32000,
+      "total_request_bytes": 128000,
+      "output_tokens_per_call": 2048,
+      "total_reserved_output_tokens": 16384,
+      "reported_tokens": 32768
+    },
+    "usage": {
+      "model_calls": 2,
+      "tool_calls_started": 3,
+      "model_tokens": 7950,
+      "reported_input_tokens": 7233,
+      "reported_output_tokens": 717,
+      "reported_thought_tokens": 0,
+      "unknown_model_outcomes": 0,
+      "request_bytes": 24056,
+      "reserved_output_tokens": 4096
+    },
+    "limitations": [
+      "References are validated structurally; this does not establish semantic support or causal accuracy.",
+      "Hypotheses require review; no remediation was executed."
+    ]
+  },
+  "attempts": 1,
+  "created_at": 1793734197.798223,
+  "updated_at": 1793734203.8826406,
+  "incident": {
+    "id": "c7dde205b3ac4731a48ab9ade668ee92",
+    "title": "Checkout returns HTTP 502",
+    "service": "checkout",
+    "description": "Investigate failing checkout requests in this window. Identify the affected dependency and what cannot be established.",
+    "starts_at": 1793734197.711233,
+    "ends_at": 1793734197.740272
+  },
+  "evidence": [
+    {
+      "id": "60398daaaf48406f8e5f64798291965d",
+      "tool_call_id": "agent.a32db66b4768a87db8f54fee489abce8307194ef6e305ba3b3b6cc9e6d5fe639",
+      "collected_at": "2026-11-03T19:30:00.365942+00:00",
+      "source": "http_log_adapter",
+      "service": "payment",
+      "window": {
+        "start": 1793734197.711233,
+        "end": 1793734197.740272
+      },
+      "availability": "available",
+      "records": [
+        {
+          "timestamp": "2026-11-03T19:29:57.738599Z",
+          "service": "payment",
+          "level": "ERROR",
+          "message": "HTTP request completed",
+          "request_id": "ff8639897f0b42ec99a2381912e93246",
+          "dependency": null,
+          "status_code": 503,
+          "duration_ms": 0.13
+        }
+      ],
+      "truncated": false,
+      "data_origin": "live",
+      "request_id_filter": "ff8639897f0b42ec99a2381912e93246"
+    },
+    {
+      "id": "272e94bd6ada4672ade629d4f6aeb61c",
+      "tool_call_id": "logs.v1",
+      "collected_at": "2026-11-03T19:29:57.840532+00:00",
+      "source": "http_log_adapter",
+      "service": "checkout",
+      "window": {
+        "start": 1793734197.711233,
+        "end": 1793734197.740272
+      },
+      "availability": "available",
+      "records": [
+        {
+          "timestamp": "2026-11-03T19:29:57.720351Z",
+          "service": "checkout",
+          "level": "INFO",
+          "message": "HTTP request completed",
+          "request_id": "1b9c14aa511449c2a62251cb9fe35d54",
+          "dependency": null,
+          "status_code": 200,
+          "duration_ms": 44.747
+        },
+        {
+          "timestamp": "2026-11-03T19:29:57.739513Z",
+          "service": "checkout",
+          "level": "ERROR",
+          "message": "Downstream request failed",
+          "request_id": "ff8639897f0b42ec99a2381912e93246",
+          "dependency": "payment",
+          "status_code": 503,
+          "duration_ms": null
+        },
+        {
+          "timestamp": "2026-11-03T19:29:57.739598Z",
+          "service": "checkout",
+          "level": "ERROR",
+          "message": "HTTP request completed",
+          "request_id": "ff8639897f0b42ec99a2381912e93246",
+          "dependency": null,
+          "status_code": 502,
+          "duration_ms": 14.106
+        }
+      ],
+      "truncated": false,
+      "data_origin": "live"
+    },
+    {
+      "id": "1c77750ade3d41b88365f69386af159f",
+      "tool_call_id": "runbooks.v1",
+      "collected_at": "2026-11-03T19:29:57.884561+00:00",
+      "availability": "available",
+      "source": "versioned_runbooks",
+      "revision": "e47a66de758e24d33458ebbdefc89cbd006f286df74b6f1626148972cbe96c1c",
+      "embedding_id": "e57d370ae8ffec51cbd6d785c694dc86628160fb21f3d491b52491335aabcecd",
+      "retrieval_config": "fts-cosine-rrf60-top20-context1200-v1",
+      "query": {
+        "query": "Checkout returns HTTP 502 Investigate failing checkout requests in this window. Identify the affected dependency and what cannot be established. Downstream request failed HTTP request completed",
+        "service": "checkout",
+        "environment": "local",
+        "release": "demo-v1",
+        "mode": "hybrid",
+        "limit": 6
+      },
+      "hits": [
+        {
+          "id": "6266b660b9edf1b3616677a5e9b3a91178d34e1e4adeeabaac4140b9ad7a4d53",
+          "document_id": "checkout-downstream",
+          "source": "runbooks/checkout-downstream.md",
+          "title": "Checkout downstream errors and bad gateway responses",
+          "heading": "HTTP 502 from checkout",
+          "body": "A checkout bad gateway response means a downstream call failed or could not complete. Inspect the ERROR record for its dependency field. Payment dependency and downstream status 503 support a failed payment boundary. Checkout status alone cannot distinguish payment from inventory failure or a network timeout.",
+          "service": "checkout",
+          "environment": "local",
+          "release": "demo-v1",
+          "document_checksum": "ea5467f3d0139c0d1b13798cf5d6bc02aab1edf81293a2242fbf62a645bcf817",
+          "line_start": 5,
+          "line_end": 5,
+          "token_count": 70,
+          "distance": 0.16835904121398926,
+          "rrf_score": 0.01639344262295082,
+          "semantic_rank": 1,
+          "citation_url": "/api/knowledge/passages/6266b660b9edf1b3616677a5e9b3a91178d34e1e4adeeabaac4140b9ad7a4d53"
+        },
+        {
+          "id": "13bf0dfa68416a4ac8bc379230072f05e695734778beaf0875006c9cf7e1077c",
+          "document_id": "checkout-downstream",
+          "source": "runbooks/checkout-downstream.md",
+          "title": "Checkout downstream errors and bad gateway responses",
+          "heading": "Follow the failing dependency",
+          "body": "Use the checkout request ID and incident window to inspect the named dependency's logs. Compare its HTTP status with the caller's downstream error. Successful neighboring requests are counterevidence to a continuous outage. Missing downstream records may mean unavailable telemetry, transport failure, or a mismatched time window.",
+          "service": "checkout",
+          "environment": "local",
+          "release": "demo-v1",
+          "document_checksum": "ea5467f3d0139c0d1b13798cf5d6bc02aab1edf81293a2242fbf62a645bcf817",
+          "line_start": 9,
+          "line_end": 9,
+          "token_count": 79,
+          "distance": 0.2845727205276489,
+          "rrf_score": 0.016129032258064516,
+          "semantic_rank": 2,
+          "citation_url": "/api/knowledge/passages/13bf0dfa68416a4ac8bc379230072f05e695734778beaf0875006c9cf7e1077c"
+        },
+        {
+          "id": "2dd695404cbaf727c2304a68c91c63602915c5c0fc0ac5e89948d2b3d676c992",
+          "document_id": "network-timeouts",
+          "source": "runbooks/network-timeouts.md",
+          "title": "Dependency timeouts and network reachability",
+          "heading": "Response failure versus transport failure",
+          "body": "A downstream request failed record with an HTTP status means an error response was received. A downstream request unavailable record without a status indicates a transport problem such as timeout, name resolution failure, or refused connection. This generic message does not distinguish those causes. Do not claim an unmeasured timeout duration.",
+          "service": "global",
+          "environment": "local",
+          "release": "demo-v1",
+          "document_checksum": "ea6d94209c9d87d812b327e4f28fc0f01b39ddae2603cdada17badef39224cdb",
+          "line_start": 5,
+          "line_end": 5,
+          "token_count": 76,
+          "distance": 0.4674372673034668,
+          "rrf_score": 0.015873015873015872,
+          "semantic_rank": 3,
+          "citation_url": "/api/knowledge/passages/2dd695404cbaf727c2304a68c91c63602915c5c0fc0ac5e89948d2b3d676c992"
+        },
+        {
+          "id": "07cf02b2c124e28ef88430e4822b50b28671162e9323ebc2714231ca6dc64107",
+          "document_id": "checkout-downstream",
+          "source": "runbooks/checkout-downstream.md",
+          "title": "Checkout downstream errors and bad gateway responses",
+          "heading": "Verification and limits",
+          "body": "Read-only verification compares both sides of the request with the applicable service map. Do not restart services, change settings, or retry a real payment merely because a runbook suggests a hypothesis. Recovery after an operator action establishes observed recovery, not proof of the original cause.",
+          "service": "checkout",
+          "environment": "local",
+          "release": "demo-v1",
+          "document_checksum": "ea5467f3d0139c0d1b13798cf5d6bc02aab1edf81293a2242fbf62a645bcf817",
+          "line_start": 13,
+          "line_end": 13,
+          "token_count": 68,
+          "distance": 0.501004695892334,
+          "rrf_score": 0.015625,
+          "semantic_rank": 4,
+          "citation_url": "/api/knowledge/passages/07cf02b2c124e28ef88430e4822b50b28671162e9323ebc2714231ca6dc64107"
+        },
+        {
+          "id": "a8384029bed41ba4dfe41174adb5e99920901f7ad66cf1219392f1fd9d2c6c2e",
+          "document_id": "network-timeouts",
+          "source": "runbooks/network-timeouts.md",
+          "title": "Dependency timeouts and network reachability",
+          "heading": "Bounded requests",
+          "body": "Checkout configures a one-second HTTP client timeout for dependency calls and does not retry transactions automatically. Compare recorded duration, neighboring requests, and downstream logs. The configured timeout does not prove that every unavailable response was a timeout. Timeout categories apply to phases of the HTTP operation rather than guaranteeing a one-second total duration.",
+          "service": "global",
+          "environment": "local",
+          "release": "demo-v1",
+          "document_checksum": "ea6d94209c9d87d812b327e4f28fc0f01b39ddae2603cdada17badef39224cdb",
+          "line_start": 9,
+          "line_end": 9,
+          "token_count": 84,
+          "distance": 0.5012402534484863,
+          "rrf_score": 0.015384615384615385,
+          "semantic_rank": 5,
+          "citation_url": "/api/knowledge/passages/a8384029bed41ba4dfe41174adb5e99920901f7ad66cf1219392f1fd9d2c6c2e"
+        },
+        {
+          "id": "c47769cc7c61297c8fb8820282579d7bce1473ee931ea0e2f88a296d539e9296",
+          "document_id": "service-map",
+          "source": "runbooks/service-map.md",
+          "title": "Shopping service dependencies and boundaries",
+          "heading": "Request flow",
+          "body": "Checkout calls inventory availability first, then payment processing. Inventory success does not establish payment success. If inventory fails, checkout stops without calling payment. Use the dependency name as well as the response status to localize the failing boundary.",
+          "service": "global",
+          "environment": "local",
+          "release": "demo-v1",
+          "document_checksum": "c8f4bc7330808dd18763af68efc62dd6a61a8c841e07d280f1a98834f2161134",
+          "line_start": 5,
+          "line_end": 5,
+          "token_count": 57,
+          "distance": 0.502862811088562,
+          "rrf_score": 0.015151515151515152,
+          "semantic_rank": 6,
+          "citation_url": "/api/knowledge/passages/c47769cc7c61297c8fb8820282579d7bce1473ee931ea0e2f88a296d539e9296"
+        }
+      ],
+      "context_tokens": 434,
+      "candidate_counts": {
+        "lexical": 0,
+        "semantic": 12
+      },
+      "limitations": [
+        "Runbooks are guidance, not observations or proof of a root cause.",
+        "Cosine filtering is a heuristic, not calibrated relevance confidence."
+      ]
+    }
+  ]
+}

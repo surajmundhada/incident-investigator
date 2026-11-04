@@ -1,0 +1,29 @@
+# Local archive mode requires no AWS account. S3 is a separately configured backend.
+services:
+  api:
+    environment: &artifact-runtime
+      ARTIFACT_BACKEND: local
+      ARTIFACT_SPOOL_DIR: /artifacts/spool
+      ARTIFACT_LOCAL_DIR: /artifacts/objects
+    volumes:
+      - artifact_spool:/artifacts/spool
+      - artifact_objects:/artifacts/objects
+  artifact-uploader:
+    build:
+      context: .
+      dockerfile: infra/Dockerfile
+      target: base
+    environment:
+      <<: *artifact-runtime
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-investigator}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-investigator}
+    command: [python, -m, investigator.uploader]
+    volumes:
+      - artifact_spool:/artifacts/spool
+      - artifact_objects:/artifacts/objects
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    mem_limit: 192m
+volumes:
+  artifact_spool:
+  artifact_objects:

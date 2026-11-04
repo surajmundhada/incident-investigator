@@ -1,0 +1,254 @@
+[
+  {
+    "case_id": "129a2744bd47467ab2ca1f7df457a860",
+    "family": "healthy",
+    "responsible_service": null,
+    "split": "development",
+    "request_ids": [
+      "e5c5b69995234e46a6b9048e8f17bad6",
+      "0ea1bd2197754dce93fe8627835ae390"
+    ]
+  },
+  {
+    "case_id": "a2783e843d9b4864a9f9f913a1466de2",
+    "family": "unavailable",
+    "responsible_service": "payment",
+    "split": "development",
+    "request_ids": [
+      "e8e57f8e1e87462f90a8c9c6387aa050",
+      "71c6c7bf87e448b79bccc59bd0dd340d"
+    ]
+  },
+  {
+    "case_id": "e08df425e17c4c9e9362af9cf8ecdf4d",
+    "family": "slow",
+    "responsible_service": "payment",
+    "split": "development",
+    "request_ids": [
+      "90e3290248aa48418cc9873403441a67",
+      "12b0987d817c481cb2ab8cab399b74b8"
+    ]
+  },
+  {
+    "case_id": "0f588a9f1e0941fea98b152c68f96f1a",
+    "family": "application_error",
+    "responsible_service": "payment",
+    "split": "development",
+    "request_ids": [
+      "01b29c8042db46fbb363a380042146f0",
+      "bd1afed21a5e4127907c39a6251bb770"
+    ]
+  },
+  {
+    "case_id": "0724d0d0c8fe4a37b27621f5706e72a5",
+    "family": "healthy",
+    "responsible_service": null,
+    "split": "development",
+    "request_ids": [
+      "3916d816d76c46478ca0a4215ddfd242",
+      "e7e28e90a87a4d94b7ff35549743be71",
+      "53349b5bc7014c829a47ee6e325b7e9c"
+    ]
+  },
+  {
+    "case_id": "38c6c809ad694a1d805722b1b3cfa693",
+    "family": "unavailable",
+    "responsible_service": "payment",
+    "split": "development",
+    "request_ids": [
+      "4fa773b9394c4bce948689a2f0be4524",
+      "465ca546c2a145f694073590a6a411be",
+      "b4f72ba57c2847c7970e843a366c0986"
+    ]
+  },
+  {
+    "case_id": "86b14d364a0b4c4b9216ae122b6bdf8c",
+    "family": "slow",
+    "responsible_service": "payment",
+    "split": "development",
+    "request_ids": [
+      "7a04fac3ce05407a9dbf04cdf628c8fc",
+      "997f2526e9c14f34842668aa35cc9346",
+      "3e4279861b6b4349969d324399ae4c16"
+    ]
+  },
+  {
+    "case_id": "3d61aeb93bcf4fb3801ef5be517d1991",
+    "family": "application_error",
+    "responsible_service": "payment",
+    "split": "development",
+    "request_ids": [
+      "3ba7fb5b5d95498b87fe6ec198cbd6d0",
+      "a91b4bcc34164e1e8c7b9730a413a78e",
+      "4805c6c7c10941628617b9b1eba571e5"
+    ]
+  },
+  {
+    "case_id": "42f8ae8ab98a4e0488c40cba2b10e852",
+    "family": "healthy",
+    "responsible_service": null,
+    "split": "heldout",
+    "request_ids": [
+      "984d3ba3fb17445abceca4d00282045f",
+      "11c06a88ce9247d7a7cb70e02a52af59"
+    ]
+  },
+  {
+    "case_id": "73fad7cefeff4d20ba0e6471bab846b4",
+    "family": "unavailable",
+    "responsible_service": "payment",
+    "split": "heldout",
+    "request_ids": [
+      "0801dda7b42f4bb5b842b91287148e98",
+      "af7587d87ce24b71971337b5d588d9ed"
+    ]
+  },
+  {
+    "case_id": "b28e107b989d4827be5b673ddfaa60f7",
+    "family": "slow",
+    "responsible_service": "payment",
+    "split": "heldout",
+    "request_ids": [
+      "714ce0664e2647908230971bbe4b3322",
+      "23d8fdfcfae648fd8c007589a44b8b1c"
+    ]
+  },
+  {
+    "case_id": "41f6f9294ed547668002497b0c987fc3",
+    "family": "application_error",
+    "responsible_service": "payment",
+    "split": "heldout",
+    "request_ids": [
+      "cff0c0827aaa4dcbad50bdeaf670a01f",
+      "e54c14703cb9451fab9f298884ba743d"
+    ]
+  },
+  {
+    "case_id": "872cf1afecf1402f8276a0e9b7c62ce6",
+    "family": "healthy",
+    "responsible_service": null,
+    "split": "heldout",
+    "request_ids": [
+      "a1800990b386456a81bb4e9a39ae1872",
+      "a1dc8d82a73f468a9318a8ab0338fbcd",
+      "4cb37f6328594cf7ad920163818dc9a2"
+    ]
+  },
+  {
+    "case_id": "51c43fdeba744b689c52e62056ed5545",
+    "family": "unavailable",
+    "responsible_service": "payment",
+    "split": "heldout",
+    "request_ids": [
+      "c4cad36022de410dbe20e5621a917cf9",
+      "000ddf14275d4cbbac18525e5d82dfc7",
+      "720856f35575462b85dfd664e2ada33b"
+    ]
+  },
+  {
+    "case_id": "6850e6e01c8a485dbb593bddac2ae88a",
+    "family": "slow",
+    "responsible_service": "payment",
+    "split": "heldout",
+    "request_ids": [
+      "228803fca366400397228945557b5147",
+      "9b306179f005455bb50c2a00815e55a6",
+      "a0e3dba19c23485fa20ce755d0838ee2"
+    ]
+  },
+  {
+    "case_id": "4b895fa10c6048238ceeac3748512459",
+    "family": "application_error",
+    "responsible_service": "payment",
+    "split": "heldout",
+    "request_ids": [
+      "e38f5b3657e847eab5556571314f5a97",
+      "33d1ba72281f476da7fa69a75608cce5",
+      "6d884ac9b37c45b19912f483e0e685c9"
+    ]
+  },
+  {
+    "case_id": "cd0c71fe811b419e987a85bec928ed3f",
+    "family": "healthy",
+    "responsible_service": null,
+    "split": "heldout",
+    "request_ids": [
+      "0ee545b9989e459b9dc15276ad5a1119",
+      "ded836a786b04c21b753485de3204d65"
+    ]
+  },
+  {
+    "case_id": "ef7cb8d75e99499c91a6e7e362f8bcb5",
+    "family": "unavailable",
+    "responsible_service": "payment",
+    "split": "heldout",
+    "request_ids": [
+      "a1a18023d6df46b397c50f3c5a5c62cc",
+      "5af13b8a958b41dfa33c65884f3ca091"
+    ]
+  },
+  {
+    "case_id": "31f85dcbe19b45c7b9c4ef18e9695f23",
+    "family": "slow",
+    "responsible_service": "payment",
+    "split": "heldout",
+    "request_ids": [
+      "1977574ad3dd4ab4a2ee5c5534fb1c21",
+      "884b3448b0f9428f96e00c75a137d9d9"
+    ]
+  },
+  {
+    "case_id": "42c999fb641a41ff9b4a5fdc8e60a422",
+    "family": "application_error",
+    "responsible_service": "payment",
+    "split": "heldout",
+    "request_ids": [
+      "7511c023163949af8ba4b8173ff27122",
+      "2ab3d1d045db4450b84018e3439bda0a"
+    ]
+  },
+  {
+    "case_id": "7dd89346f7884c11854d78a4349eac66",
+    "family": "healthy",
+    "responsible_service": null,
+    "split": "heldout",
+    "request_ids": [
+      "49722899ef7440b3a4fc425b4974e8af",
+      "eef4ceaddca845e783892d6a0530d57b",
+      "047662c911194f73bf52af579b29a456"
+    ]
+  },
+  {
+    "case_id": "f9b51ab8622d49a0a520f85d0a739411",
+    "family": "unavailable",
+    "responsible_service": "payment",
+    "split": "heldout",
+    "request_ids": [
+      "44e3e0cae59645fdb4f8d97faf81a400",
+      "a54ce34f3ff04101a72ea696637e88ef",
+      "97ac9bbd27f94f8ca6219e0126cb0912"
+    ]
+  },
+  {
+    "case_id": "740df94b11ac4ddc918f62afa91b1f60",
+    "family": "slow",
+    "responsible_service": "payment",
+    "split": "heldout",
+    "request_ids": [
+      "a7d91cede11c4dcb9b4c4b5760b81f8f",
+      "ba9e2cbe484c45779052073077abed69",
+      "cd5e4b9ccf8240e7aa7e2e8fb3d89485"
+    ]
+  },
+  {
+    "case_id": "f7b4058f47f44c6586c39a3ba7694c37",
+    "family": "application_error",
+    "responsible_service": "payment",
+    "split": "heldout",
+    "request_ids": [
+      "7090191a0c044c979cfd3775a4546ad6",
+      "aff5f589d3334194933b2541cb8514a7",
+      "fa98eb4a0b9c4a36a59468e0bcc6e382"
+    ]
+  }
+]

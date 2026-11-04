@@ -1,0 +1,155 @@
+{
+  "kind": "local-cache-latency-v1",
+  "trials": 40,
+  "corpus": {
+    "revision": "78eb353e0c3c82ab99ecfd98f492a01cefcc5d79a21dde86979363cbe314782e",
+    "application": "shopping-demo",
+    "documents": 13,
+    "passages": 32,
+    "reused": false
+  },
+  "embedding_id": "e57d370ae8ffec51cbd6d785c694dc86628160fb21f3d491b52491335aabcecd",
+  "same_results": true,
+  "repeated_median_improvement_percent": 81.68029518816279,
+  "target_20_percent_met": true,
+  "measurements": {
+    "disabled/cold": {
+      "requests": 4,
+      "p50_ms": 10.51455599917972,
+      "p95_ms": 10.761468998680357,
+      "metrics": {
+        "encoder_inputs": 4,
+        "ranking_executions": 4,
+        "lexical_queries": 4,
+        "semantic_queries": 4
+      }
+    },
+    "disabled/warm_repeated": {
+      "requests": 40,
+      "p50_ms": 9.245375500540831,
+      "p95_ms": 9.978967000279226,
+      "metrics": {
+        "encoder_inputs": 40,
+        "ranking_executions": 40,
+        "lexical_queries": 40,
+        "semantic_queries": 40
+      }
+    },
+    "disabled/unique": {
+      "requests": 40,
+      "p50_ms": 9.781498500160524,
+      "p95_ms": 11.67984499988961,
+      "metrics": {
+        "encoder_inputs": 40,
+        "ranking_executions": 40,
+        "lexical_queries": 40,
+        "semantic_queries": 40
+      }
+    },
+    "embeddings/cold": {
+      "requests": 4,
+      "p50_ms": 10.686397999961628,
+      "p95_ms": 11.42388399966876,
+      "metrics": {
+        "io_operations": 8,
+        "io_seconds": 0.005620018000627169,
+        "embedding_misses": 4,
+        "encoder_inputs": 4,
+        "encoder_inputs_avoided": 0,
+        "ranking_executions": 4,
+        "lexical_queries": 4,
+        "semantic_queries": 4
+      }
+    },
+    "embeddings/warm_repeated": {
+      "requests": 40,
+      "p50_ms": 4.684470501160831,
+      "p95_ms": 5.259743998976774,
+      "metrics": {
+        "io_operations": 40,
+        "io_seconds": 0.01773258999855898,
+        "embedding_misses": 0,
+        "encoder_inputs": 0,
+        "encoder_inputs_avoided": 40,
+        "ranking_executions": 40,
+        "lexical_queries": 40,
+        "semantic_queries": 40,
+        "embedding_hits": 40
+      }
+    },
+    "embeddings/unique": {
+      "requests": 40,
+      "p50_ms": 10.617143499985104,
+      "p95_ms": 12.338518999968073,
+      "metrics": {
+        "io_operations": 80,
+        "io_seconds": 0.04835282400199503,
+        "embedding_misses": 40,
+        "encoder_inputs": 40,
+        "encoder_inputs_avoided": 0,
+        "ranking_executions": 40,
+        "lexical_queries": 40,
+        "semantic_queries": 40,
+        "embedding_hits": 0
+      }
+    },
+    "both/cold": {
+      "requests": 4,
+      "p50_ms": 10.249942000882584,
+      "p95_ms": 10.423839001305168,
+      "metrics": {
+        "io_operations": 16,
+        "io_seconds": 0.007684878000873141,
+        "retrieval_misses": 4,
+        "embedding_misses": 4,
+        "encoder_inputs": 4,
+        "encoder_inputs_avoided": 0,
+        "ranking_executions": 4,
+        "lexical_queries": 4,
+        "semantic_queries": 4
+      }
+    },
+    "both/warm_repeated": {
+      "requests": 40,
+      "p50_ms": 1.693725500444998,
+      "p95_ms": 1.9984669997938909,
+      "metrics": {
+        "io_operations": 40,
+        "io_seconds": 0.015000989998952718,
+        "retrieval_misses": 0,
+        "embedding_misses": 0,
+        "encoder_inputs": 0,
+        "encoder_inputs_avoided": 40,
+        "ranking_executions": 0,
+        "lexical_queries": 0,
+        "semantic_queries": 0,
+        "retrieval_hits": 40,
+        "ranking_executions_avoided": 40
+      }
+    },
+    "both/unique": {
+      "requests": 40,
+      "p50_ms": 12.465654500374512,
+      "p95_ms": 27.082100001280196,
+      "metrics": {
+        "io_operations": 160,
+        "io_seconds": 0.1311476900082198,
+        "retrieval_misses": 40,
+        "embedding_misses": 40,
+        "encoder_inputs": 40,
+        "encoder_inputs_avoided": 0,
+        "ranking_executions": 40,
+        "lexical_queries": 40,
+        "semantic_queries": 40,
+        "retrieval_hits": 0,
+        "ranking_executions_avoided": 0
+      }
+    }
+  },
+  "limits": [
+    "Tiny authored corpus; cache benefit depends on exact repeated queries.",
+    "Sequential single-process trials, fixed mode order; not a load test.",
+    "Cold four-query measurements are descriptive, not stable percentiles.",
+    "Local inference and SQL only; no generative token savings measured."
+  ]
+}

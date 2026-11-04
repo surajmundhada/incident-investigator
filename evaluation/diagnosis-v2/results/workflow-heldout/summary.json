@@ -1,0 +1,379 @@
+{
+  "kind": "typed_failure_localization_summary_v1",
+  "complete": false,
+  "stop": "provider_error",
+  "planned_episodes": 52,
+  "attempted_episodes": 10,
+  "valid_reports": 9,
+  "calls_started": 14,
+  "reported_tokens": 60138,
+  "methods": [
+    {
+      "method": "logs_only",
+      "planned_fault_cases": 12,
+      "attempted_fault_cases": 3,
+      "fault_top1_correct_count": 2,
+      "fault_top1_fraction": null,
+      "planned_healthy_cases": 4,
+      "healthy_correct_count": 1,
+      "healthy_correct_fraction": null,
+      "fault_cases": [
+        {
+          "case_id": "73fad7cefeff4d20ba0e6471bab846b4",
+          "attempted": true,
+          "valid_report": true,
+          "correct": true,
+          "top3_correct": true
+        },
+        {
+          "case_id": "b28e107b989d4827be5b673ddfaa60f7",
+          "attempted": true,
+          "valid_report": true,
+          "correct": true,
+          "top3_correct": true
+        },
+        {
+          "case_id": "41f6f9294ed547668002497b0c987fc3",
+          "attempted": true,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "51c43fdeba744b689c52e62056ed5545",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "6850e6e01c8a485dbb593bddac2ae88a",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "4b895fa10c6048238ceeac3748512459",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "ef7cb8d75e99499c91a6e7e362f8bcb5",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "31f85dcbe19b45c7b9c4ef18e9695f23",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "42c999fb641a41ff9b4a5fdc8e60a422",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "f9b51ab8622d49a0a520f85d0a739411",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "740df94b11ac4ddc918f62afa91b1f60",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "f7b4058f47f44c6586c39a3ba7694c37",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        }
+      ],
+      "healthy_cases": [
+        {
+          "case_id": "42f8ae8ab98a4e0488c40cba2b10e852",
+          "attempted": true,
+          "valid_report": true,
+          "correct": true
+        },
+        {
+          "case_id": "872cf1afecf1402f8276a0e9b7c62ce6",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false
+        },
+        {
+          "case_id": "cd0c71fe811b419e987a85bec928ed3f",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false
+        },
+        {
+          "case_id": "7dd89346f7884c11854d78a4349eac66",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false
+        }
+      ]
+    },
+    {
+      "method": "rag",
+      "planned_fault_cases": 12,
+      "attempted_fault_cases": 2,
+      "fault_top1_correct_count": 2,
+      "fault_top1_fraction": null,
+      "planned_healthy_cases": 4,
+      "healthy_correct_count": 1,
+      "healthy_correct_fraction": null,
+      "fault_cases": [
+        {
+          "case_id": "73fad7cefeff4d20ba0e6471bab846b4",
+          "attempted": true,
+          "valid_report": true,
+          "correct": true,
+          "top3_correct": true
+        },
+        {
+          "case_id": "b28e107b989d4827be5b673ddfaa60f7",
+          "attempted": true,
+          "valid_report": true,
+          "correct": true,
+          "top3_correct": true
+        },
+        {
+          "case_id": "41f6f9294ed547668002497b0c987fc3",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "51c43fdeba744b689c52e62056ed5545",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "6850e6e01c8a485dbb593bddac2ae88a",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "4b895fa10c6048238ceeac3748512459",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "ef7cb8d75e99499c91a6e7e362f8bcb5",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "31f85dcbe19b45c7b9c4ef18e9695f23",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "42c999fb641a41ff9b4a5fdc8e60a422",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "f9b51ab8622d49a0a520f85d0a739411",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "740df94b11ac4ddc918f62afa91b1f60",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "f7b4058f47f44c6586c39a3ba7694c37",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        }
+      ],
+      "healthy_cases": [
+        {
+          "case_id": "42f8ae8ab98a4e0488c40cba2b10e852",
+          "attempted": true,
+          "valid_report": true,
+          "correct": true
+        },
+        {
+          "case_id": "872cf1afecf1402f8276a0e9b7c62ce6",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false
+        },
+        {
+          "case_id": "cd0c71fe811b419e987a85bec928ed3f",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false
+        },
+        {
+          "case_id": "7dd89346f7884c11854d78a4349eac66",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false
+        }
+      ]
+    },
+    {
+      "method": "agent",
+      "planned_fault_cases": 12,
+      "attempted_fault_cases": 2,
+      "fault_top1_correct_count": 2,
+      "fault_top1_fraction": null,
+      "planned_healthy_cases": 4,
+      "healthy_correct_count": 1,
+      "healthy_correct_fraction": null,
+      "fault_cases": [
+        {
+          "case_id": "73fad7cefeff4d20ba0e6471bab846b4",
+          "attempted": true,
+          "valid_report": true,
+          "correct": true,
+          "top3_correct": true
+        },
+        {
+          "case_id": "b28e107b989d4827be5b673ddfaa60f7",
+          "attempted": true,
+          "valid_report": true,
+          "correct": true,
+          "top3_correct": true
+        },
+        {
+          "case_id": "41f6f9294ed547668002497b0c987fc3",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "51c43fdeba744b689c52e62056ed5545",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "6850e6e01c8a485dbb593bddac2ae88a",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "4b895fa10c6048238ceeac3748512459",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "ef7cb8d75e99499c91a6e7e362f8bcb5",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "31f85dcbe19b45c7b9c4ef18e9695f23",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "42c999fb641a41ff9b4a5fdc8e60a422",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "f9b51ab8622d49a0a520f85d0a739411",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "740df94b11ac4ddc918f62afa91b1f60",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        },
+        {
+          "case_id": "f7b4058f47f44c6586c39a3ba7694c37",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false,
+          "top3_correct": false
+        }
+      ],
+      "healthy_cases": [
+        {
+          "case_id": "42f8ae8ab98a4e0488c40cba2b10e852",
+          "attempted": true,
+          "valid_report": true,
+          "correct": true
+        },
+        {
+          "case_id": "872cf1afecf1402f8276a0e9b7c62ce6",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false
+        },
+        {
+          "case_id": "cd0c71fe811b419e987a85bec928ed3f",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false
+        },
+        {
+          "case_id": "7dd89346f7884c11854d78a4349eac66",
+          "attempted": false,
+          "valid_report": false,
+          "correct": false
+        }
+      ]
+    }
+  ],
+  "limitations": "Counts from an incomplete run are not final accuracy. Typed originating-service match is not semantic faithfulness or proof of underlying cause. No failed or unknown episode was retried."
+}

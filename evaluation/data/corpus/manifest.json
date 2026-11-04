@@ -1,0 +1,96 @@
+{
+  "documents": [
+    {
+      "id": "service-map",
+      "path": "runbooks/service-map.md",
+      "title": "Shopping service dependencies and boundaries",
+      "service": "global"
+    },
+    {
+      "id": "checkout-downstream",
+      "path": "runbooks/checkout-downstream.md",
+      "title": "Checkout downstream errors and bad gateway responses",
+      "service": "checkout"
+    },
+    {
+      "id": "payment-errors",
+      "path": "runbooks/payment-errors.md",
+      "title": "Payment unavailable and HTTP 503 investigation",
+      "service": "payment"
+    },
+    {
+      "id": "inventory-errors",
+      "path": "runbooks/inventory-errors.md",
+      "title": "Inventory availability and checkout failures",
+      "service": "inventory"
+    },
+    {
+      "id": "network-timeouts",
+      "path": "runbooks/network-timeouts.md",
+      "title": "Dependency timeouts and network reachability",
+      "service": "global"
+    },
+    {
+      "id": "missing-evidence",
+      "path": "runbooks/missing-evidence.md",
+      "title": "Missing logs and insufficient evidence",
+      "service": "global"
+    },
+    {
+      "id": "release-correlation",
+      "path": "runbooks/release-correlation.md",
+      "title": "Deployment timing and causal investigation",
+      "service": "global"
+    },
+    {
+      "id": "http-validation",
+      "path": "runbooks/http-validation.md",
+      "title": "Cart validation and HTTP client errors",
+      "service": "checkout"
+    },
+    {
+      "id": "request-correlation",
+      "path": "runbooks/request-correlation.md",
+      "title": "Request ID correlation across HTTP services",
+      "service": "global"
+    },
+    {
+      "id": "source-failures",
+      "path": "runbooks/source-failures.md",
+      "title": "Operational log adapter availability",
+      "service": "global"
+    },
+    {
+      "id": "health-semantics",
+      "path": "runbooks/health-semantics.md",
+      "title": "Process liveness versus business availability",
+      "service": "global"
+    },
+    {
+      "id": "retry-safety",
+      "path": "runbooks/retry-safety.md",
+      "title": "Read-only investigation and transaction retry safety",
+      "service": "global"
+    },
+    {
+      "id": "configuration-scope",
+      "path": "runbooks/configuration-scope.md",
+      "title": "Applicability of versioned operational guidance",
+      "service": "global"
+    },
+    {
+      "id": "checkout-archive",
+      "path": "runbooks/checkout-archive.md",
+      "title": "Archived evaluation checkout ordering",
+      "service": "checkout",
+      "release": "demo-v0"
+    },
+    {
+      "id": "payment-staging",
+      "path": "runbooks/payment-staging.md",
+      "title": "Staging evaluation payment routing",
+      "service": "payment",
+      "environment": "staging"
+    }
+  ]
+}

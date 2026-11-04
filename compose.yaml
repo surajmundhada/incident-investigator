@@ -1,0 +1,74 @@
+# Local evidence-only defaults. RAG/agent/cache/archive use explicit overrides.
+services:
+  postgres:
+    image: pgvector/pgvector:pg17@sha256:7d0a41464797aeb9862dfdc0bbf1526b82cfd324cdd8036df19e3545f4a9ccb8
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-investigator}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: ${POSTGRES_DB:-investigator}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"']
+      interval: 5s
+      timeout: 3s
+      retries: 15
+    mem_limit: 512m
+
+  migrate:
+    build:
+      context: .
+      dockerfile: infra/Dockerfile
+      target: base
+    environment: &runtime
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-investigator}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-investigator}
+      EVIDENCE_BASE_URL: ${COMPOSE_EVIDENCE_BASE_URL:-http://fixture-source:8091}
+    command: [alembic, upgrade, head]
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  api:
+    build:
+      context: .
+      dockerfile: infra/Dockerfile
+      target: base
+    environment:
+      <<: *runtime
+      ALERT_WEBHOOK_TOKEN: ${ALERT_WEBHOOK_TOKEN:-}
+    ports:
+      - 127.0.0.1:${API_PORT:-8001}:8000
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/readyz', timeout=2).close()"]
+      interval: 5s
+      timeout: 3s
+      start_period: 15s
+      retries: 20
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    mem_limit: 256m
+
+  worker:
+    build:
+      context: .
+      dockerfile: infra/Dockerfile
+      target: base
+    environment: *runtime
+    command: [python, -m, investigator.worker]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    mem_limit: 256m
+
+  fixture-source:
+    profiles: [fixture]
+    build:
+      context: .
+      dockerfile: infra/Dockerfile
+      target: base
+    command: [python, -m, investigator.fixture_source, --host, 0.0.0.0, --port, '8091']
+    mem_limit: 128m
+
+volumes:
+  postgres_data:

@@ -1,0 +1,8 @@
+{
+  "description": "Authored fictional log messages used only to exercise evidence collection. These are not benchmark results or real application telemetry.",
+  "records": [
+    {"service": "payment", "level": "ERROR", "message": "Database connection refused during payment authorization"},
+    {"service": "payment", "level": "WARNING", "message": "Payment authorization could not complete"},
+    {"service": "checkout", "level": "ERROR", "message": "Payment dependency returned an error"}
+  ]
+}

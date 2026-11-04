@@ -1,0 +1,46 @@
+{
+  "documents": [
+    {
+      "id": "service-map",
+      "path": "runbooks/service-map.md",
+      "title": "Shopping service dependencies and boundaries",
+      "service": "global"
+    },
+    {
+      "id": "checkout-downstream",
+      "path": "runbooks/checkout-downstream.md",
+      "title": "Checkout downstream errors and bad gateway responses",
+      "service": "checkout"
+    },
+    {
+      "id": "payment-errors",
+      "path": "runbooks/payment-errors.md",
+      "title": "Payment unavailable and HTTP 503 investigation",
+      "service": "payment"
+    },
+    {
+      "id": "inventory-errors",
+      "path": "runbooks/inventory-errors.md",
+      "title": "Inventory availability and checkout failures",
+      "service": "inventory"
+    },
+    {
+      "id": "network-timeouts",
+      "path": "runbooks/network-timeouts.md",
+      "title": "Dependency timeouts and network reachability",
+      "service": "global"
+    },
+    {
+      "id": "missing-evidence",
+      "path": "runbooks/missing-evidence.md",
+      "title": "Missing logs and insufficient evidence",
+      "service": "global"
+    },
+    {
+      "id": "release-correlation",
+      "path": "runbooks/release-correlation.md",
+      "title": "Deployment timing and causal investigation",
+      "service": "global"
+    }
+  ]
+}

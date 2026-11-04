@@ -1,0 +1,32 @@
+# Optional disposable cache. No readiness dependency or published Redis port.
+services:
+  redis:
+    image: redis:7.4.12-alpine@sha256:8da19c7399dca900c6822a1cf30f9d2285585e2c4b457ff4095b0f4500054d3f
+    command: [redis-server, --save, '', --appendonly, 'no', --maxmemory, 64mb, --maxmemory-policy, allkeys-lru]
+    networks: [cache]
+    mem_limit: 128m
+    tmpfs: [/data]
+    healthcheck:
+      test: [CMD, redis-cli, ping]
+      interval: 5s
+      timeout: 1s
+      retries: 3
+
+  api:
+    environment: &cache-runtime
+      CACHE_ENABLED: '1'
+      CACHE_URL: redis://redis:6379/0
+      CACHE_NAMESPACE: ${CACHE_NAMESPACE:-local-dev}
+    networks: [default, cache]
+
+  worker:
+    environment: *cache-runtime
+    networks: [default, cache]
+
+  knowledge-index:
+    environment: *cache-runtime
+    networks: [default, cache]
+
+networks:
+  cache:
+    internal: true

@@ -1,0 +1,21 @@
+{
+  "recorded_at": "2026-11-04T17:42:11.627112+00:00",
+  "python": "3.13.1",
+  "platform": "Windows",
+  "versions": {
+    "pydantic": "2.14.2",
+    "SQLAlchemy": "2.0.55",
+    "langgraph": "1.2.19",
+    "httpx": "0.28.1",
+    "fastapi": "0.162.0"
+  },
+  "lock_sha256": {
+    "requirements-agent.lock": "0b282603d1f335f550075c219414c05c51ccf6a8a0bf716a9062233264b3a805",
+    "requirements-artifacts.lock": "aec69c76404b1aa753d29192f51b5206f19c1edc0bbe8c3e8cc53cd2b63fbf13",
+    "requirements-cache.lock": "75f6b4641cda3a453d1244e57c75b95f062d69793cd06ab32e48cccb8691002c",
+    "requirements-mcp.lock": "a8887edd534d64363729116009cbbfa6d9ffd7c680bca85ba08a5080e9d6886f",
+    "requirements-retrieval.lock": "08040d53c16642ded3f91485690d08ffe1672603437cfd8d7e76369e8c698d4e",
+    "requirements.lock": "44b6d8e8c0800ce3c631d1e1a22b0944fa0b7824c7a4f6adfdfc8dd6f095d118"
+  },
+  "note": "Environment recorded during the run; no application dependencies changed. Operator Parquet parser was installed under work/ only."
+}

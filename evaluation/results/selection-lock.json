@@ -1,0 +1,29 @@
+{
+  "selected_profile": "improved",
+  "development_metrics": {
+    "recall_at_5": 1.0,
+    "mrr_at_5": 0.8529411764705882,
+    "ndcg_at_5": 0.8900546913865564,
+    "no_answer_abstention": 0.3333333333333333,
+    "p50_ms": 14.798661999975593,
+    "p95_ms": 20.52635299969552,
+    "answerable_cases": 17,
+    "no_answer_cases": 3
+  },
+  "implementation_hashes": {
+    "backend/investigator/knowledge/__init__.py": "eaca890d3303f7f88d9f9532783ac9e6439831c1921fecabc6cd210ddc330a5f",
+    "backend/investigator/knowledge/cli.py": "d3b9c1644b01cedb37905e8d9c71fabcf8782c0cb02f2e607141034f9b49b1f2",
+    "backend/investigator/knowledge/corpus.py": "2fbc3fce5865b619e2efe2e0df636782586df85be190d8759376546e9f6d3651",
+    "backend/investigator/knowledge/embeddings.py": "570074bbf0d03b8ba646b5be947345244302a04cd2b56c4d91e3bdfcaf9b4190",
+    "backend/investigator/knowledge/metrics.py": "364b3f1b13e47699cc455c61f57355441df37ec766b18a22708df11a6fa656a0",
+    "backend/investigator/knowledge/query.py": "ecd36416c1cd17f75fdf5ff44b8c181cc87398aae2339f05b18151b8661b7026",
+    "backend/investigator/knowledge/reranking.py": "fdc5a5075714d44e99731e607e55a670cab78e5a1386195f221617c990c955e4",
+    "backend/investigator/knowledge/store.py": "2d168722156a33a8aa53b9196af9e3931b7d7d69dd0846192c876791be1a263a",
+    "backend/investigator/knowledge/tool.py": "f8aed343ba3dd1d43780743bc0fadda22a1b3e28ac8b3a7681632f2f90c87a84",
+    "knowledge/embedding-lock.json": "8e1bb74c1a0d4e55c6cc982b4150b21b0837c17ed5168cae8697cc3ea50304af",
+    "knowledge/reranker-lock.json": "84320ae520eeb41b1177d788263f080fe21a4d4a728afbfae9c7bd3f613545db",
+    "evaluation/run.py": "6928629d6b40158118f98c0b9bee711f350cd09da8b6da4193b6d500b09782d5",
+    "evaluation/STUDY.md": "71afe566dcda0b4067b4224e5e502a0a1eeee88e4d1127c6316e21351f9c1a56"
+  },
+  "data_lock_hash": "3dcdc1b3058b89f0917d8464e8d86f4efc49c7e16d7b38d4b6194349fe982752"
+}

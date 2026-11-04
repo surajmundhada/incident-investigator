@@ -1,0 +1,81 @@
+# Third-party notices
+
+The root MIT license applies to original AI Incident Investigator code. It does
+not relicense dependencies, datasets, downloaded models or container images.
+Retain upstream copyright notices and license files when redistributing them.
+This source-level overview is not a complete container/binary license manifest.
+
+## External dataset
+
+RCAEval RE2 Online Boutique excerpt:
+  Source: https://huggingface.co/datasets/phamquiluan/RCAEval
+  License: MIT; Copyright (c) 2024 Luan Pham.
+  Full retained license: examples/external-online-boutique/LICENSE-RCAEval.txt
+  Attribution/normalization limits: examples/external-online-boutique/README.md
+  Pinned revision and source/excerpt hashes:
+    evaluation/external-online-boutique/provenance.json
+
+The excerpt is independently produced controlled-benchmark data. It is not a
+production-user incident. Normalization and missing fields are disclosed; source
+license/copyright notices must stay with the excerpt.
+
+## Architectural inspiration
+
+Aurora: https://github.com/Arvo-AI/aurora
+HolmesGPT: https://github.com/HolmesGPT/holmesgpt
+
+These are references for investigation workflows and bounded tools. This project
+is not a fork and does not vendor their source. No upstream capabilities or
+endorsement are implied. Any future reused source must carry its actual license
+and attribution; this credit does not substitute for those obligations.
+
+## Major dependencies and runtime components
+
+Component                         Upstream license / source
+FastAPI, Pydantic, SQLAlchemy,     MIT; https://github.com/fastapi/fastapi
+  Alembic                         https://github.com/pydantic/pydantic
+                                  https://github.com/sqlalchemy/sqlalchemy
+                                  https://github.com/sqlalchemy/alembic
+LangGraph / LangChain core        MIT; https://github.com/langchain-ai/langgraph
+                                  https://github.com/langchain-ai/langchain
+FastEmbed                         Apache-2.0; https://github.com/qdrant/fastembed
+boto3 / botocore                  Apache-2.0; https://github.com/boto/boto3
+                                  https://github.com/boto/botocore
+Psycopg / psycopg-binary           LGPL-3.0-only; https://www.psycopg.org/
+Redis Python client (redis-py)    MIT; https://github.com/redis/redis-py
+Redis SERVER image 7.4.x          RSALv2 OR SSPLv1, NOT the client's MIT license;
+                                  https://redis.io/legal/licenses/
+PostgreSQL                        PostgreSQL License; https://www.postgresql.org/about/licence/
+pgvector                          PostgreSQL License; https://github.com/pgvector/pgvector
+Python                            PSF-2.0 and bundled notices; https://docs.python.org/3/license.html
+HTTPX / Uvicorn / Starlette        BSD-3-Clause; upstream package licenses
+React / React DOM / Vite           MIT; https://github.com/facebook/react
+                                  https://github.com/vitejs/vite
+TypeScript / Playwright            Apache-2.0; https://github.com/microsoft/TypeScript
+                                  https://github.com/microsoft/playwright
+MCP Python SDK                    MIT; https://github.com/modelcontextprotocol/python-sdk
+Certifi                           MPL-2.0; https://github.com/certifi/python-certifi
+Lightning CSS                     MPL-2.0; https://github.com/parcel-bundler/lightningcss
+orjson                            MPL-2.0 AND (Apache-2.0 OR MIT); installed notices
+
+The locked Redis server image is 7.4.12-alpine. Redis 7.4.x to 7.8.x is offered
+under RSALv2/SSPLv1. The separately installed redis-py 7.4.1 client is MIT.
+Referencing these components does not make all of them MIT. This repository
+does not redistribute their source as part of its original-code license.
+Container base images also include operating-system packages and their notices.
+Review those separately before distributing built images or binary bundles.
+
+## Downloaded model artifacts
+
+The embedding model is sentence-transformers/all-MiniLM-L6-v2, with a pinned
+Qdrant/all-MiniLM-L6-v2-onnx conversion. Its model card declares Apache-2.0.
+The experimental reranker is a pinned Xenova/ms-marco-MiniLM-L-6-v2 conversion
+of the Apache-2.0 cross-encoder model. The conversion card points to its base
+model but does not itself include an explicit license field in the retained
+card. Preserve conversion/base-model provenance and confirm redistribution
+terms before bundling weights. Weights are downloaded separately into ignored
+data/ and are excluded from the public source tree.
+
+Pinned revisions/checksums: knowledge/embedding-lock.json and
+knowledge/reranker-lock.json. Model cards and upstream notices remain attached
+to the separately downloaded artifacts. No Gemini model weights are included.

@@ -1,0 +1,449 @@
+{
+  "date": "2026-11-05",
+  "timezone": "Asia/Calcutta",
+  "review_kind": "author and AI-assisted self-review; not independent",
+  "verification_checkout_method": "new git init, direct-path local fetch and branch checkout; no named remote",
+  "code_tested_commit": "d11dce7c0537032a002276bf0ba776f0f6f424ef",
+  "backend": {
+    "passed": 286,
+    "skipped": 0,
+    "failed": 0,
+    "elapsed_seconds": 23.13,
+    "output": "verification/backend-suite.txt",
+    "environment": "Python 3.12 Linux container; real PostgreSQL and Redis; optional SDKs installed"
+  },
+  "browser": {
+    "passed": 18,
+    "failed": 0,
+    "elapsed_seconds": 29.3,
+    "browser": "headless Edge",
+    "evidence_kind": "observed terminal summary from corrected fresh-checkout run"
+  },
+  "checks": {
+    "ruff_lint": "passed",
+    "ruff_format_files": 118,
+    "frontend_build": "passed",
+    "prettier": "passed",
+    "metric_and_frozen_input_checks": 96,
+    "rendered_mermaid_diagrams": 4,
+    "broken_checked_local_links": 0,
+    "example_env_compose_config": "passed",
+    "full_optional_compose_config": "passed"
+  },
+  "fresh_runtime": {
+    "ready_http": 200,
+    "retrieval_http": 200,
+    "retrieved_passages": 6,
+    "investigation_status": "complete",
+    "model_calls": 0,
+    "runtime_scope": "separate fresh local fixture stack; no AWS"
+  },
+  "gitleaks": {
+    "version": "8.30.1",
+    "tree_alerts": 14,
+    "history_alerts": 28,
+    "exit_code": 1,
+    "triage": "all reported alerts are SHA-256 metadata false positives; no suppression added",
+    "confirmed_credential_findings": 0,
+    "scan_limits": "pattern detection is not a comprehensive guarantee"
+  },
+  "resolved_verification_failures": [
+    "Windows checkout CRLF conversion failed Prettier: source LF and frozen-byte rules added",
+    "Unanchored data/ ignore omitted frozen evaluation inputs: changed to /data/",
+    "One full run had 1 failed and 285 passed: scheduler-dependent Redis contention assertion corrected to documented bounded-work contract; next full run passed"
+  ],
+  "not_retested": [
+    "hosted model calls and frozen provider comparisons",
+    "live AWS round trip or sustained credential renewal",
+    "different physical machine or remote CI",
+    "container operating-system CVEs",
+    "every historical milestone test count in legacy notes"
+  ],
+  "metrics": [
+    {
+      "check": "cache trials per main workload",
+      "value": 40
+    },
+    {
+      "check": "cache corpus documents",
+      "value": 13
+    },
+    {
+      "check": "cache corpus passages",
+      "value": 32
+    },
+    {
+      "check": "disabled/warm_repeated requests",
+      "value": 40
+    },
+    {
+      "check": "disabled/warm_repeated p50 rounded",
+      "value": "9.245"
+    },
+    {
+      "check": "disabled/warm_repeated README value",
+      "value": true
+    },
+    {
+      "check": "disabled/warm_repeated evaluation value",
+      "value": true
+    },
+    {
+      "check": "both/warm_repeated requests",
+      "value": 40
+    },
+    {
+      "check": "both/warm_repeated p50 rounded",
+      "value": "1.694"
+    },
+    {
+      "check": "both/warm_repeated README value",
+      "value": true
+    },
+    {
+      "check": "both/warm_repeated evaluation value",
+      "value": true
+    },
+    {
+      "check": "disabled/unique requests",
+      "value": 40
+    },
+    {
+      "check": "disabled/unique p50 rounded",
+      "value": "9.781"
+    },
+    {
+      "check": "disabled/unique README value",
+      "value": true
+    },
+    {
+      "check": "disabled/unique evaluation value",
+      "value": true
+    },
+    {
+      "check": "both/unique requests",
+      "value": 40
+    },
+    {
+      "check": "both/unique p50 rounded",
+      "value": "12.466"
+    },
+    {
+      "check": "both/unique README value",
+      "value": true
+    },
+    {
+      "check": "both/unique evaluation value",
+      "value": true
+    },
+    {
+      "check": "warm median improvement rounded",
+      "value": "81.7"
+    },
+    {
+      "check": "unique median overhead rounded",
+      "value": "27.4"
+    },
+    {
+      "check": "unique overhead documentation",
+      "value": true
+    },
+    {
+      "check": "frozen_hybrid recall rounded",
+      "value": "86.7"
+    },
+    {
+      "check": "frozen_hybrid MRR rounded",
+      "value": "0.844"
+    },
+    {
+      "check": "frozen_hybrid answerable",
+      "value": 15
+    },
+    {
+      "check": "frozen_hybrid absent",
+      "value": 5
+    },
+    {
+      "check": "frozen_hybrid documented pair",
+      "value": true
+    },
+    {
+      "check": "v2_baseline recall rounded",
+      "value": "86.7"
+    },
+    {
+      "check": "v2_baseline MRR rounded",
+      "value": "0.844"
+    },
+    {
+      "check": "v2_baseline answerable",
+      "value": 15
+    },
+    {
+      "check": "v2_baseline absent",
+      "value": 5
+    },
+    {
+      "check": "v2_baseline documented pair",
+      "value": true
+    },
+    {
+      "check": "improved recall rounded",
+      "value": "90.0"
+    },
+    {
+      "check": "improved MRR rounded",
+      "value": "0.789"
+    },
+    {
+      "check": "improved answerable",
+      "value": 15
+    },
+    {
+      "check": "improved absent",
+      "value": 5
+    },
+    {
+      "check": "improved documented pair",
+      "value": true
+    },
+    {
+      "check": "experimental profile not promoted",
+      "value": true
+    },
+    {
+      "check": "pilot distinct cases",
+      "value": 4
+    },
+    {
+      "check": "pilot calls",
+      "value": 12
+    },
+    {
+      "check": "pilot reported tokens",
+      "value": 61104
+    },
+    {
+      "check": "pilot serialized input bytes",
+      "value": 177851
+    },
+    {
+      "check": "logs_only pilot rows",
+      "value": 4
+    },
+    {
+      "check": "logs_only valid",
+      "value": 4
+    },
+    {
+      "check": "all_context pilot rows",
+      "value": 4
+    },
+    {
+      "check": "all_context valid",
+      "value": 3
+    },
+    {
+      "check": "baseline_rag pilot rows",
+      "value": 4
+    },
+    {
+      "check": "baseline_rag valid",
+      "value": 4
+    },
+    {
+      "check": "pilot documentation 61,104",
+      "value": true
+    },
+    {
+      "check": "pilot documentation 177,851",
+      "value": true
+    },
+    {
+      "check": "pilot documentation 4/4",
+      "value": true
+    },
+    {
+      "check": "pilot documentation 3/4",
+      "value": true
+    },
+    {
+      "check": "workflow planned_episodes",
+      "value": 52
+    },
+    {
+      "check": "workflow attempted_episodes",
+      "value": 10
+    },
+    {
+      "check": "workflow valid_reports",
+      "value": 9
+    },
+    {
+      "check": "workflow calls_started",
+      "value": 14
+    },
+    {
+      "check": "workflow reported_tokens",
+      "value": 60138
+    },
+    {
+      "check": "workflow complete",
+      "value": false
+    },
+    {
+      "check": "workflow stop",
+      "value": "provider_error"
+    },
+    {
+      "check": "workflow documentation tokens",
+      "value": true
+    },
+    {
+      "check": "external record count",
+      "value": 120
+    },
+    {
+      "check": "external service count",
+      "value": 6
+    },
+    {
+      "check": "retained dataset license",
+      "value": true
+    },
+    {
+      "check": "frozen input data/corpus/manifest.json",
+      "value": "9aabfaee2a9a3e2ea00ed809bd3c994576161b1335a29af0b6433e33605729ed"
+    },
+    {
+      "check": "frozen input data/corpus/runbooks/checkout-archive.md",
+      "value": "f03f97bad3eb5d5386b3e29874e4f063e9e24739522656be84e521e937016f20"
+    },
+    {
+      "check": "frozen input data/corpus/runbooks/checkout-downstream.md",
+      "value": "ea5467f3d0139c0d1b13798cf5d6bc02aab1edf81293a2242fbf62a645bcf817"
+    },
+    {
+      "check": "frozen input data/corpus/runbooks/configuration-scope.md",
+      "value": "f15869afd0b9f996162621511a37aa8d367c2c1eba32f1eec20e5cf5dcae126e"
+    },
+    {
+      "check": "frozen input data/corpus/runbooks/health-semantics.md",
+      "value": "359980c94d806156e08cf73375d70fbf722173d8bceb2425b9749745fe34bdc2"
+    },
+    {
+      "check": "frozen input data/corpus/runbooks/http-validation.md",
+      "value": "c050206d73e621abccbd88926037b5bda8652e5b850c16543ea3fe31e4e914ec"
+    },
+    {
+      "check": "frozen input data/corpus/runbooks/inventory-errors.md",
+      "value": "1eee42adfb531f95d42c358fb51376c2bb0725db1e538c5e704ac7ba0c57c4a9"
+    },
+    {
+      "check": "frozen input data/corpus/runbooks/missing-evidence.md",
+      "value": "0e97e67febd6947c88312e8d43083c4ff9edbc8b56e7d2516e35af1ec26aeead"
+    },
+    {
+      "check": "frozen input data/corpus/runbooks/network-timeouts.md",
+      "value": "ea6d94209c9d87d812b327e4f28fc0f01b39ddae2603cdada17badef39224cdb"
+    },
+    {
+      "check": "frozen input data/corpus/runbooks/payment-errors.md",
+      "value": "ef598b2bf05ba28f9026685e7d4d65ccb5edcf8ae663bf7c1f7c417f4392aaf1"
+    },
+    {
+      "check": "frozen input data/corpus/runbooks/payment-staging.md",
+      "value": "ae212bd318b12e253fc4111d40a6a392fc0d611297c629fe21e8744d09be5343"
+    },
+    {
+      "check": "frozen input data/corpus/runbooks/release-correlation.md",
+      "value": "1d6a7b97dd9960a642dadaae16a2afd7a55a57b81496869919006e6e078c214c"
+    },
+    {
+      "check": "frozen input data/corpus/runbooks/request-correlation.md",
+      "value": "ca7acdc3dbc2027d62aa901b1a457e3d9a5223dc88d1b7746e6a93fd9b80f904"
+    },
+    {
+      "check": "frozen input data/corpus/runbooks/retry-safety.md",
+      "value": "381866e2b2ca8c9ed97fdc37ebcdf4d96c2834b20f9fdcf187ad5ddac8cf7785"
+    },
+    {
+      "check": "frozen input data/corpus/runbooks/service-map.md",
+      "value": "c8f4bc7330808dd18763af68efc62dd6a61a8c841e07d280f1a98834f2161134"
+    },
+    {
+      "check": "frozen input data/corpus/runbooks/source-failures.md",
+      "value": "e1df33076b314ced8b6edff4130c420bec8f77ae4fd0ec09a8a530e2cd428178"
+    },
+    {
+      "check": "frozen input data/development.json",
+      "value": "049aa3e575a25960d72d00ee4432d8df4ceb6dd2ddc21b6a92021d9c11ac92c3"
+    },
+    {
+      "check": "frozen input data/heldout.json",
+      "value": "70e37af6e0322d276b1ffcb7d0791206f67c6be67a259478a2baa14891dd602c"
+    },
+    {
+      "check": "frozen input knowledge/__init__.py",
+      "value": "eaca890d3303f7f88d9f9532783ac9e6439831c1921fecabc6cd210ddc330a5f"
+    },
+    {
+      "check": "frozen input knowledge/cli.py",
+      "value": "d3b9c1644b01cedb37905e8d9c71fabcf8782c0cb02f2e607141034f9b49b1f2"
+    },
+    {
+      "check": "frozen input knowledge/corpus.py",
+      "value": "d37e0f74d39225a16ba67977f336c025059004aa6d137562e3c2d192e70268c2"
+    },
+    {
+      "check": "frozen input knowledge/embeddings.py",
+      "value": "570074bbf0d03b8ba646b5be947345244302a04cd2b56c4d91e3bdfcaf9b4190"
+    },
+    {
+      "check": "frozen input knowledge/store.py",
+      "value": "e2a42e63d6af2f6edc0dda1608400575ab80f0495afc8319fdb21681a6dc080f"
+    },
+    {
+      "check": "frozen input knowledge/tool.py",
+      "value": "c5b0649806082940ef24108cad9375df2a7f98aa9e105d6f9a22269e552186a5"
+    },
+    {
+      "check": "frozen input embedding-lock.json",
+      "value": "8e1bb74c1a0d4e55c6cc982b4150b21b0837c17ed5168cae8697cc3ea50304af"
+    },
+    {
+      "check": "frozen input manifest.json",
+      "value": "719b52a75c77564f16fb5bb297e4f259ec171cde9cc2dcbb8cee5bcce18117c6"
+    },
+    {
+      "check": "frozen input runbooks/checkout-downstream.md",
+      "value": "ea5467f3d0139c0d1b13798cf5d6bc02aab1edf81293a2242fbf62a645bcf817"
+    },
+    {
+      "check": "frozen input runbooks/inventory-errors.md",
+      "value": "1eee42adfb531f95d42c358fb51376c2bb0725db1e538c5e704ac7ba0c57c4a9"
+    },
+    {
+      "check": "frozen input runbooks/missing-evidence.md",
+      "value": "0e97e67febd6947c88312e8d43083c4ff9edbc8b56e7d2516e35af1ec26aeead"
+    },
+    {
+      "check": "frozen input runbooks/network-timeouts.md",
+      "value": "ea6d94209c9d87d812b327e4f28fc0f01b39ddae2603cdada17badef39224cdb"
+    },
+    {
+      "check": "frozen input runbooks/payment-errors.md",
+      "value": "ef598b2bf05ba28f9026685e7d4d65ccb5edcf8ae663bf7c1f7c417f4392aaf1"
+    },
+    {
+      "check": "frozen input runbooks/release-correlation.md",
+      "value": "1d6a7b97dd9960a642dadaae16a2afd7a55a57b81496869919006e6e078c214c"
+    },
+    {
+      "check": "frozen input runbooks/service-map.md",
+      "value": "c8f4bc7330808dd18763af68efc62dd6a61a8c841e07d280f1a98834f2161134"
+    }
+  ],
+  "preservation": "original .env and all 88 inventoried evaluation files checked unchanged; private databases, weights and runtime directories excluded from the public source"
+}

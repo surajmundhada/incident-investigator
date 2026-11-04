@@ -1,0 +1,267 @@
+[
+  {
+    "id": "d01",
+    "family": "gateway-status",
+    "query": "checkout 502 payment downstream failure",
+    "service": "checkout",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "checkout-downstream",
+        "heading": "HTTP 502 from checkout"
+      }
+    ]
+  },
+  {
+    "id": "d02",
+    "family": "payment-response",
+    "query": "What does payment HTTP 503 establish about the failed request?",
+    "service": "payment",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "payment-errors",
+        "heading": "Payment HTTP 503"
+      }
+    ]
+  },
+  {
+    "id": "d03",
+    "family": "call-order",
+    "query": "Inventory failed so was payment supposed to receive that checkout request?",
+    "service": "inventory",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "inventory-errors",
+        "heading": "Inventory is checked before payment"
+      }
+    ]
+  },
+  {
+    "id": "d04",
+    "family": "transport-types",
+    "query": "A downstream request unavailable log has no HTTP response status. Could it be DNS or a refused connection?",
+    "service": "checkout",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "network-timeouts",
+        "heading": "Response failure versus transport failure"
+      }
+    ]
+  },
+  {
+    "id": "d05",
+    "family": "id-format",
+    "query": "How can I join observations by request_id and what format is accepted?",
+    "service": "checkout",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "request-correlation",
+        "heading": "Joining observations"
+      }
+    ]
+  },
+  {
+    "id": "d06",
+    "family": "verbose-gateway",
+    "query": "Please help me understand why checkout is returning bad gateway errors when calling a dependency",
+    "service": "checkout",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "checkout-downstream",
+        "heading": "HTTP 502 from checkout"
+      }
+    ]
+  },
+  {
+    "id": "d07",
+    "family": "impact-comparison",
+    "query": "Some payment calls returned 503 but others succeeded. How should I assess impact?",
+    "service": "payment",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "payment-errors",
+        "heading": "Check impact and recovery"
+      }
+    ]
+  },
+  {
+    "id": "d08",
+    "family": "adapter-outcome",
+    "query": "source_timeout means the application was healthy because no logs came back right?",
+    "service": "payment",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "source-failures",
+        "heading": "Adapter failure outcomes"
+      }
+    ]
+  },
+  {
+    "id": "d09",
+    "family": "response-versus-connectivity",
+    "query": "How does a received downstream 503 differ from a connection that could not complete?",
+    "service": "checkout",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "network-timeouts",
+        "heading": "Response failure versus transport failure"
+      }
+    ]
+  },
+  {
+    "id": "d10",
+    "family": "cart-range",
+    "query": "quantity zero gets 422 before checkout finishes, which component validates this?",
+    "service": "checkout",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "http-validation",
+        "heading": "Invalid carts"
+      }
+    ]
+  },
+  {
+    "id": "d11",
+    "family": "cart-boundary",
+    "query": "Can the book cart contain eleven units or extra JSON fields?",
+    "service": "checkout",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "http-validation",
+        "heading": "Invalid carts"
+      }
+    ]
+  },
+  {
+    "id": "d12",
+    "family": "inventory-counterevidence",
+    "query": "Inventory succeeded for the same request but payment failed. Is inventory the cause?",
+    "service": "inventory",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "inventory-errors",
+        "heading": "Compare inventory observations"
+      }
+    ]
+  },
+  {
+    "id": "d13",
+    "family": "missing-request-match",
+    "query": "Why could a correlated request be missing from the downstream logs?",
+    "service": "payment",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "request-correlation",
+        "heading": "Partial correlation"
+      }
+    ]
+  },
+  {
+    "id": "d14",
+    "family": "timeout-interpretation",
+    "query": "Does the configured one second client timeout prove every unavailable request timed out?",
+    "service": "checkout",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "network-timeouts",
+        "heading": "Bounded requests"
+      }
+    ]
+  },
+  {
+    "id": "d15",
+    "family": "read-authority",
+    "query": "May a log query choose a URL or execute SQL to find extra records?",
+    "service": "checkout",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "source-failures",
+        "heading": "Bounded evidence reads"
+      }
+    ]
+  },
+  {
+    "id": "d16",
+    "family": "coupon-absence",
+    "query": "What precedence rules combine stacked promotional coupons with tax-inclusive pricing?",
+    "service": "checkout",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": []
+  },
+  {
+    "id": "d17",
+    "family": "settlement-absence",
+    "query": "Describe the bank settlement file schema and merchant reconciliation schedule",
+    "service": "payment",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": []
+  },
+  {
+    "id": "d18",
+    "family": "warehouse-absence",
+    "query": "Which warehouse replenishment policy assigns stock to regional fulfillment zones?",
+    "service": "inventory",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": []
+  },
+  {
+    "id": "d19",
+    "family": "legacy-applicability",
+    "query": "Which dependency is checked first in the archived evaluation release?",
+    "service": "checkout",
+    "environment": "local",
+    "release": "demo-v0",
+    "relevant": [
+      {
+        "document": "checkout-archive",
+        "heading": "Archived order"
+      }
+    ]
+  },
+  {
+    "id": "d20",
+    "family": "staging-applicability",
+    "query": "Which payment endpoint is used by the staging evaluation gateway integration?",
+    "service": "payment",
+    "environment": "staging",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "payment-staging",
+        "heading": "Staging endpoint"
+      }
+    ]
+  }
+]

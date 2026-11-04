@@ -1,0 +1,26 @@
+# One-off, offline-model test runner. Never receives provider or AWS credentials.
+# Run with compose.yaml, compose.knowledge.yaml and compose.cache.yaml.
+# The runner uses a separate test database; no encoder weights are needed.
+services:
+  verify:
+    profiles: [verification]
+    build:
+      context: .
+      dockerfile: infra/Dockerfile
+      target: verification
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-investigator}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-investigator}
+      TEST_REDIS_URL: redis://redis:6379/0
+      AGENT_MODE: disabled
+      GEMINI_API_KEY: ''
+      ARTIFACT_BACKEND: disabled
+      CACHE_ENABLED: '0'
+    volumes:
+      - ./evaluation:/evaluation:ro
+    networks: [default, cache]
+    command: [python, scripts/verify_postgres.py, tests, /evaluation/diagnosis-v2/test_scoring.py]
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy

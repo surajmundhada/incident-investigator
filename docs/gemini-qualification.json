@@ -1,0 +1,14 @@
+{
+  "status": "native_function_call_validated",
+  "model": "gemini-3.5-flash-lite",
+  "served_model_version": "gemini-3.5-flash-lite",
+  "requests": 1,
+  "function": "get_service_dependencies",
+  "usage": {
+    "input": 1265,
+    "output": 18,
+    "thought": 23,
+    "total": 1306
+  },
+  "limitations": "One protocol check, not a diagnosis-quality evaluation."
+}

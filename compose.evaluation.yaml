@@ -1,0 +1,19 @@
+# Operator-only, one-off evaluator. No model API key, target network, or fault controls.
+services:
+  rag-evaluator:
+    profiles: [evaluation]
+    build:
+      context: .
+      dockerfile: infra/Dockerfile
+      target: retrieval
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-investigator}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-investigator}
+      HF_HUB_OFFLINE: '1'
+    volumes:
+      - ./evaluation:/evaluation
+      - ./data/embeddings:/models:ro
+    command: [python, /evaluation/run.py, development]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    mem_limit: 2g

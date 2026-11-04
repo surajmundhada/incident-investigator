@@ -1,0 +1,139 @@
+{
+  "reviewer": "implementation assistant; not an independent human or model judge",
+  "source_sha256": "fae2db149ecfb4cc1b79e0f048b04777aa8d67fb129339d00a07a1bf221fa6a7",
+  "runner_sha256": "ab4908ba9555aa7c8977b158616a12c5673b66aeb5bf4ffe84507fd8748469ff",
+  "scope": "Exploratory review of this saved example only; no faithfulness accuracy percentage.",
+  "results": [
+    {
+      "case": "failure-path",
+      "method": "logs_only",
+      "structural_status": "structurally_valid",
+      "review": "supported_observation_path",
+      "context_support": "The supplied records support payment 503 and checkout 502; no specific underlying payment cause is established.",
+      "citation_note": "Reviewed observation references match the supplied failure-path records.",
+      "wording_note": "Summary says checkout received 502; the caller returned 502. The observation text describes the direction correctly."
+    },
+    {
+      "case": "failure-path",
+      "method": "all_context",
+      "structural_status": "structurally_valid",
+      "review": "supported_observation_path",
+      "context_support": "The supplied records support payment 503 and checkout 502; no specific underlying payment cause is established.",
+      "citation_note": "Reviewed observation references match the supplied failure-path records."
+    },
+    {
+      "case": "failure-path",
+      "method": "v2_baseline",
+      "structural_status": "structurally_valid",
+      "review": "supported_observation_path",
+      "context_support": "The supplied records support payment 503 and checkout 502; no specific underlying payment cause is established.",
+      "citation_note": "Reviewed observation references match the supplied failure-path records."
+    },
+    {
+      "case": "failure-path",
+      "method": "development_selected",
+      "structural_status": "structurally_valid",
+      "review": "supported_observation_path",
+      "context_support": "The supplied records support payment 503 and checkout 502; no specific underlying payment cause is established.",
+      "citation_note": "Reviewed observation references match the supplied failure-path records."
+    },
+    {
+      "case": "unsupported-database",
+      "method": "logs_only",
+      "structural_status": "structurally_valid",
+      "review": "supported_observation_path",
+      "context_support": "The supplied records support payment 503 and checkout 502; no specific underlying payment cause is established.",
+      "citation_note": "Reviewed observation references match the supplied failure-path records.",
+      "followup_note": "Database-oriented next checks need architecture applicability review. The actual demo has no business database; root-service-only guidance excludes some payment-specific context."
+    },
+    {
+      "case": "unsupported-database",
+      "method": "all_context",
+      "structural_status": "structurally_valid",
+      "review": "supported_observation_path",
+      "context_support": "The supplied records support payment 503 and checkout 502; no specific underlying payment cause is established.",
+      "citation_note": "Reviewed observation references match the supplied failure-path records.",
+      "followup_note": "Database-oriented next checks need architecture applicability review. The actual demo has no business database; root-service-only guidance excludes some payment-specific context."
+    },
+    {
+      "case": "unsupported-database",
+      "method": "v2_baseline",
+      "structural_status": "structurally_valid",
+      "review": "supported_observation_path",
+      "context_support": "The supplied records support payment 503 and checkout 502; no specific underlying payment cause is established.",
+      "citation_note": "Reviewed observation references match the supplied failure-path records.",
+      "followup_note": "Database-oriented next checks need architecture applicability review. The actual demo has no business database; root-service-only guidance excludes some payment-specific context."
+    },
+    {
+      "case": "unsupported-database",
+      "method": "development_selected",
+      "structural_status": "structurally_valid",
+      "review": "supported_observation_path",
+      "context_support": "The supplied records support payment 503 and checkout 502; no specific underlying payment cause is established.",
+      "citation_note": "Reviewed observation references match the supplied failure-path records.",
+      "followup_note": "Database-oriented next checks need architecture applicability review. The actual demo has no business database; root-service-only guidance excludes some payment-specific context."
+    },
+    {
+      "case": "deployment-correlation",
+      "method": "logs_only",
+      "structural_status": "structurally_valid",
+      "review": "partial_citation_support",
+      "context_support": "The supplied records support payment 503 and checkout 502; no specific underlying payment cause is established.",
+      "citation_note": "Observation mentions checkout 502 but its references omit the checkout completion record carrying 502."
+    },
+    {
+      "case": "deployment-correlation",
+      "method": "all_context",
+      "structural_status": "structurally_valid",
+      "review": "partial_citation_support",
+      "context_support": "The supplied records support payment 503 and checkout 502; no specific underlying payment cause is established.",
+      "citation_note": "Observation mentions checkout 502 but its references omit the checkout completion record carrying 502."
+    },
+    {
+      "case": "deployment-correlation",
+      "method": "v2_baseline",
+      "structural_status": "invalid_references_or_schema",
+      "review": "not_assessable",
+      "note": "Rejected report body was not retained by the first runner; status and usage remain. No semantic conclusion is inferred."
+    },
+    {
+      "case": "deployment-correlation",
+      "method": "development_selected",
+      "structural_status": "invalid_references_or_schema",
+      "review": "not_assessable",
+      "note": "Rejected report body was not retained by the first runner; status and usage remain. No semantic conclusion is inferred."
+    },
+    {
+      "case": "missing-downstream",
+      "method": "logs_only",
+      "structural_status": "structurally_valid",
+      "review": "supported_observation_path",
+      "context_support": "The supplied records support payment 503 and checkout 502; no specific underlying payment cause is established.",
+      "citation_note": "Reviewed observation references match the supplied failure-path records."
+    },
+    {
+      "case": "missing-downstream",
+      "method": "all_context",
+      "structural_status": "structurally_valid",
+      "review": "supported_observation_path",
+      "context_support": "The supplied records support payment 503 and checkout 502; no specific underlying payment cause is established.",
+      "citation_note": "Reviewed observation references match the supplied failure-path records."
+    },
+    {
+      "case": "missing-downstream",
+      "method": "v2_baseline",
+      "structural_status": "structurally_valid",
+      "review": "supported_observation_path",
+      "context_support": "The supplied records support payment 503 and checkout 502; no specific underlying payment cause is established.",
+      "citation_note": "Reviewed observation references match the supplied failure-path records."
+    },
+    {
+      "case": "missing-downstream",
+      "method": "development_selected",
+      "structural_status": "structurally_valid",
+      "review": "supported_observation_path",
+      "context_support": "The supplied records support payment 503 and checkout 502; no specific underlying payment cause is established.",
+      "citation_note": "Reviewed observation references match the supplied failure-path records."
+    }
+  ]
+}

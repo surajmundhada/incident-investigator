@@ -1,0 +1,13 @@
+# Native provider access exists only in the worker. Disabled unless explicitly configured.
+services:
+  worker:
+    build:
+      target: agent
+    environment:
+      AGENT_MODE: ${AGENT_MODE:-disabled}
+      GEMINI_MODEL: ${GEMINI_MODEL:-}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      GEMINI_FREE_TIER_CONFIRMED: ${GEMINI_FREE_TIER_CONFIRMED:-0}
+      LANGSMITH_TRACING: 'false'
+      LANGCHAIN_TRACING_V2: 'false'
+    mem_limit: 768m

@@ -1,0 +1,6 @@
+{
+  "profile": "baseline",
+  "development_selected_profile": "improved",
+  "rollout": "held: mixed held-out ranking metrics; no post-test tuning or alternate winner selected",
+  "study": "evaluation/results/heldout.json"
+}

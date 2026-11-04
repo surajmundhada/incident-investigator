@@ -1,0 +1,5391 @@
+{
+  "phase": "heldout",
+  "data_lock_hash": "3dcdc1b3058b89f0917d8464e8d86f4efc49c7e16d7b38d4b6194349fe982752",
+  "implementation_hashes": {
+    "backend/investigator/knowledge/__init__.py": "eaca890d3303f7f88d9f9532783ac9e6439831c1921fecabc6cd210ddc330a5f",
+    "backend/investigator/knowledge/cli.py": "d3b9c1644b01cedb37905e8d9c71fabcf8782c0cb02f2e607141034f9b49b1f2",
+    "backend/investigator/knowledge/corpus.py": "2fbc3fce5865b619e2efe2e0df636782586df85be190d8759376546e9f6d3651",
+    "backend/investigator/knowledge/embeddings.py": "570074bbf0d03b8ba646b5be947345244302a04cd2b56c4d91e3bdfcaf9b4190",
+    "backend/investigator/knowledge/metrics.py": "364b3f1b13e47699cc455c61f57355441df37ec766b18a22708df11a6fa656a0",
+    "backend/investigator/knowledge/query.py": "ecd36416c1cd17f75fdf5ff44b8c181cc87398aae2339f05b18151b8661b7026",
+    "backend/investigator/knowledge/reranking.py": "fdc5a5075714d44e99731e607e55a670cab78e5a1386195f221617c990c955e4",
+    "backend/investigator/knowledge/store.py": "2d168722156a33a8aa53b9196af9e3931b7d7d69dd0846192c876791be1a263a",
+    "backend/investigator/knowledge/tool.py": "f8aed343ba3dd1d43780743bc0fadda22a1b3e28ac8b3a7681632f2f90c87a84",
+    "knowledge/embedding-lock.json": "8e1bb74c1a0d4e55c6cc982b4150b21b0837c17ed5168cae8697cc3ea50304af",
+    "knowledge/reranker-lock.json": "84320ae520eeb41b1177d788263f080fe21a4d4a728afbfae9c7bd3f613545db",
+    "evaluation/run.py": "6928629d6b40158118f98c0b9bee711f350cd09da8b6da4193b6d500b09782d5",
+    "evaluation/STUDY.md": "71afe566dcda0b4067b4224e5e502a0a1eeee88e4d1127c6316e21351f9c1a56"
+  },
+  "embedding_id": "e57d370ae8ffec51cbd6d785c694dc86628160fb21f3d491b52491335aabcecd",
+  "reranker_id": "cb0671708d3a4cd046ee813d559a1169a0c81c47287d223d2b43424ee16dcf61",
+  "generative_calls": 0,
+  "variants": {
+    "frozen_lexical": {
+      "summary": {
+        "recall_at_5": 0.0,
+        "mrr_at_5": 0.0,
+        "ndcg_at_5": 0.0,
+        "no_answer_abstention": 1,
+        "p50_ms": 1.2953709997418628,
+        "p95_ms": 1.5044740002849721,
+        "answerable_cases": 15,
+        "no_answer_cases": 5
+      },
+      "cases": [
+        {
+          "id": "h01",
+          "query": "An error began around the release. Is the deployment definitely responsible?",
+          "relevant": [
+            {
+              "document": "release-correlation",
+              "heading": "Timing is not causation"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.0,
+            "mrr_at_5": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "latencies_ms": [
+            1.2156530001448118,
+            1.2093989998902543
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": []
+        },
+        {
+          "id": "h02",
+          "query": "Can we produce a verified deployment timeline from these tools?",
+          "relevant": [
+            {
+              "document": "release-correlation",
+              "heading": "Missing deployment history"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.0,
+            "mrr_at_5": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "latencies_ms": [
+            1.1206760000277427,
+            1.2861899995186832
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": []
+        },
+        {
+          "id": "h03",
+          "query": "Could an old architecture note send us to a dependency that no longer exists?",
+          "relevant": [
+            {
+              "document": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "document": "configuration-scope",
+              "heading": "Environment and release"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.0,
+            "mrr_at_5": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "latencies_ms": [
+            1.492347999374033,
+            1.1442569993960205
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": []
+        },
+        {
+          "id": "h04",
+          "query": "If the runbook index changes halfway through an investigation what should happen to its references?",
+          "relevant": [
+            {
+              "document": "configuration-scope",
+              "heading": "Revision reproducibility"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.0,
+            "mrr_at_5": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "latencies_ms": [
+            1.0540490002313163,
+            1.0282359999109758
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": []
+        },
+        {
+          "id": "h05",
+          "query": "An updated knowledge index failed publication. Can old investigations still use the previous guidance?",
+          "relevant": [
+            {
+              "document": "configuration-scope",
+              "heading": "Revision reproducibility"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.0,
+            "mrr_at_5": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "latencies_ms": [
+            1.0296929995092796,
+            1.4211950001481455
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": []
+        },
+        {
+          "id": "h06",
+          "query": "The source successfully found zero matching rows. Is that equivalent to an unreadable log file?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.0,
+            "mrr_at_5": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "latencies_ms": [
+            1.4696759999424103,
+            1.765846000125748
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": []
+        },
+        {
+          "id": "h07",
+          "query": "The logs rotated and results are truncated. Do we have a complete history of the incident?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Retention and truncated evidence"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.0,
+            "mrr_at_5": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "latencies_ms": [
+            1.4345990002766484,
+            1.3656049995915964
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": []
+        },
+        {
+          "id": "h08",
+          "query": "The available records cannot distinguish competing explanations. What should the report say?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "document": "retry-safety",
+              "heading": "Guidance is not evidence"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.0,
+            "mrr_at_5": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "latencies_ms": [
+            1.3534469999285648,
+            1.2316949996602489
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": []
+        },
+        {
+          "id": "h09",
+          "query": "Does the nearest passage distance represent a calibrated probability of the cause?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.0,
+            "mrr_at_5": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "latencies_ms": [
+            1.2253810000402154,
+            1.2629550001292955
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": []
+        },
+        {
+          "id": "h10",
+          "query": "Health returns OK while charge requests fail. Are those observations contradictory?",
+          "relevant": [
+            {
+              "document": "health-semantics",
+              "heading": "A reachable process can reject work"
+            },
+            {
+              "document": "payment-errors",
+              "heading": "Competing explanations"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.0,
+            "mrr_at_5": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "latencies_ms": [
+            1.2550889996418846,
+            1.196533999973326
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": []
+        },
+        {
+          "id": "h11",
+          "query": "One request succeeds after the incident. Does that establish availability throughout the earlier window?",
+          "relevant": [
+            {
+              "document": "health-semantics",
+              "heading": "Observed recovery"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.0,
+            "mrr_at_5": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "latencies_ms": [
+            1.369735000480432,
+            1.3091959999655955
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": []
+        },
+        {
+          "id": "h12",
+          "query": "Does a later successful business operation reveal why an earlier operation was rejected?",
+          "relevant": [
+            {
+              "document": "health-semantics",
+              "heading": "Observed recovery"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.0,
+            "mrr_at_5": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "latencies_ms": [
+            1.39607400069508,
+            1.5044740002849721
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": []
+        },
+        {
+          "id": "h13",
+          "query": "May the investigator restart a service or repeat a charge suggested by a runbook?",
+          "relevant": [
+            {
+              "document": "retry-safety",
+              "heading": "No automatic transaction retries"
+            },
+            {
+              "document": "checkout-downstream",
+              "heading": "Verification and limits"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.0,
+            "mrr_at_5": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "latencies_ms": [
+            1.344857000731281,
+            1.3356259996726294
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": []
+        },
+        {
+          "id": "h14",
+          "query": "Can a relevant procedure itself prove the current incident is caused by that procedure's failure mode?",
+          "relevant": [
+            {
+              "document": "retry-safety",
+              "heading": "Guidance is not evidence"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.0,
+            "mrr_at_5": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "latencies_ms": [
+            1.4142520003588288,
+            1.4367060002768994
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": []
+        },
+        {
+          "id": "h15",
+          "query": "Does semantic similarity make staging guidance applicable to a local release?",
+          "relevant": [
+            {
+              "document": "configuration-scope",
+              "heading": "Environment and release"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.0,
+            "mrr_at_5": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "latencies_ms": [
+            1.519888000075298,
+            1.4890189995639957
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": []
+        },
+        {
+          "id": "h16",
+          "query": "What fraud scoring weights and chargeback dispute SLA does the merchant use?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": true
+          },
+          "latencies_ms": [
+            1.2987749996682396,
+            1.2836480000260053
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": []
+        },
+        {
+          "id": "h17",
+          "query": "Explain the loyalty point expiry and customer membership upgrade algorithm",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": true
+          },
+          "latencies_ms": [
+            1.291966999815486,
+            1.2191209998491104
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": []
+        },
+        {
+          "id": "h18",
+          "query": "Which seasonal demand forecast determines automated supplier purchase orders?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": true
+          },
+          "latencies_ms": [
+            1.4215190003596945,
+            1.3083100002404535
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": []
+        },
+        {
+          "id": "h19",
+          "query": "How do we correlate payment errors?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": true
+          },
+          "latencies_ms": [
+            1.0254890003125183,
+            0.9364080005980213
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": []
+        },
+        {
+          "id": "h20",
+          "query": "How should checkout bad gateway be investigated?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": true
+          },
+          "latencies_ms": [
+            1.035111999954097,
+            1.0147190005227458
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": []
+        }
+      ]
+    },
+    "frozen_semantic": {
+      "summary": {
+        "recall_at_5": 0.8666666666666667,
+        "mrr_at_5": 0.8444444444444444,
+        "ndcg_at_5": 0.7951322797733618,
+        "no_answer_abstention": 0.4,
+        "p50_ms": 6.253423000089242,
+        "p95_ms": 9.246711000741925,
+        "answerable_cases": 15,
+        "no_answer_cases": 5
+      },
+      "cases": [
+        {
+          "id": "h01",
+          "query": "An error began around the release. Is the deployment definitely responsible?",
+          "relevant": [
+            {
+              "document": "release-correlation",
+              "heading": "Timing is not causation"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 0.3333333333333333,
+            "ndcg_at_5": 0.5
+          },
+          "latencies_ms": [
+            6.737460999829636,
+            7.260058000611025
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "8aa9c2cae8606ede22b44f4c94a4a6d95858d6b38c04667a7ccfb7f4bc59f231",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "6a44fe364313b5c26b22acd0be8bc46d3370e36afeae84f620faebcf7685c76a",
+              "document_id": "release-correlation",
+              "heading": "Missing deployment history"
+            },
+            {
+              "id": "37eee0d34633c85c2df521d24a55a658930c63b2787277fcb010b687e022c80b",
+              "document_id": "release-correlation",
+              "heading": "Timing is not causation"
+            },
+            {
+              "id": "a9016dfcd2ff30c7848336f190f2c9fc16c7da49c337e505dda51e7082a31563",
+              "document_id": "configuration-scope",
+              "heading": "Environment and release"
+            },
+            {
+              "id": "9b9409e77b7a7e8898823228eb658d3370ece0784bfcf6779847c007a970e89a",
+              "document_id": "network-timeouts",
+              "heading": "Read-only follow-up"
+            }
+          ]
+        },
+        {
+          "id": "h02",
+          "query": "Can we produce a verified deployment timeline from these tools?",
+          "relevant": [
+            {
+              "document": "release-correlation",
+              "heading": "Missing deployment history"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            5.4837119996591355,
+            5.717023999750381
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "6a44fe364313b5c26b22acd0be8bc46d3370e36afeae84f620faebcf7685c76a",
+              "document_id": "release-correlation",
+              "heading": "Missing deployment history"
+            },
+            {
+              "id": "37eee0d34633c85c2df521d24a55a658930c63b2787277fcb010b687e022c80b",
+              "document_id": "release-correlation",
+              "heading": "Timing is not causation"
+            },
+            {
+              "id": "8aa9c2cae8606ede22b44f4c94a4a6d95858d6b38c04667a7ccfb7f4bc59f231",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "a9016dfcd2ff30c7848336f190f2c9fc16c7da49c337e505dda51e7082a31563",
+              "document_id": "configuration-scope",
+              "heading": "Environment and release"
+            },
+            {
+              "id": "d3fbf3d8edf369add454ff5c6bfdf1a1f457229ee032d762967eba8ec7aae775",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            }
+          ]
+        },
+        {
+          "id": "h03",
+          "query": "Could an old architecture note send us to a dependency that no longer exists?",
+          "relevant": [
+            {
+              "document": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "document": "configuration-scope",
+              "heading": "Environment and release"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.5,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 0.6131471927654584
+          },
+          "latencies_ms": [
+            5.89063899951725,
+            5.812759000036749
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "8aa9c2cae8606ede22b44f4c94a4a6d95858d6b38c04667a7ccfb7f4bc59f231",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "b314314a0cfb34206462515490a11e98d71a7e8f0ba5e2025d078cbce222a064",
+              "document_id": "service-map",
+              "heading": "Supported architecture"
+            },
+            {
+              "id": "d3fbf3d8edf369add454ff5c6bfdf1a1f457229ee032d762967eba8ec7aae775",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            }
+          ]
+        },
+        {
+          "id": "h04",
+          "query": "If the runbook index changes halfway through an investigation what should happen to its references?",
+          "relevant": [
+            {
+              "document": "configuration-scope",
+              "heading": "Revision reproducibility"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            6.129503000011027,
+            7.5614359993778635
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "d3fbf3d8edf369add454ff5c6bfdf1a1f457229ee032d762967eba8ec7aae775",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            },
+            {
+              "id": "4c4d072e3210d9b8175b10b859e4bc55ba7c9bf29e58fdda2b4bf3dd97c8d5f5",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "8aa9c2cae8606ede22b44f4c94a4a6d95858d6b38c04667a7ccfb7f4bc59f231",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "fbcdfb3dcd036601fb587962ba25c3554c042485bb59a0d93ff798239ab345f8",
+              "document_id": "retry-safety",
+              "heading": "No automatic transaction retries"
+            },
+            {
+              "id": "a5622c851ac06fa20b4ca1014d3870c5807eccbfdc76988eec1eac81a67ec3af",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            }
+          ]
+        },
+        {
+          "id": "h05",
+          "query": "An updated knowledge index failed publication. Can old investigations still use the previous guidance?",
+          "relevant": [
+            {
+              "document": "configuration-scope",
+              "heading": "Revision reproducibility"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            6.416471999727946,
+            5.971047999992152
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "d3fbf3d8edf369add454ff5c6bfdf1a1f457229ee032d762967eba8ec7aae775",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            },
+            {
+              "id": "8aa9c2cae8606ede22b44f4c94a4a6d95858d6b38c04667a7ccfb7f4bc59f231",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "a5622c851ac06fa20b4ca1014d3870c5807eccbfdc76988eec1eac81a67ec3af",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            },
+            {
+              "id": "94af146deea0506c73b933e01b819357aed8ab2d05a89ec22448a47fc939a35d",
+              "document_id": "missing-evidence",
+              "heading": "Retention and truncated evidence"
+            },
+            {
+              "id": "4c4d072e3210d9b8175b10b859e4bc55ba7c9bf29e58fdda2b4bf3dd97c8d5f5",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            }
+          ]
+        },
+        {
+          "id": "h06",
+          "query": "The source successfully found zero matching rows. Is that equivalent to an unreadable log file?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            6.461376999141066,
+            6.050351999874692
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "022818cd17b8828132d8b58f6bd3f4134d1cc6695058f309b428abb2b71e7084",
+              "document_id": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            },
+            {
+              "id": "4c4d072e3210d9b8175b10b859e4bc55ba7c9bf29e58fdda2b4bf3dd97c8d5f5",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "94af146deea0506c73b933e01b819357aed8ab2d05a89ec22448a47fc939a35d",
+              "document_id": "missing-evidence",
+              "heading": "Retention and truncated evidence"
+            },
+            {
+              "id": "76b1ce0650cfc26062357e3e231af361bc12d5f9d844a2848268f782f0fd58d0",
+              "document_id": "source-failures",
+              "heading": "Adapter failure outcomes"
+            },
+            {
+              "id": "a6182576aaff18f28d8259528c745234b48c100792a228f624721a0f2aa1715e",
+              "document_id": "source-failures",
+              "heading": "Bounded evidence reads"
+            }
+          ]
+        },
+        {
+          "id": "h07",
+          "query": "The logs rotated and results are truncated. Do we have a complete history of the incident?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Retention and truncated evidence"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            6.035849999534548,
+            5.905252999582444
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "94af146deea0506c73b933e01b819357aed8ab2d05a89ec22448a47fc939a35d",
+              "document_id": "missing-evidence",
+              "heading": "Retention and truncated evidence"
+            },
+            {
+              "id": "4c4d072e3210d9b8175b10b859e4bc55ba7c9bf29e58fdda2b4bf3dd97c8d5f5",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "022818cd17b8828132d8b58f6bd3f4134d1cc6695058f309b428abb2b71e7084",
+              "document_id": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            },
+            {
+              "id": "76b1ce0650cfc26062357e3e231af361bc12d5f9d844a2848268f782f0fd58d0",
+              "document_id": "source-failures",
+              "heading": "Adapter failure outcomes"
+            },
+            {
+              "id": "a6182576aaff18f28d8259528c745234b48c100792a228f624721a0f2aa1715e",
+              "document_id": "source-failures",
+              "heading": "Bounded evidence reads"
+            }
+          ]
+        },
+        {
+          "id": "h08",
+          "query": "The available records cannot distinguish competing explanations. What should the report say?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "document": "retry-safety",
+              "heading": "Guidance is not evidence"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 0.8503449055347546
+          },
+          "latencies_ms": [
+            5.530020000151126,
+            5.794327000330668
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "4c4d072e3210d9b8175b10b859e4bc55ba7c9bf29e58fdda2b4bf3dd97c8d5f5",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "94af146deea0506c73b933e01b819357aed8ab2d05a89ec22448a47fc939a35d",
+              "document_id": "missing-evidence",
+              "heading": "Retention and truncated evidence"
+            },
+            {
+              "id": "022818cd17b8828132d8b58f6bd3f4134d1cc6695058f309b428abb2b71e7084",
+              "document_id": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            },
+            {
+              "id": "d3fbf3d8edf369add454ff5c6bfdf1a1f457229ee032d762967eba8ec7aae775",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            },
+            {
+              "id": "a5622c851ac06fa20b4ca1014d3870c5807eccbfdc76988eec1eac81a67ec3af",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            }
+          ]
+        },
+        {
+          "id": "h09",
+          "query": "Does the nearest passage distance represent a calibrated probability of the cause?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 0.3333333333333333,
+            "ndcg_at_5": 0.5
+          },
+          "latencies_ms": [
+            6.21083100031683,
+            16.217243999562925
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "4afcfd1f392b9064f9b59cf044f090e6ffd68c2a016dc5aa9420d23d8b3ea9e7",
+              "document_id": "network-timeouts",
+              "heading": "Response failure versus transport failure"
+            },
+            {
+              "id": "9b9409e77b7a7e8898823228eb658d3370ece0784bfcf6779847c007a970e89a",
+              "document_id": "network-timeouts",
+              "heading": "Read-only follow-up"
+            },
+            {
+              "id": "4c4d072e3210d9b8175b10b859e4bc55ba7c9bf29e58fdda2b4bf3dd97c8d5f5",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            }
+          ]
+        },
+        {
+          "id": "h10",
+          "query": "Health returns OK while charge requests fail. Are those observations contradictory?",
+          "relevant": [
+            {
+              "document": "health-semantics",
+              "heading": "A reachable process can reject work"
+            },
+            {
+              "document": "payment-errors",
+              "heading": "Competing explanations"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 0.8503449055347546
+          },
+          "latencies_ms": [
+            8.274031000837567,
+            7.7147140000306536
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "76d3b19378344009e3b62b95b13e2c37bdbcde2d44a089deae4be12900022f73",
+              "document_id": "health-semantics",
+              "heading": "A reachable process can reject work"
+            },
+            {
+              "id": "f5cff3b122ad461f1c2222c18e8551fd2ea5068160c6bed6c6623ff7ad80193a",
+              "document_id": "health-semantics",
+              "heading": "Observed recovery"
+            },
+            {
+              "id": "022818cd17b8828132d8b58f6bd3f4134d1cc6695058f309b428abb2b71e7084",
+              "document_id": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            },
+            {
+              "id": "76b1ce0650cfc26062357e3e231af361bc12d5f9d844a2848268f782f0fd58d0",
+              "document_id": "source-failures",
+              "heading": "Adapter failure outcomes"
+            },
+            {
+              "id": "a6bc3207f22c838368b483e4d2ea75d65e8b3e9e67cb5cb27e674bb3029e85e3",
+              "document_id": "payment-errors",
+              "heading": "Competing explanations"
+            }
+          ]
+        },
+        {
+          "id": "h11",
+          "query": "One request succeeds after the incident. Does that establish availability throughout the earlier window?",
+          "relevant": [
+            {
+              "document": "health-semantics",
+              "heading": "Observed recovery"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            6.141187999674003,
+            7.095341999956872
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "f5cff3b122ad461f1c2222c18e8551fd2ea5068160c6bed6c6623ff7ad80193a",
+              "document_id": "health-semantics",
+              "heading": "Observed recovery"
+            },
+            {
+              "id": "4afcfd1f392b9064f9b59cf044f090e6ffd68c2a016dc5aa9420d23d8b3ea9e7",
+              "document_id": "network-timeouts",
+              "heading": "Response failure versus transport failure"
+            },
+            {
+              "id": "76d3b19378344009e3b62b95b13e2c37bdbcde2d44a089deae4be12900022f73",
+              "document_id": "health-semantics",
+              "heading": "A reachable process can reject work"
+            },
+            {
+              "id": "358a602c4dfb356eebb252c701d07a2206318be36f5c654139fdedad8e83d115",
+              "document_id": "network-timeouts",
+              "heading": "Bounded requests"
+            },
+            {
+              "id": "022818cd17b8828132d8b58f6bd3f4134d1cc6695058f309b428abb2b71e7084",
+              "document_id": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            }
+          ]
+        },
+        {
+          "id": "h12",
+          "query": "Does a later successful business operation reveal why an earlier operation was rejected?",
+          "relevant": [
+            {
+              "document": "health-semantics",
+              "heading": "Observed recovery"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.0,
+            "mrr_at_5": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "latencies_ms": [
+            9.605861999261833,
+            6.023329000527156
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "8aa9c2cae8606ede22b44f4c94a4a6d95858d6b38c04667a7ccfb7f4bc59f231",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "a5622c851ac06fa20b4ca1014d3870c5807eccbfdc76988eec1eac81a67ec3af",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            },
+            {
+              "id": "76d3b19378344009e3b62b95b13e2c37bdbcde2d44a089deae4be12900022f73",
+              "document_id": "health-semantics",
+              "heading": "A reachable process can reject work"
+            },
+            {
+              "id": "6a44fe364313b5c26b22acd0be8bc46d3370e36afeae84f620faebcf7685c76a",
+              "document_id": "release-correlation",
+              "heading": "Missing deployment history"
+            },
+            {
+              "id": "37eee0d34633c85c2df521d24a55a658930c63b2787277fcb010b687e022c80b",
+              "document_id": "release-correlation",
+              "heading": "Timing is not causation"
+            }
+          ]
+        },
+        {
+          "id": "h13",
+          "query": "May the investigator restart a service or repeat a charge suggested by a runbook?",
+          "relevant": [
+            {
+              "document": "retry-safety",
+              "heading": "No automatic transaction retries"
+            },
+            {
+              "document": "checkout-downstream",
+              "heading": "Verification and limits"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.5,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 0.6131471927654584
+          },
+          "latencies_ms": [
+            6.732098000611586,
+            9.203952000461868
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "fbcdfb3dcd036601fb587962ba25c3554c042485bb59a0d93ff798239ab345f8",
+              "document_id": "retry-safety",
+              "heading": "No automatic transaction retries"
+            },
+            {
+              "id": "4c4d072e3210d9b8175b10b859e4bc55ba7c9bf29e58fdda2b4bf3dd97c8d5f5",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "a5622c851ac06fa20b4ca1014d3870c5807eccbfdc76988eec1eac81a67ec3af",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            },
+            {
+              "id": "f5cff3b122ad461f1c2222c18e8551fd2ea5068160c6bed6c6623ff7ad80193a",
+              "document_id": "health-semantics",
+              "heading": "Observed recovery"
+            },
+            {
+              "id": "a6182576aaff18f28d8259528c745234b48c100792a228f624721a0f2aa1715e",
+              "document_id": "source-failures",
+              "heading": "Bounded evidence reads"
+            }
+          ]
+        },
+        {
+          "id": "h14",
+          "query": "Can a relevant procedure itself prove the current incident is caused by that procedure's failure mode?",
+          "relevant": [
+            {
+              "document": "retry-safety",
+              "heading": "Guidance is not evidence"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            7.882656000219868,
+            9.246711000741925
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "a5622c851ac06fa20b4ca1014d3870c5807eccbfdc76988eec1eac81a67ec3af",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            },
+            {
+              "id": "f5cff3b122ad461f1c2222c18e8551fd2ea5068160c6bed6c6623ff7ad80193a",
+              "document_id": "health-semantics",
+              "heading": "Observed recovery"
+            },
+            {
+              "id": "fbcdfb3dcd036601fb587962ba25c3554c042485bb59a0d93ff798239ab345f8",
+              "document_id": "retry-safety",
+              "heading": "No automatic transaction retries"
+            },
+            {
+              "id": "37eee0d34633c85c2df521d24a55a658930c63b2787277fcb010b687e022c80b",
+              "document_id": "release-correlation",
+              "heading": "Timing is not causation"
+            },
+            {
+              "id": "4c4d072e3210d9b8175b10b859e4bc55ba7c9bf29e58fdda2b4bf3dd97c8d5f5",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            }
+          ]
+        },
+        {
+          "id": "h15",
+          "query": "Does semantic similarity make staging guidance applicable to a local release?",
+          "relevant": [
+            {
+              "document": "configuration-scope",
+              "heading": "Environment and release"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            8.13689099959447,
+            6.990815999415645
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "a9016dfcd2ff30c7848336f190f2c9fc16c7da49c337e505dda51e7082a31563",
+              "document_id": "configuration-scope",
+              "heading": "Environment and release"
+            },
+            {
+              "id": "6a44fe364313b5c26b22acd0be8bc46d3370e36afeae84f620faebcf7685c76a",
+              "document_id": "release-correlation",
+              "heading": "Missing deployment history"
+            },
+            {
+              "id": "8aa9c2cae8606ede22b44f4c94a4a6d95858d6b38c04667a7ccfb7f4bc59f231",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "d3fbf3d8edf369add454ff5c6bfdf1a1f457229ee032d762967eba8ec7aae775",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            },
+            {
+              "id": "37eee0d34633c85c2df521d24a55a658930c63b2787277fcb010b687e022c80b",
+              "document_id": "release-correlation",
+              "heading": "Timing is not causation"
+            }
+          ]
+        },
+        {
+          "id": "h16",
+          "query": "What fraud scoring weights and chargeback dispute SLA does the merchant use?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": false
+          },
+          "latencies_ms": [
+            6.852591999631841,
+            6.265913999413897
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "6abc758a8bc92a86282bca7852d9cbf50dc55e0638e0dbb577a5e20c3e0a9b7e",
+              "document_id": "service-map",
+              "heading": "Request correlation"
+            }
+          ]
+        },
+        {
+          "id": "h17",
+          "query": "Explain the loyalty point expiry and customer membership upgrade algorithm",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": false
+          },
+          "latencies_ms": [
+            7.713132000390033,
+            7.950037000227894
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "b314314a0cfb34206462515490a11e98d71a7e8f0ba5e2025d078cbce222a064",
+              "document_id": "service-map",
+              "heading": "Supported architecture"
+            }
+          ]
+        },
+        {
+          "id": "h18",
+          "query": "Which seasonal demand forecast determines automated supplier purchase orders?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": false
+          },
+          "latencies_ms": [
+            6.240932000764587,
+            5.478580000271904
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "8eec6aea4515bde42ea4071bdd770fbfebf28f738e4e1d690ddf470f876a5e07",
+              "document_id": "inventory-errors",
+              "heading": "Inventory is checked before payment"
+            },
+            {
+              "id": "6abc758a8bc92a86282bca7852d9cbf50dc55e0638e0dbb577a5e20c3e0a9b7e",
+              "document_id": "service-map",
+              "heading": "Request correlation"
+            },
+            {
+              "id": "b5eb4a34b3b8bb1b1413d0d66eabcc4dffdcd8288a8878ead1f7bab076b934f6",
+              "document_id": "service-map",
+              "heading": "Request flow"
+            }
+          ]
+        },
+        {
+          "id": "h19",
+          "query": "How do we correlate payment errors?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": true
+          },
+          "latencies_ms": [
+            5.080758999611135,
+            5.168398999558121
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": []
+        },
+        {
+          "id": "h20",
+          "query": "How should checkout bad gateway be investigated?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": true
+          },
+          "latencies_ms": [
+            5.539499999940745,
+            5.09444099952816
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": []
+        }
+      ]
+    },
+    "frozen_hybrid": {
+      "summary": {
+        "recall_at_5": 0.8666666666666667,
+        "mrr_at_5": 0.8444444444444444,
+        "ndcg_at_5": 0.7951322797733618,
+        "no_answer_abstention": 0.4,
+        "p50_ms": 7.2410575003232225,
+        "p95_ms": 10.101031999511179,
+        "answerable_cases": 15,
+        "no_answer_cases": 5
+      },
+      "cases": [
+        {
+          "id": "h01",
+          "query": "An error began around the release. Is the deployment definitely responsible?",
+          "relevant": [
+            {
+              "document": "release-correlation",
+              "heading": "Timing is not causation"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 0.3333333333333333,
+            "ndcg_at_5": 0.5
+          },
+          "latencies_ms": [
+            6.588146000467532,
+            6.938040000022738
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "8aa9c2cae8606ede22b44f4c94a4a6d95858d6b38c04667a7ccfb7f4bc59f231",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "6a44fe364313b5c26b22acd0be8bc46d3370e36afeae84f620faebcf7685c76a",
+              "document_id": "release-correlation",
+              "heading": "Missing deployment history"
+            },
+            {
+              "id": "37eee0d34633c85c2df521d24a55a658930c63b2787277fcb010b687e022c80b",
+              "document_id": "release-correlation",
+              "heading": "Timing is not causation"
+            },
+            {
+              "id": "a9016dfcd2ff30c7848336f190f2c9fc16c7da49c337e505dda51e7082a31563",
+              "document_id": "configuration-scope",
+              "heading": "Environment and release"
+            },
+            {
+              "id": "9b9409e77b7a7e8898823228eb658d3370ece0784bfcf6779847c007a970e89a",
+              "document_id": "network-timeouts",
+              "heading": "Read-only follow-up"
+            }
+          ]
+        },
+        {
+          "id": "h02",
+          "query": "Can we produce a verified deployment timeline from these tools?",
+          "relevant": [
+            {
+              "document": "release-correlation",
+              "heading": "Missing deployment history"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            7.385715999589593,
+            6.651072999375174
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "6a44fe364313b5c26b22acd0be8bc46d3370e36afeae84f620faebcf7685c76a",
+              "document_id": "release-correlation",
+              "heading": "Missing deployment history"
+            },
+            {
+              "id": "37eee0d34633c85c2df521d24a55a658930c63b2787277fcb010b687e022c80b",
+              "document_id": "release-correlation",
+              "heading": "Timing is not causation"
+            },
+            {
+              "id": "8aa9c2cae8606ede22b44f4c94a4a6d95858d6b38c04667a7ccfb7f4bc59f231",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "a9016dfcd2ff30c7848336f190f2c9fc16c7da49c337e505dda51e7082a31563",
+              "document_id": "configuration-scope",
+              "heading": "Environment and release"
+            },
+            {
+              "id": "d3fbf3d8edf369add454ff5c6bfdf1a1f457229ee032d762967eba8ec7aae775",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            }
+          ]
+        },
+        {
+          "id": "h03",
+          "query": "Could an old architecture note send us to a dependency that no longer exists?",
+          "relevant": [
+            {
+              "document": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "document": "configuration-scope",
+              "heading": "Environment and release"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.5,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 0.6131471927654584
+          },
+          "latencies_ms": [
+            6.507332000182942,
+            6.500247000076342
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "8aa9c2cae8606ede22b44f4c94a4a6d95858d6b38c04667a7ccfb7f4bc59f231",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "b314314a0cfb34206462515490a11e98d71a7e8f0ba5e2025d078cbce222a064",
+              "document_id": "service-map",
+              "heading": "Supported architecture"
+            },
+            {
+              "id": "d3fbf3d8edf369add454ff5c6bfdf1a1f457229ee032d762967eba8ec7aae775",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            }
+          ]
+        },
+        {
+          "id": "h04",
+          "query": "If the runbook index changes halfway through an investigation what should happen to its references?",
+          "relevant": [
+            {
+              "document": "configuration-scope",
+              "heading": "Revision reproducibility"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            6.931560999873909,
+            7.689492999816139
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "d3fbf3d8edf369add454ff5c6bfdf1a1f457229ee032d762967eba8ec7aae775",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            },
+            {
+              "id": "4c4d072e3210d9b8175b10b859e4bc55ba7c9bf29e58fdda2b4bf3dd97c8d5f5",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "8aa9c2cae8606ede22b44f4c94a4a6d95858d6b38c04667a7ccfb7f4bc59f231",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "fbcdfb3dcd036601fb587962ba25c3554c042485bb59a0d93ff798239ab345f8",
+              "document_id": "retry-safety",
+              "heading": "No automatic transaction retries"
+            },
+            {
+              "id": "a5622c851ac06fa20b4ca1014d3870c5807eccbfdc76988eec1eac81a67ec3af",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            }
+          ]
+        },
+        {
+          "id": "h05",
+          "query": "An updated knowledge index failed publication. Can old investigations still use the previous guidance?",
+          "relevant": [
+            {
+              "document": "configuration-scope",
+              "heading": "Revision reproducibility"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            6.595059999199293,
+            7.598297000185994
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "d3fbf3d8edf369add454ff5c6bfdf1a1f457229ee032d762967eba8ec7aae775",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            },
+            {
+              "id": "8aa9c2cae8606ede22b44f4c94a4a6d95858d6b38c04667a7ccfb7f4bc59f231",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "a5622c851ac06fa20b4ca1014d3870c5807eccbfdc76988eec1eac81a67ec3af",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            },
+            {
+              "id": "94af146deea0506c73b933e01b819357aed8ab2d05a89ec22448a47fc939a35d",
+              "document_id": "missing-evidence",
+              "heading": "Retention and truncated evidence"
+            },
+            {
+              "id": "4c4d072e3210d9b8175b10b859e4bc55ba7c9bf29e58fdda2b4bf3dd97c8d5f5",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            }
+          ]
+        },
+        {
+          "id": "h06",
+          "query": "The source successfully found zero matching rows. Is that equivalent to an unreadable log file?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            8.072124000136682,
+            8.454378999886103
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "022818cd17b8828132d8b58f6bd3f4134d1cc6695058f309b428abb2b71e7084",
+              "document_id": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            },
+            {
+              "id": "4c4d072e3210d9b8175b10b859e4bc55ba7c9bf29e58fdda2b4bf3dd97c8d5f5",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "94af146deea0506c73b933e01b819357aed8ab2d05a89ec22448a47fc939a35d",
+              "document_id": "missing-evidence",
+              "heading": "Retention and truncated evidence"
+            },
+            {
+              "id": "76b1ce0650cfc26062357e3e231af361bc12d5f9d844a2848268f782f0fd58d0",
+              "document_id": "source-failures",
+              "heading": "Adapter failure outcomes"
+            },
+            {
+              "id": "a6182576aaff18f28d8259528c745234b48c100792a228f624721a0f2aa1715e",
+              "document_id": "source-failures",
+              "heading": "Bounded evidence reads"
+            }
+          ]
+        },
+        {
+          "id": "h07",
+          "query": "The logs rotated and results are truncated. Do we have a complete history of the incident?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Retention and truncated evidence"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            7.187100000010105,
+            8.889282999916759
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "94af146deea0506c73b933e01b819357aed8ab2d05a89ec22448a47fc939a35d",
+              "document_id": "missing-evidence",
+              "heading": "Retention and truncated evidence"
+            },
+            {
+              "id": "4c4d072e3210d9b8175b10b859e4bc55ba7c9bf29e58fdda2b4bf3dd97c8d5f5",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "022818cd17b8828132d8b58f6bd3f4134d1cc6695058f309b428abb2b71e7084",
+              "document_id": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            },
+            {
+              "id": "76b1ce0650cfc26062357e3e231af361bc12d5f9d844a2848268f782f0fd58d0",
+              "document_id": "source-failures",
+              "heading": "Adapter failure outcomes"
+            },
+            {
+              "id": "a6182576aaff18f28d8259528c745234b48c100792a228f624721a0f2aa1715e",
+              "document_id": "source-failures",
+              "heading": "Bounded evidence reads"
+            }
+          ]
+        },
+        {
+          "id": "h08",
+          "query": "The available records cannot distinguish competing explanations. What should the report say?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "document": "retry-safety",
+              "heading": "Guidance is not evidence"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 0.8503449055347546
+          },
+          "latencies_ms": [
+            9.907786999974633,
+            8.89334399926156
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "4c4d072e3210d9b8175b10b859e4bc55ba7c9bf29e58fdda2b4bf3dd97c8d5f5",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "94af146deea0506c73b933e01b819357aed8ab2d05a89ec22448a47fc939a35d",
+              "document_id": "missing-evidence",
+              "heading": "Retention and truncated evidence"
+            },
+            {
+              "id": "022818cd17b8828132d8b58f6bd3f4134d1cc6695058f309b428abb2b71e7084",
+              "document_id": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            },
+            {
+              "id": "d3fbf3d8edf369add454ff5c6bfdf1a1f457229ee032d762967eba8ec7aae775",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            },
+            {
+              "id": "a5622c851ac06fa20b4ca1014d3870c5807eccbfdc76988eec1eac81a67ec3af",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            }
+          ]
+        },
+        {
+          "id": "h09",
+          "query": "Does the nearest passage distance represent a calibrated probability of the cause?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 0.3333333333333333,
+            "ndcg_at_5": 0.5
+          },
+          "latencies_ms": [
+            10.251462000269385,
+            7.1023020000211545
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "4afcfd1f392b9064f9b59cf044f090e6ffd68c2a016dc5aa9420d23d8b3ea9e7",
+              "document_id": "network-timeouts",
+              "heading": "Response failure versus transport failure"
+            },
+            {
+              "id": "9b9409e77b7a7e8898823228eb658d3370ece0784bfcf6779847c007a970e89a",
+              "document_id": "network-timeouts",
+              "heading": "Read-only follow-up"
+            },
+            {
+              "id": "4c4d072e3210d9b8175b10b859e4bc55ba7c9bf29e58fdda2b4bf3dd97c8d5f5",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            }
+          ]
+        },
+        {
+          "id": "h10",
+          "query": "Health returns OK while charge requests fail. Are those observations contradictory?",
+          "relevant": [
+            {
+              "document": "health-semantics",
+              "heading": "A reachable process can reject work"
+            },
+            {
+              "document": "payment-errors",
+              "heading": "Competing explanations"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 0.8503449055347546
+          },
+          "latencies_ms": [
+            8.112583999718481,
+            8.83756299936067
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "76d3b19378344009e3b62b95b13e2c37bdbcde2d44a089deae4be12900022f73",
+              "document_id": "health-semantics",
+              "heading": "A reachable process can reject work"
+            },
+            {
+              "id": "f5cff3b122ad461f1c2222c18e8551fd2ea5068160c6bed6c6623ff7ad80193a",
+              "document_id": "health-semantics",
+              "heading": "Observed recovery"
+            },
+            {
+              "id": "022818cd17b8828132d8b58f6bd3f4134d1cc6695058f309b428abb2b71e7084",
+              "document_id": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            },
+            {
+              "id": "76b1ce0650cfc26062357e3e231af361bc12d5f9d844a2848268f782f0fd58d0",
+              "document_id": "source-failures",
+              "heading": "Adapter failure outcomes"
+            },
+            {
+              "id": "a6bc3207f22c838368b483e4d2ea75d65e8b3e9e67cb5cb27e674bb3029e85e3",
+              "document_id": "payment-errors",
+              "heading": "Competing explanations"
+            }
+          ]
+        },
+        {
+          "id": "h11",
+          "query": "One request succeeds after the incident. Does that establish availability throughout the earlier window?",
+          "relevant": [
+            {
+              "document": "health-semantics",
+              "heading": "Observed recovery"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            10.946801000500272,
+            10.101031999511179
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "f5cff3b122ad461f1c2222c18e8551fd2ea5068160c6bed6c6623ff7ad80193a",
+              "document_id": "health-semantics",
+              "heading": "Observed recovery"
+            },
+            {
+              "id": "4afcfd1f392b9064f9b59cf044f090e6ffd68c2a016dc5aa9420d23d8b3ea9e7",
+              "document_id": "network-timeouts",
+              "heading": "Response failure versus transport failure"
+            },
+            {
+              "id": "76d3b19378344009e3b62b95b13e2c37bdbcde2d44a089deae4be12900022f73",
+              "document_id": "health-semantics",
+              "heading": "A reachable process can reject work"
+            },
+            {
+              "id": "358a602c4dfb356eebb252c701d07a2206318be36f5c654139fdedad8e83d115",
+              "document_id": "network-timeouts",
+              "heading": "Bounded requests"
+            },
+            {
+              "id": "022818cd17b8828132d8b58f6bd3f4134d1cc6695058f309b428abb2b71e7084",
+              "document_id": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            }
+          ]
+        },
+        {
+          "id": "h12",
+          "query": "Does a later successful business operation reveal why an earlier operation was rejected?",
+          "relevant": [
+            {
+              "document": "health-semantics",
+              "heading": "Observed recovery"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.0,
+            "mrr_at_5": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "latencies_ms": [
+            8.937440999943647,
+            7.446611999512243
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "8aa9c2cae8606ede22b44f4c94a4a6d95858d6b38c04667a7ccfb7f4bc59f231",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "a5622c851ac06fa20b4ca1014d3870c5807eccbfdc76988eec1eac81a67ec3af",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            },
+            {
+              "id": "76d3b19378344009e3b62b95b13e2c37bdbcde2d44a089deae4be12900022f73",
+              "document_id": "health-semantics",
+              "heading": "A reachable process can reject work"
+            },
+            {
+              "id": "6a44fe364313b5c26b22acd0be8bc46d3370e36afeae84f620faebcf7685c76a",
+              "document_id": "release-correlation",
+              "heading": "Missing deployment history"
+            },
+            {
+              "id": "37eee0d34633c85c2df521d24a55a658930c63b2787277fcb010b687e022c80b",
+              "document_id": "release-correlation",
+              "heading": "Timing is not causation"
+            }
+          ]
+        },
+        {
+          "id": "h13",
+          "query": "May the investigator restart a service or repeat a charge suggested by a runbook?",
+          "relevant": [
+            {
+              "document": "retry-safety",
+              "heading": "No automatic transaction retries"
+            },
+            {
+              "document": "checkout-downstream",
+              "heading": "Verification and limits"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.5,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 0.6131471927654584
+          },
+          "latencies_ms": [
+            9.469775000070513,
+            7.280276000528829
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "fbcdfb3dcd036601fb587962ba25c3554c042485bb59a0d93ff798239ab345f8",
+              "document_id": "retry-safety",
+              "heading": "No automatic transaction retries"
+            },
+            {
+              "id": "4c4d072e3210d9b8175b10b859e4bc55ba7c9bf29e58fdda2b4bf3dd97c8d5f5",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "a5622c851ac06fa20b4ca1014d3870c5807eccbfdc76988eec1eac81a67ec3af",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            },
+            {
+              "id": "f5cff3b122ad461f1c2222c18e8551fd2ea5068160c6bed6c6623ff7ad80193a",
+              "document_id": "health-semantics",
+              "heading": "Observed recovery"
+            },
+            {
+              "id": "a6182576aaff18f28d8259528c745234b48c100792a228f624721a0f2aa1715e",
+              "document_id": "source-failures",
+              "heading": "Bounded evidence reads"
+            }
+          ]
+        },
+        {
+          "id": "h14",
+          "query": "Can a relevant procedure itself prove the current incident is caused by that procedure's failure mode?",
+          "relevant": [
+            {
+              "document": "retry-safety",
+              "heading": "Guidance is not evidence"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            9.408302000338153,
+            9.685887999694387
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "a5622c851ac06fa20b4ca1014d3870c5807eccbfdc76988eec1eac81a67ec3af",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            },
+            {
+              "id": "f5cff3b122ad461f1c2222c18e8551fd2ea5068160c6bed6c6623ff7ad80193a",
+              "document_id": "health-semantics",
+              "heading": "Observed recovery"
+            },
+            {
+              "id": "fbcdfb3dcd036601fb587962ba25c3554c042485bb59a0d93ff798239ab345f8",
+              "document_id": "retry-safety",
+              "heading": "No automatic transaction retries"
+            },
+            {
+              "id": "37eee0d34633c85c2df521d24a55a658930c63b2787277fcb010b687e022c80b",
+              "document_id": "release-correlation",
+              "heading": "Timing is not causation"
+            },
+            {
+              "id": "4c4d072e3210d9b8175b10b859e4bc55ba7c9bf29e58fdda2b4bf3dd97c8d5f5",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            }
+          ]
+        },
+        {
+          "id": "h15",
+          "query": "Does semantic similarity make staging guidance applicable to a local release?",
+          "relevant": [
+            {
+              "document": "configuration-scope",
+              "heading": "Environment and release"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            7.201839000117616,
+            7.676246999835712
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "a9016dfcd2ff30c7848336f190f2c9fc16c7da49c337e505dda51e7082a31563",
+              "document_id": "configuration-scope",
+              "heading": "Environment and release"
+            },
+            {
+              "id": "6a44fe364313b5c26b22acd0be8bc46d3370e36afeae84f620faebcf7685c76a",
+              "document_id": "release-correlation",
+              "heading": "Missing deployment history"
+            },
+            {
+              "id": "8aa9c2cae8606ede22b44f4c94a4a6d95858d6b38c04667a7ccfb7f4bc59f231",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "d3fbf3d8edf369add454ff5c6bfdf1a1f457229ee032d762967eba8ec7aae775",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            },
+            {
+              "id": "37eee0d34633c85c2df521d24a55a658930c63b2787277fcb010b687e022c80b",
+              "document_id": "release-correlation",
+              "heading": "Timing is not causation"
+            }
+          ]
+        },
+        {
+          "id": "h16",
+          "query": "What fraud scoring weights and chargeback dispute SLA does the merchant use?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": false
+          },
+          "latencies_ms": [
+            6.150449000415392,
+            6.507710999358096
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "6abc758a8bc92a86282bca7852d9cbf50dc55e0638e0dbb577a5e20c3e0a9b7e",
+              "document_id": "service-map",
+              "heading": "Request correlation"
+            }
+          ]
+        },
+        {
+          "id": "h17",
+          "query": "Explain the loyalty point expiry and customer membership upgrade algorithm",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": false
+          },
+          "latencies_ms": [
+            6.3578199997209595,
+            5.903430999751436
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "b314314a0cfb34206462515490a11e98d71a7e8f0ba5e2025d078cbce222a064",
+              "document_id": "service-map",
+              "heading": "Supported architecture"
+            }
+          ]
+        },
+        {
+          "id": "h18",
+          "query": "Which seasonal demand forecast determines automated supplier purchase orders?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": false
+          },
+          "latencies_ms": [
+            6.824969999797759,
+            6.410492000213708
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": [
+            {
+              "id": "8eec6aea4515bde42ea4071bdd770fbfebf28f738e4e1d690ddf470f876a5e07",
+              "document_id": "inventory-errors",
+              "heading": "Inventory is checked before payment"
+            },
+            {
+              "id": "6abc758a8bc92a86282bca7852d9cbf50dc55e0638e0dbb577a5e20c3e0a9b7e",
+              "document_id": "service-map",
+              "heading": "Request correlation"
+            },
+            {
+              "id": "b5eb4a34b3b8bb1b1413d0d66eabcc4dffdcd8288a8878ead1f7bab076b934f6",
+              "document_id": "service-map",
+              "heading": "Request flow"
+            }
+          ]
+        },
+        {
+          "id": "h19",
+          "query": "How do we correlate payment errors?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": true
+          },
+          "latencies_ms": [
+            5.105612000079418,
+            5.1390190001257
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": []
+        },
+        {
+          "id": "h20",
+          "query": "How should checkout bad gateway be investigated?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": true
+          },
+          "latencies_ms": [
+            4.873206999945978,
+            4.774641999574669
+          ],
+          "revision": "5ae7f88c252204db2a207bb98d103d1d9bb9e802e5a37b74af6dfd57f36cf7f2",
+          "hits": []
+        }
+      ]
+    },
+    "v2_baseline": {
+      "summary": {
+        "recall_at_5": 0.8666666666666667,
+        "mrr_at_5": 0.8444444444444444,
+        "ndcg_at_5": 0.7951322797733618,
+        "no_answer_abstention": 0.4,
+        "p50_ms": 6.968718499592796,
+        "p95_ms": 11.033444000531745,
+        "answerable_cases": 15,
+        "no_answer_cases": 5
+      },
+      "cases": [
+        {
+          "id": "h01",
+          "query": "An error began around the release. Is the deployment definitely responsible?",
+          "relevant": [
+            {
+              "document": "release-correlation",
+              "heading": "Timing is not causation"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 0.3333333333333333,
+            "ndcg_at_5": 0.5
+          },
+          "latencies_ms": [
+            6.683474999590544,
+            11.286284000561864
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "f2db4fbaa5f8028e1a1f539183c67d257f36e851d97430079fdffa524b74506c",
+              "document_id": "release-correlation",
+              "heading": "Missing deployment history"
+            },
+            {
+              "id": "c866b3f660527de90ddfbd684f0c10b476b0e2cf6ac9aede61dab4d200736414",
+              "document_id": "release-correlation",
+              "heading": "Timing is not causation"
+            },
+            {
+              "id": "967f705385e3319f0872c79f3e319ad43f980874541686fd8266c21fa16de8e0",
+              "document_id": "configuration-scope",
+              "heading": "Environment and release"
+            },
+            {
+              "id": "a3f24680946cd58b6db8d74b266bf29da231c597685c0476491121467cb85b76",
+              "document_id": "network-timeouts",
+              "heading": "Read-only follow-up"
+            }
+          ]
+        },
+        {
+          "id": "h02",
+          "query": "Can we produce a verified deployment timeline from these tools?",
+          "relevant": [
+            {
+              "document": "release-correlation",
+              "heading": "Missing deployment history"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            9.974667000278714,
+            8.613070999672345
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "f2db4fbaa5f8028e1a1f539183c67d257f36e851d97430079fdffa524b74506c",
+              "document_id": "release-correlation",
+              "heading": "Missing deployment history"
+            },
+            {
+              "id": "c866b3f660527de90ddfbd684f0c10b476b0e2cf6ac9aede61dab4d200736414",
+              "document_id": "release-correlation",
+              "heading": "Timing is not causation"
+            },
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "967f705385e3319f0872c79f3e319ad43f980874541686fd8266c21fa16de8e0",
+              "document_id": "configuration-scope",
+              "heading": "Environment and release"
+            },
+            {
+              "id": "5cf268b76b289fa421131d979ced2023baef71efae87c4902b82ba9f324626f2",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            }
+          ]
+        },
+        {
+          "id": "h03",
+          "query": "Could an old architecture note send us to a dependency that no longer exists?",
+          "relevant": [
+            {
+              "document": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "document": "configuration-scope",
+              "heading": "Environment and release"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.5,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 0.6131471927654584
+          },
+          "latencies_ms": [
+            11.55344100061484,
+            7.6872610006830655
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "6a3284d5b1c2a80ff9b8dc6291731ba03d119260e0327a33fc640726f4637e96",
+              "document_id": "service-map",
+              "heading": "Supported architecture"
+            },
+            {
+              "id": "5cf268b76b289fa421131d979ced2023baef71efae87c4902b82ba9f324626f2",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            }
+          ]
+        },
+        {
+          "id": "h04",
+          "query": "If the runbook index changes halfway through an investigation what should happen to its references?",
+          "relevant": [
+            {
+              "document": "configuration-scope",
+              "heading": "Revision reproducibility"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            11.033444000531745,
+            9.524337000584637
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "5cf268b76b289fa421131d979ced2023baef71efae87c4902b82ba9f324626f2",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            },
+            {
+              "id": "520f64482fa6178334013f0413781588aee8adbdd1d9d665bc7b4595e2356780",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "75afb6005cd1d16101d781d08af0b167ad84240b80cf5a166cccbef972f34481",
+              "document_id": "retry-safety",
+              "heading": "No automatic transaction retries"
+            },
+            {
+              "id": "76f503237d9fa3c3f97ec82f8d56a55a9f6f8934b0278de18be3d1116a4fa7cc",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            }
+          ]
+        },
+        {
+          "id": "h05",
+          "query": "An updated knowledge index failed publication. Can old investigations still use the previous guidance?",
+          "relevant": [
+            {
+              "document": "configuration-scope",
+              "heading": "Revision reproducibility"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            7.103539000127057,
+            6.643996999628143
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "5cf268b76b289fa421131d979ced2023baef71efae87c4902b82ba9f324626f2",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            },
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "76f503237d9fa3c3f97ec82f8d56a55a9f6f8934b0278de18be3d1116a4fa7cc",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            },
+            {
+              "id": "8326eed552a0ce9f159bb5a0f79c667f347d3e4a63d66c241aa5fbcb8083537d",
+              "document_id": "missing-evidence",
+              "heading": "Retention and truncated evidence"
+            },
+            {
+              "id": "520f64482fa6178334013f0413781588aee8adbdd1d9d665bc7b4595e2356780",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            }
+          ]
+        },
+        {
+          "id": "h06",
+          "query": "The source successfully found zero matching rows. Is that equivalent to an unreadable log file?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            8.282863000204088,
+            6.98670099973242
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "00e8c1e7047c2207a76481b1eb9e675182d5cda21ba72569dd679e7b108c7b8b",
+              "document_id": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            },
+            {
+              "id": "520f64482fa6178334013f0413781588aee8adbdd1d9d665bc7b4595e2356780",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "8326eed552a0ce9f159bb5a0f79c667f347d3e4a63d66c241aa5fbcb8083537d",
+              "document_id": "missing-evidence",
+              "heading": "Retention and truncated evidence"
+            },
+            {
+              "id": "2a60941ecadcb8dfc2562524240d7fd5388ff65de2fda9a78b6faba6b7ca6830",
+              "document_id": "source-failures",
+              "heading": "Adapter failure outcomes"
+            },
+            {
+              "id": "678fad66872b5dcf89bd46b847e3f709c81d4bb92a8caab6882a0c7b20c53db2",
+              "document_id": "source-failures",
+              "heading": "Bounded evidence reads"
+            }
+          ]
+        },
+        {
+          "id": "h07",
+          "query": "The logs rotated and results are truncated. Do we have a complete history of the incident?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Retention and truncated evidence"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            8.24863700017886,
+            7.0163589998628595
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "8326eed552a0ce9f159bb5a0f79c667f347d3e4a63d66c241aa5fbcb8083537d",
+              "document_id": "missing-evidence",
+              "heading": "Retention and truncated evidence"
+            },
+            {
+              "id": "520f64482fa6178334013f0413781588aee8adbdd1d9d665bc7b4595e2356780",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "00e8c1e7047c2207a76481b1eb9e675182d5cda21ba72569dd679e7b108c7b8b",
+              "document_id": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            },
+            {
+              "id": "2a60941ecadcb8dfc2562524240d7fd5388ff65de2fda9a78b6faba6b7ca6830",
+              "document_id": "source-failures",
+              "heading": "Adapter failure outcomes"
+            },
+            {
+              "id": "678fad66872b5dcf89bd46b847e3f709c81d4bb92a8caab6882a0c7b20c53db2",
+              "document_id": "source-failures",
+              "heading": "Bounded evidence reads"
+            }
+          ]
+        },
+        {
+          "id": "h08",
+          "query": "The available records cannot distinguish competing explanations. What should the report say?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "document": "retry-safety",
+              "heading": "Guidance is not evidence"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 0.8503449055347546
+          },
+          "latencies_ms": [
+            6.9507359994531726,
+            7.052040999951714
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "520f64482fa6178334013f0413781588aee8adbdd1d9d665bc7b4595e2356780",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "8326eed552a0ce9f159bb5a0f79c667f347d3e4a63d66c241aa5fbcb8083537d",
+              "document_id": "missing-evidence",
+              "heading": "Retention and truncated evidence"
+            },
+            {
+              "id": "00e8c1e7047c2207a76481b1eb9e675182d5cda21ba72569dd679e7b108c7b8b",
+              "document_id": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            },
+            {
+              "id": "5cf268b76b289fa421131d979ced2023baef71efae87c4902b82ba9f324626f2",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            },
+            {
+              "id": "76f503237d9fa3c3f97ec82f8d56a55a9f6f8934b0278de18be3d1116a4fa7cc",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            }
+          ]
+        },
+        {
+          "id": "h09",
+          "query": "Does the nearest passage distance represent a calibrated probability of the cause?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 0.3333333333333333,
+            "ndcg_at_5": 0.5
+          },
+          "latencies_ms": [
+            6.229712999811454,
+            6.409826999515644
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "83a77ccdc186320ceaf509019af40b7aaf00d9136d4bcb39105898bc9d69ff2d",
+              "document_id": "network-timeouts",
+              "heading": "Response failure versus transport failure"
+            },
+            {
+              "id": "a3f24680946cd58b6db8d74b266bf29da231c597685c0476491121467cb85b76",
+              "document_id": "network-timeouts",
+              "heading": "Read-only follow-up"
+            },
+            {
+              "id": "520f64482fa6178334013f0413781588aee8adbdd1d9d665bc7b4595e2356780",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            }
+          ]
+        },
+        {
+          "id": "h10",
+          "query": "Health returns OK while charge requests fail. Are those observations contradictory?",
+          "relevant": [
+            {
+              "document": "health-semantics",
+              "heading": "A reachable process can reject work"
+            },
+            {
+              "document": "payment-errors",
+              "heading": "Competing explanations"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 0.8503449055347546
+          },
+          "latencies_ms": [
+            6.337271999655059,
+            6.35383400003775
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "b68ffabb7a602754946830e25f0ad8c7b5925ec8de76fa20801fad87b12a53b5",
+              "document_id": "health-semantics",
+              "heading": "A reachable process can reject work"
+            },
+            {
+              "id": "6ab23c669cc472f517e68d411c386eda0ab56325f27d4b8bd6d4775dda8739c8",
+              "document_id": "health-semantics",
+              "heading": "Observed recovery"
+            },
+            {
+              "id": "00e8c1e7047c2207a76481b1eb9e675182d5cda21ba72569dd679e7b108c7b8b",
+              "document_id": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            },
+            {
+              "id": "2a60941ecadcb8dfc2562524240d7fd5388ff65de2fda9a78b6faba6b7ca6830",
+              "document_id": "source-failures",
+              "heading": "Adapter failure outcomes"
+            },
+            {
+              "id": "b3dc8dc719e6d695881f08525745371732970ae5032ac36819ac6ec315257f3e",
+              "document_id": "payment-errors",
+              "heading": "Competing explanations"
+            }
+          ]
+        },
+        {
+          "id": "h11",
+          "query": "One request succeeds after the incident. Does that establish availability throughout the earlier window?",
+          "relevant": [
+            {
+              "document": "health-semantics",
+              "heading": "Observed recovery"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            7.367219000116165,
+            6.65866500003176
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "6ab23c669cc472f517e68d411c386eda0ab56325f27d4b8bd6d4775dda8739c8",
+              "document_id": "health-semantics",
+              "heading": "Observed recovery"
+            },
+            {
+              "id": "83a77ccdc186320ceaf509019af40b7aaf00d9136d4bcb39105898bc9d69ff2d",
+              "document_id": "network-timeouts",
+              "heading": "Response failure versus transport failure"
+            },
+            {
+              "id": "b68ffabb7a602754946830e25f0ad8c7b5925ec8de76fa20801fad87b12a53b5",
+              "document_id": "health-semantics",
+              "heading": "A reachable process can reject work"
+            },
+            {
+              "id": "7d430787da68e28e23f21ed7698378d851ad867f3787fae7609379e54c0cdf40",
+              "document_id": "network-timeouts",
+              "heading": "Bounded requests"
+            },
+            {
+              "id": "00e8c1e7047c2207a76481b1eb9e675182d5cda21ba72569dd679e7b108c7b8b",
+              "document_id": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            }
+          ]
+        },
+        {
+          "id": "h12",
+          "query": "Does a later successful business operation reveal why an earlier operation was rejected?",
+          "relevant": [
+            {
+              "document": "health-semantics",
+              "heading": "Observed recovery"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.0,
+            "mrr_at_5": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "latencies_ms": [
+            7.39778600018326,
+            6.422516999919026
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "76f503237d9fa3c3f97ec82f8d56a55a9f6f8934b0278de18be3d1116a4fa7cc",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            },
+            {
+              "id": "b68ffabb7a602754946830e25f0ad8c7b5925ec8de76fa20801fad87b12a53b5",
+              "document_id": "health-semantics",
+              "heading": "A reachable process can reject work"
+            },
+            {
+              "id": "f2db4fbaa5f8028e1a1f539183c67d257f36e851d97430079fdffa524b74506c",
+              "document_id": "release-correlation",
+              "heading": "Missing deployment history"
+            },
+            {
+              "id": "c866b3f660527de90ddfbd684f0c10b476b0e2cf6ac9aede61dab4d200736414",
+              "document_id": "release-correlation",
+              "heading": "Timing is not causation"
+            }
+          ]
+        },
+        {
+          "id": "h13",
+          "query": "May the investigator restart a service or repeat a charge suggested by a runbook?",
+          "relevant": [
+            {
+              "document": "retry-safety",
+              "heading": "No automatic transaction retries"
+            },
+            {
+              "document": "checkout-downstream",
+              "heading": "Verification and limits"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.5,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 0.6131471927654584
+          },
+          "latencies_ms": [
+            7.0764519996373565,
+            8.016316000066581
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "75afb6005cd1d16101d781d08af0b167ad84240b80cf5a166cccbef972f34481",
+              "document_id": "retry-safety",
+              "heading": "No automatic transaction retries"
+            },
+            {
+              "id": "520f64482fa6178334013f0413781588aee8adbdd1d9d665bc7b4595e2356780",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "76f503237d9fa3c3f97ec82f8d56a55a9f6f8934b0278de18be3d1116a4fa7cc",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            },
+            {
+              "id": "6ab23c669cc472f517e68d411c386eda0ab56325f27d4b8bd6d4775dda8739c8",
+              "document_id": "health-semantics",
+              "heading": "Observed recovery"
+            },
+            {
+              "id": "678fad66872b5dcf89bd46b847e3f709c81d4bb92a8caab6882a0c7b20c53db2",
+              "document_id": "source-failures",
+              "heading": "Bounded evidence reads"
+            }
+          ]
+        },
+        {
+          "id": "h14",
+          "query": "Can a relevant procedure itself prove the current incident is caused by that procedure's failure mode?",
+          "relevant": [
+            {
+              "document": "retry-safety",
+              "heading": "Guidance is not evidence"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            8.543056000235083,
+            7.201009000709746
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "76f503237d9fa3c3f97ec82f8d56a55a9f6f8934b0278de18be3d1116a4fa7cc",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            },
+            {
+              "id": "6ab23c669cc472f517e68d411c386eda0ab56325f27d4b8bd6d4775dda8739c8",
+              "document_id": "health-semantics",
+              "heading": "Observed recovery"
+            },
+            {
+              "id": "75afb6005cd1d16101d781d08af0b167ad84240b80cf5a166cccbef972f34481",
+              "document_id": "retry-safety",
+              "heading": "No automatic transaction retries"
+            },
+            {
+              "id": "c866b3f660527de90ddfbd684f0c10b476b0e2cf6ac9aede61dab4d200736414",
+              "document_id": "release-correlation",
+              "heading": "Timing is not causation"
+            },
+            {
+              "id": "520f64482fa6178334013f0413781588aee8adbdd1d9d665bc7b4595e2356780",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            }
+          ]
+        },
+        {
+          "id": "h15",
+          "query": "Does semantic similarity make staging guidance applicable to a local release?",
+          "relevant": [
+            {
+              "document": "configuration-scope",
+              "heading": "Environment and release"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            5.7644979997348855,
+            6.2808259999656
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "967f705385e3319f0872c79f3e319ad43f980874541686fd8266c21fa16de8e0",
+              "document_id": "configuration-scope",
+              "heading": "Environment and release"
+            },
+            {
+              "id": "f2db4fbaa5f8028e1a1f539183c67d257f36e851d97430079fdffa524b74506c",
+              "document_id": "release-correlation",
+              "heading": "Missing deployment history"
+            },
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "5cf268b76b289fa421131d979ced2023baef71efae87c4902b82ba9f324626f2",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            },
+            {
+              "id": "c866b3f660527de90ddfbd684f0c10b476b0e2cf6ac9aede61dab4d200736414",
+              "document_id": "release-correlation",
+              "heading": "Timing is not causation"
+            }
+          ]
+        },
+        {
+          "id": "h16",
+          "query": "What fraud scoring weights and chargeback dispute SLA does the merchant use?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": false
+          },
+          "latencies_ms": [
+            5.965491999631922,
+            6.398354999873845
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "512c356f40f978515a09527059a0e0420d8bd76fbc82bcbaa527b5bfda116ae5",
+              "document_id": "service-map",
+              "heading": "Request correlation"
+            }
+          ]
+        },
+        {
+          "id": "h17",
+          "query": "Explain the loyalty point expiry and customer membership upgrade algorithm",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": false
+          },
+          "latencies_ms": [
+            6.531861999974353,
+            5.930749999606633
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "6a3284d5b1c2a80ff9b8dc6291731ba03d119260e0327a33fc640726f4637e96",
+              "document_id": "service-map",
+              "heading": "Supported architecture"
+            }
+          ]
+        },
+        {
+          "id": "h18",
+          "query": "Which seasonal demand forecast determines automated supplier purchase orders?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": false
+          },
+          "latencies_ms": [
+            7.018063000032271,
+            6.025839000358246
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "7282cbd68b40bf62dae77d2bfd2f6aa0c9a4de4d2aed099c9b57333e634b433f",
+              "document_id": "inventory-errors",
+              "heading": "Inventory is checked before payment"
+            },
+            {
+              "id": "512c356f40f978515a09527059a0e0420d8bd76fbc82bcbaa527b5bfda116ae5",
+              "document_id": "service-map",
+              "heading": "Request correlation"
+            },
+            {
+              "id": "c2f2e16974a999c47526891320f3ea6995c41b8d0f75df1d5cf6616400f6d8e8",
+              "document_id": "service-map",
+              "heading": "Request flow"
+            }
+          ]
+        },
+        {
+          "id": "h19",
+          "query": "How do we correlate payment errors?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": true
+          },
+          "latencies_ms": [
+            4.887965000307304,
+            6.4105609999387525
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": []
+        },
+        {
+          "id": "h20",
+          "query": "How should checkout bad gateway be investigated?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": true
+          },
+          "latencies_ms": [
+            5.0158720005129,
+            4.959637999490951
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": []
+        }
+      ]
+    },
+    "query": {
+      "summary": {
+        "recall_at_5": 0.9666666666666667,
+        "mrr_at_5": 0.8055555555555556,
+        "ndcg_at_5": 0.8228383555710781,
+        "no_answer_abstention": 0.4,
+        "p50_ms": 6.789648999529163,
+        "p95_ms": 7.668817999729072,
+        "answerable_cases": 15,
+        "no_answer_cases": 5
+      },
+      "cases": [
+        {
+          "id": "h01",
+          "query": "An error began around the release. Is the deployment definitely responsible?",
+          "relevant": [
+            {
+              "document": "release-correlation",
+              "heading": "Timing is not causation"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 0.25,
+            "ndcg_at_5": 0.43067655807339306
+          },
+          "latencies_ms": [
+            6.880851000460098,
+            7.0204579997152905
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "f2db4fbaa5f8028e1a1f539183c67d257f36e851d97430079fdffa524b74506c",
+              "document_id": "release-correlation",
+              "heading": "Missing deployment history"
+            },
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "71bf4e358cb5e670dc57208096993360ed0867ad6cbf159bf80ab62e8f5f834c",
+              "document_id": "checkout-downstream",
+              "heading": "Follow the failing dependency"
+            },
+            {
+              "id": "c866b3f660527de90ddfbd684f0c10b476b0e2cf6ac9aede61dab4d200736414",
+              "document_id": "release-correlation",
+              "heading": "Timing is not causation"
+            },
+            {
+              "id": "3cb146433d91fb107ee93219ba4369f5c0ea8cf607cdde4eba8ffeccba0e0071",
+              "document_id": "checkout-downstream",
+              "heading": "HTTP 502 from checkout"
+            }
+          ]
+        },
+        {
+          "id": "h02",
+          "query": "Can we produce a verified deployment timeline from these tools?",
+          "relevant": [
+            {
+              "document": "release-correlation",
+              "heading": "Missing deployment history"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            5.831213999954343,
+            5.897528000787133
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "f2db4fbaa5f8028e1a1f539183c67d257f36e851d97430079fdffa524b74506c",
+              "document_id": "release-correlation",
+              "heading": "Missing deployment history"
+            },
+            {
+              "id": "c866b3f660527de90ddfbd684f0c10b476b0e2cf6ac9aede61dab4d200736414",
+              "document_id": "release-correlation",
+              "heading": "Timing is not causation"
+            },
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "75afb6005cd1d16101d781d08af0b167ad84240b80cf5a166cccbef972f34481",
+              "document_id": "retry-safety",
+              "heading": "No automatic transaction retries"
+            },
+            {
+              "id": "967f705385e3319f0872c79f3e319ad43f980874541686fd8266c21fa16de8e0",
+              "document_id": "configuration-scope",
+              "heading": "Environment and release"
+            }
+          ]
+        },
+        {
+          "id": "h03",
+          "query": "Could an old architecture note send us to a dependency that no longer exists?",
+          "relevant": [
+            {
+              "document": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "document": "configuration-scope",
+              "heading": "Environment and release"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.5,
+            "mrr_at_5": 0.5,
+            "ndcg_at_5": 0.38685280723454163
+          },
+          "latencies_ms": [
+            7.231302000036521,
+            6.26312200074608
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "6a3284d5b1c2a80ff9b8dc6291731ba03d119260e0327a33fc640726f4637e96",
+              "document_id": "service-map",
+              "heading": "Supported architecture"
+            },
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "5cf268b76b289fa421131d979ced2023baef71efae87c4902b82ba9f324626f2",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            },
+            {
+              "id": "512c356f40f978515a09527059a0e0420d8bd76fbc82bcbaa527b5bfda116ae5",
+              "document_id": "service-map",
+              "heading": "Request correlation"
+            },
+            {
+              "id": "7d430787da68e28e23f21ed7698378d851ad867f3787fae7609379e54c0cdf40",
+              "document_id": "network-timeouts",
+              "heading": "Bounded requests"
+            }
+          ]
+        },
+        {
+          "id": "h04",
+          "query": "If the runbook index changes halfway through an investigation what should happen to its references?",
+          "relevant": [
+            {
+              "document": "configuration-scope",
+              "heading": "Revision reproducibility"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 0.3333333333333333,
+            "ndcg_at_5": 0.5
+          },
+          "latencies_ms": [
+            7.668817999729072,
+            6.627761999880022
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "75afb6005cd1d16101d781d08af0b167ad84240b80cf5a166cccbef972f34481",
+              "document_id": "retry-safety",
+              "heading": "No automatic transaction retries"
+            },
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "5cf268b76b289fa421131d979ced2023baef71efae87c4902b82ba9f324626f2",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            },
+            {
+              "id": "76f503237d9fa3c3f97ec82f8d56a55a9f6f8934b0278de18be3d1116a4fa7cc",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            },
+            {
+              "id": "520f64482fa6178334013f0413781588aee8adbdd1d9d665bc7b4595e2356780",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            }
+          ]
+        },
+        {
+          "id": "h05",
+          "query": "An updated knowledge index failed publication. Can old investigations still use the previous guidance?",
+          "relevant": [
+            {
+              "document": "configuration-scope",
+              "heading": "Revision reproducibility"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            7.387036000181979,
+            6.798239999625366
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "5cf268b76b289fa421131d979ced2023baef71efae87c4902b82ba9f324626f2",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            },
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "76f503237d9fa3c3f97ec82f8d56a55a9f6f8934b0278de18be3d1116a4fa7cc",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            },
+            {
+              "id": "75afb6005cd1d16101d781d08af0b167ad84240b80cf5a166cccbef972f34481",
+              "document_id": "retry-safety",
+              "heading": "No automatic transaction retries"
+            },
+            {
+              "id": "967f705385e3319f0872c79f3e319ad43f980874541686fd8266c21fa16de8e0",
+              "document_id": "configuration-scope",
+              "heading": "Environment and release"
+            }
+          ]
+        },
+        {
+          "id": "h06",
+          "query": "The source successfully found zero matching rows. Is that equivalent to an unreadable log file?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            8.096925999780069,
+            7.013831000222126
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "00e8c1e7047c2207a76481b1eb9e675182d5cda21ba72569dd679e7b108c7b8b",
+              "document_id": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            },
+            {
+              "id": "2a60941ecadcb8dfc2562524240d7fd5388ff65de2fda9a78b6faba6b7ca6830",
+              "document_id": "source-failures",
+              "heading": "Adapter failure outcomes"
+            },
+            {
+              "id": "520f64482fa6178334013f0413781588aee8adbdd1d9d665bc7b4595e2356780",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "8326eed552a0ce9f159bb5a0f79c667f347d3e4a63d66c241aa5fbcb8083537d",
+              "document_id": "missing-evidence",
+              "heading": "Retention and truncated evidence"
+            },
+            {
+              "id": "678fad66872b5dcf89bd46b847e3f709c81d4bb92a8caab6882a0c7b20c53db2",
+              "document_id": "source-failures",
+              "heading": "Bounded evidence reads"
+            }
+          ]
+        },
+        {
+          "id": "h07",
+          "query": "The logs rotated and results are truncated. Do we have a complete history of the incident?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Retention and truncated evidence"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            6.970602000365034,
+            7.156024999858346
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "8326eed552a0ce9f159bb5a0f79c667f347d3e4a63d66c241aa5fbcb8083537d",
+              "document_id": "missing-evidence",
+              "heading": "Retention and truncated evidence"
+            },
+            {
+              "id": "00e8c1e7047c2207a76481b1eb9e675182d5cda21ba72569dd679e7b108c7b8b",
+              "document_id": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            },
+            {
+              "id": "520f64482fa6178334013f0413781588aee8adbdd1d9d665bc7b4595e2356780",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "2a60941ecadcb8dfc2562524240d7fd5388ff65de2fda9a78b6faba6b7ca6830",
+              "document_id": "source-failures",
+              "heading": "Adapter failure outcomes"
+            },
+            {
+              "id": "678fad66872b5dcf89bd46b847e3f709c81d4bb92a8caab6882a0c7b20c53db2",
+              "document_id": "source-failures",
+              "heading": "Bounded evidence reads"
+            }
+          ]
+        },
+        {
+          "id": "h08",
+          "query": "The available records cannot distinguish competing explanations. What should the report say?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "document": "retry-safety",
+              "heading": "Guidance is not evidence"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 0.9197207891481876
+          },
+          "latencies_ms": [
+            6.960204999813868,
+            7.520401999499882
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "520f64482fa6178334013f0413781588aee8adbdd1d9d665bc7b4595e2356780",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "8326eed552a0ce9f159bb5a0f79c667f347d3e4a63d66c241aa5fbcb8083537d",
+              "document_id": "missing-evidence",
+              "heading": "Retention and truncated evidence"
+            },
+            {
+              "id": "76f503237d9fa3c3f97ec82f8d56a55a9f6f8934b0278de18be3d1116a4fa7cc",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            },
+            {
+              "id": "3fed0c653ac9d051cca160edaddb6dff3424450fbfdc57fefdce21d7162832ea",
+              "document_id": "payment-errors",
+              "heading": "Check impact and recovery"
+            },
+            {
+              "id": "00e8c1e7047c2207a76481b1eb9e675182d5cda21ba72569dd679e7b108c7b8b",
+              "document_id": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            }
+          ]
+        },
+        {
+          "id": "h09",
+          "query": "Does the nearest passage distance represent a calibrated probability of the cause?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            6.151368000246293,
+            7.040826999400451
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "520f64482fa6178334013f0413781588aee8adbdd1d9d665bc7b4595e2356780",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "83a77ccdc186320ceaf509019af40b7aaf00d9136d4bcb39105898bc9d69ff2d",
+              "document_id": "network-timeouts",
+              "heading": "Response failure versus transport failure"
+            },
+            {
+              "id": "3fed0c653ac9d051cca160edaddb6dff3424450fbfdc57fefdce21d7162832ea",
+              "document_id": "payment-errors",
+              "heading": "Check impact and recovery"
+            },
+            {
+              "id": "a3f24680946cd58b6db8d74b266bf29da231c597685c0476491121467cb85b76",
+              "document_id": "network-timeouts",
+              "heading": "Read-only follow-up"
+            },
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            }
+          ]
+        },
+        {
+          "id": "h10",
+          "query": "Health returns OK while charge requests fail. Are those observations contradictory?",
+          "relevant": [
+            {
+              "document": "health-semantics",
+              "heading": "A reachable process can reject work"
+            },
+            {
+              "document": "payment-errors",
+              "heading": "Competing explanations"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 0.5,
+            "ndcg_at_5": 0.6240505200038379
+          },
+          "latencies_ms": [
+            7.168653000007907,
+            6.566586999724677
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "6ab23c669cc472f517e68d411c386eda0ab56325f27d4b8bd6d4775dda8739c8",
+              "document_id": "health-semantics",
+              "heading": "Observed recovery"
+            },
+            {
+              "id": "b68ffabb7a602754946830e25f0ad8c7b5925ec8de76fa20801fad87b12a53b5",
+              "document_id": "health-semantics",
+              "heading": "A reachable process can reject work"
+            },
+            {
+              "id": "3fed0c653ac9d051cca160edaddb6dff3424450fbfdc57fefdce21d7162832ea",
+              "document_id": "payment-errors",
+              "heading": "Check impact and recovery"
+            },
+            {
+              "id": "00e8c1e7047c2207a76481b1eb9e675182d5cda21ba72569dd679e7b108c7b8b",
+              "document_id": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            },
+            {
+              "id": "b3dc8dc719e6d695881f08525745371732970ae5032ac36819ac6ec315257f3e",
+              "document_id": "payment-errors",
+              "heading": "Competing explanations"
+            }
+          ]
+        },
+        {
+          "id": "h11",
+          "query": "One request succeeds after the incident. Does that establish availability throughout the earlier window?",
+          "relevant": [
+            {
+              "document": "health-semantics",
+              "heading": "Observed recovery"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            7.114985000043816,
+            6.623821999710344
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "6ab23c669cc472f517e68d411c386eda0ab56325f27d4b8bd6d4775dda8739c8",
+              "document_id": "health-semantics",
+              "heading": "Observed recovery"
+            },
+            {
+              "id": "b68ffabb7a602754946830e25f0ad8c7b5925ec8de76fa20801fad87b12a53b5",
+              "document_id": "health-semantics",
+              "heading": "A reachable process can reject work"
+            },
+            {
+              "id": "7d430787da68e28e23f21ed7698378d851ad867f3787fae7609379e54c0cdf40",
+              "document_id": "network-timeouts",
+              "heading": "Bounded requests"
+            },
+            {
+              "id": "678fad66872b5dcf89bd46b847e3f709c81d4bb92a8caab6882a0c7b20c53db2",
+              "document_id": "source-failures",
+              "heading": "Bounded evidence reads"
+            },
+            {
+              "id": "2a60941ecadcb8dfc2562524240d7fd5388ff65de2fda9a78b6faba6b7ca6830",
+              "document_id": "source-failures",
+              "heading": "Adapter failure outcomes"
+            }
+          ]
+        },
+        {
+          "id": "h12",
+          "query": "Does a later successful business operation reveal why an earlier operation was rejected?",
+          "relevant": [
+            {
+              "document": "health-semantics",
+              "heading": "Observed recovery"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 0.5,
+            "ndcg_at_5": 0.6309297535714575
+          },
+          "latencies_ms": [
+            6.736510000337148,
+            7.102517999555857
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "b68ffabb7a602754946830e25f0ad8c7b5925ec8de76fa20801fad87b12a53b5",
+              "document_id": "health-semantics",
+              "heading": "A reachable process can reject work"
+            },
+            {
+              "id": "6ab23c669cc472f517e68d411c386eda0ab56325f27d4b8bd6d4775dda8739c8",
+              "document_id": "health-semantics",
+              "heading": "Observed recovery"
+            },
+            {
+              "id": "5cf268b76b289fa421131d979ced2023baef71efae87c4902b82ba9f324626f2",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            },
+            {
+              "id": "76f503237d9fa3c3f97ec82f8d56a55a9f6f8934b0278de18be3d1116a4fa7cc",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            },
+            {
+              "id": "678fad66872b5dcf89bd46b847e3f709c81d4bb92a8caab6882a0c7b20c53db2",
+              "document_id": "source-failures",
+              "heading": "Bounded evidence reads"
+            }
+          ]
+        },
+        {
+          "id": "h13",
+          "query": "May the investigator restart a service or repeat a charge suggested by a runbook?",
+          "relevant": [
+            {
+              "document": "retry-safety",
+              "heading": "No automatic transaction retries"
+            },
+            {
+              "document": "checkout-downstream",
+              "heading": "Verification and limits"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 0.8503449055347546
+          },
+          "latencies_ms": [
+            6.87451100020553,
+            7.184796999354148
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "75afb6005cd1d16101d781d08af0b167ad84240b80cf5a166cccbef972f34481",
+              "document_id": "retry-safety",
+              "heading": "No automatic transaction retries"
+            },
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "76f503237d9fa3c3f97ec82f8d56a55a9f6f8934b0278de18be3d1116a4fa7cc",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            },
+            {
+              "id": "520f64482fa6178334013f0413781588aee8adbdd1d9d665bc7b4595e2356780",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "8a263bd4e1fdcfce89c1b4e5f79e8cdd46072f1e27049c80c652fae5269fcecc",
+              "document_id": "checkout-downstream",
+              "heading": "Verification and limits"
+            }
+          ]
+        },
+        {
+          "id": "h14",
+          "query": "Can a relevant procedure itself prove the current incident is caused by that procedure's failure mode?",
+          "relevant": [
+            {
+              "document": "retry-safety",
+              "heading": "Guidance is not evidence"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            7.465745999979845,
+            7.741204999547335
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "76f503237d9fa3c3f97ec82f8d56a55a9f6f8934b0278de18be3d1116a4fa7cc",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            },
+            {
+              "id": "520f64482fa6178334013f0413781588aee8adbdd1d9d665bc7b4595e2356780",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "6ab23c669cc472f517e68d411c386eda0ab56325f27d4b8bd6d4775dda8739c8",
+              "document_id": "health-semantics",
+              "heading": "Observed recovery"
+            },
+            {
+              "id": "83a77ccdc186320ceaf509019af40b7aaf00d9136d4bcb39105898bc9d69ff2d",
+              "document_id": "network-timeouts",
+              "heading": "Response failure versus transport failure"
+            },
+            {
+              "id": "3fed0c653ac9d051cca160edaddb6dff3424450fbfdc57fefdce21d7162832ea",
+              "document_id": "payment-errors",
+              "heading": "Check impact and recovery"
+            }
+          ]
+        },
+        {
+          "id": "h15",
+          "query": "Does semantic similarity make staging guidance applicable to a local release?",
+          "relevant": [
+            {
+              "document": "configuration-scope",
+              "heading": "Environment and release"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            6.329992999781098,
+            6.638410999585176
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "967f705385e3319f0872c79f3e319ad43f980874541686fd8266c21fa16de8e0",
+              "document_id": "configuration-scope",
+              "heading": "Environment and release"
+            },
+            {
+              "id": "5cf268b76b289fa421131d979ced2023baef71efae87c4902b82ba9f324626f2",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            },
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "f2db4fbaa5f8028e1a1f539183c67d257f36e851d97430079fdffa524b74506c",
+              "document_id": "release-correlation",
+              "heading": "Missing deployment history"
+            },
+            {
+              "id": "6a3284d5b1c2a80ff9b8dc6291731ba03d119260e0327a33fc640726f4637e96",
+              "document_id": "service-map",
+              "heading": "Supported architecture"
+            }
+          ]
+        },
+        {
+          "id": "h16",
+          "query": "What fraud scoring weights and chargeback dispute SLA does the merchant use?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": false
+          },
+          "latencies_ms": [
+            6.099659000028623,
+            6.78105799943296
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "512c356f40f978515a09527059a0e0420d8bd76fbc82bcbaa527b5bfda116ae5",
+              "document_id": "service-map",
+              "heading": "Request correlation"
+            },
+            {
+              "id": "373a85fba2dc5fe99d558c7d5840d9552aa72c725a4e056f8385ed16817890bd",
+              "document_id": "request-correlation",
+              "heading": "Joining observations"
+            },
+            {
+              "id": "520f64482fa6178334013f0413781588aee8adbdd1d9d665bc7b4595e2356780",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "5cf268b76b289fa421131d979ced2023baef71efae87c4902b82ba9f324626f2",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            }
+          ]
+        },
+        {
+          "id": "h17",
+          "query": "Explain the loyalty point expiry and customer membership upgrade algorithm",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": false
+          },
+          "latencies_ms": [
+            6.5606130001469865,
+            6.46738099931099
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "6a3284d5b1c2a80ff9b8dc6291731ba03d119260e0327a33fc640726f4637e96",
+              "document_id": "service-map",
+              "heading": "Supported architecture"
+            }
+          ]
+        },
+        {
+          "id": "h18",
+          "query": "Which seasonal demand forecast determines automated supplier purchase orders?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": false
+          },
+          "latencies_ms": [
+            5.762908999713545,
+            5.9741340000982746
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "678fad66872b5dcf89bd46b847e3f709c81d4bb92a8caab6882a0c7b20c53db2",
+              "document_id": "source-failures",
+              "heading": "Bounded evidence reads"
+            },
+            {
+              "id": "7282cbd68b40bf62dae77d2bfd2f6aa0c9a4de4d2aed099c9b57333e634b433f",
+              "document_id": "inventory-errors",
+              "heading": "Inventory is checked before payment"
+            },
+            {
+              "id": "512c356f40f978515a09527059a0e0420d8bd76fbc82bcbaa527b5bfda116ae5",
+              "document_id": "service-map",
+              "heading": "Request correlation"
+            },
+            {
+              "id": "6a3284d5b1c2a80ff9b8dc6291731ba03d119260e0327a33fc640726f4637e96",
+              "document_id": "service-map",
+              "heading": "Supported architecture"
+            },
+            {
+              "id": "c2f2e16974a999c47526891320f3ea6995c41b8d0f75df1d5cf6616400f6d8e8",
+              "document_id": "service-map",
+              "heading": "Request flow"
+            }
+          ]
+        },
+        {
+          "id": "h19",
+          "query": "How do we correlate payment errors?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": true
+          },
+          "latencies_ms": [
+            5.923712000367232,
+            5.205526000281679
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": []
+        },
+        {
+          "id": "h20",
+          "query": "How should checkout bad gateway be investigated?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": true
+          },
+          "latencies_ms": [
+            5.242788999566983,
+            5.361892000109947
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": []
+        }
+      ]
+    },
+    "improved": {
+      "summary": {
+        "recall_at_5": 0.9,
+        "mrr_at_5": 0.7888888888888889,
+        "ndcg_at_5": 0.7941265850328519,
+        "no_answer_abstention": 0.4,
+        "p50_ms": 8.23372049990212,
+        "p95_ms": 11.47840100020403,
+        "answerable_cases": 15,
+        "no_answer_cases": 5
+      },
+      "cases": [
+        {
+          "id": "h01",
+          "query": "An error began around the release. Is the deployment definitely responsible?",
+          "relevant": [
+            {
+              "document": "release-correlation",
+              "heading": "Timing is not causation"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.0,
+            "mrr_at_5": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "latencies_ms": [
+            6.728696999743988,
+            6.588969999938854
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "f2db4fbaa5f8028e1a1f539183c67d257f36e851d97430079fdffa524b74506c",
+              "document_id": "release-correlation",
+              "heading": "Missing deployment history"
+            },
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "71bf4e358cb5e670dc57208096993360ed0867ad6cbf159bf80ab62e8f5f834c",
+              "document_id": "checkout-downstream",
+              "heading": "Follow the failing dependency"
+            },
+            {
+              "id": "3cb146433d91fb107ee93219ba4369f5c0ea8cf607cdde4eba8ffeccba0e0071",
+              "document_id": "checkout-downstream",
+              "heading": "HTTP 502 from checkout"
+            },
+            {
+              "id": "967f705385e3319f0872c79f3e319ad43f980874541686fd8266c21fa16de8e0",
+              "document_id": "configuration-scope",
+              "heading": "Environment and release"
+            }
+          ]
+        },
+        {
+          "id": "h02",
+          "query": "Can we produce a verified deployment timeline from these tools?",
+          "relevant": [
+            {
+              "document": "release-correlation",
+              "heading": "Missing deployment history"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            6.59972499943251,
+            6.104444999436964
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "f2db4fbaa5f8028e1a1f539183c67d257f36e851d97430079fdffa524b74506c",
+              "document_id": "release-correlation",
+              "heading": "Missing deployment history"
+            },
+            {
+              "id": "c866b3f660527de90ddfbd684f0c10b476b0e2cf6ac9aede61dab4d200736414",
+              "document_id": "release-correlation",
+              "heading": "Timing is not causation"
+            },
+            {
+              "id": "75afb6005cd1d16101d781d08af0b167ad84240b80cf5a166cccbef972f34481",
+              "document_id": "retry-safety",
+              "heading": "No automatic transaction retries"
+            },
+            {
+              "id": "967f705385e3319f0872c79f3e319ad43f980874541686fd8266c21fa16de8e0",
+              "document_id": "configuration-scope",
+              "heading": "Environment and release"
+            },
+            {
+              "id": "5cf268b76b289fa421131d979ced2023baef71efae87c4902b82ba9f324626f2",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            }
+          ]
+        },
+        {
+          "id": "h03",
+          "query": "Could an old architecture note send us to a dependency that no longer exists?",
+          "relevant": [
+            {
+              "document": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "document": "configuration-scope",
+              "heading": "Environment and release"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.5,
+            "mrr_at_5": 0.5,
+            "ndcg_at_5": 0.38685280723454163
+          },
+          "latencies_ms": [
+            7.42651400014438,
+            6.552523999744153
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "6a3284d5b1c2a80ff9b8dc6291731ba03d119260e0327a33fc640726f4637e96",
+              "document_id": "service-map",
+              "heading": "Supported architecture"
+            },
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "5cf268b76b289fa421131d979ced2023baef71efae87c4902b82ba9f324626f2",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            },
+            {
+              "id": "512c356f40f978515a09527059a0e0420d8bd76fbc82bcbaa527b5bfda116ae5",
+              "document_id": "service-map",
+              "heading": "Request correlation"
+            },
+            {
+              "id": "7d430787da68e28e23f21ed7698378d851ad867f3787fae7609379e54c0cdf40",
+              "document_id": "network-timeouts",
+              "heading": "Bounded requests"
+            }
+          ]
+        },
+        {
+          "id": "h04",
+          "query": "If the runbook index changes halfway through an investigation what should happen to its references?",
+          "relevant": [
+            {
+              "document": "configuration-scope",
+              "heading": "Revision reproducibility"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 0.3333333333333333,
+            "ndcg_at_5": 0.5
+          },
+          "latencies_ms": [
+            6.576490000043123,
+            7.785709999552637
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "75afb6005cd1d16101d781d08af0b167ad84240b80cf5a166cccbef972f34481",
+              "document_id": "retry-safety",
+              "heading": "No automatic transaction retries"
+            },
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "5cf268b76b289fa421131d979ced2023baef71efae87c4902b82ba9f324626f2",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            },
+            {
+              "id": "76f503237d9fa3c3f97ec82f8d56a55a9f6f8934b0278de18be3d1116a4fa7cc",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            },
+            {
+              "id": "520f64482fa6178334013f0413781588aee8adbdd1d9d665bc7b4595e2356780",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            }
+          ]
+        },
+        {
+          "id": "h05",
+          "query": "An updated knowledge index failed publication. Can old investigations still use the previous guidance?",
+          "relevant": [
+            {
+              "document": "configuration-scope",
+              "heading": "Revision reproducibility"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            6.80369800011249,
+            7.126271000743145
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "5cf268b76b289fa421131d979ced2023baef71efae87c4902b82ba9f324626f2",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            },
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "76f503237d9fa3c3f97ec82f8d56a55a9f6f8934b0278de18be3d1116a4fa7cc",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            },
+            {
+              "id": "75afb6005cd1d16101d781d08af0b167ad84240b80cf5a166cccbef972f34481",
+              "document_id": "retry-safety",
+              "heading": "No automatic transaction retries"
+            },
+            {
+              "id": "967f705385e3319f0872c79f3e319ad43f980874541686fd8266c21fa16de8e0",
+              "document_id": "configuration-scope",
+              "heading": "Environment and release"
+            }
+          ]
+        },
+        {
+          "id": "h06",
+          "query": "The source successfully found zero matching rows. Is that equivalent to an unreadable log file?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            7.126894000066386,
+            14.209200000550481
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "00e8c1e7047c2207a76481b1eb9e675182d5cda21ba72569dd679e7b108c7b8b",
+              "document_id": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            },
+            {
+              "id": "2a60941ecadcb8dfc2562524240d7fd5388ff65de2fda9a78b6faba6b7ca6830",
+              "document_id": "source-failures",
+              "heading": "Adapter failure outcomes"
+            },
+            {
+              "id": "520f64482fa6178334013f0413781588aee8adbdd1d9d665bc7b4595e2356780",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "678fad66872b5dcf89bd46b847e3f709c81d4bb92a8caab6882a0c7b20c53db2",
+              "document_id": "source-failures",
+              "heading": "Bounded evidence reads"
+            },
+            {
+              "id": "6076dc76a4a00d9aeeb0837adb40a466e9f7dfdfb7a9d5bf24e092a082504a6e",
+              "document_id": "request-correlation",
+              "heading": "Partial correlation"
+            }
+          ]
+        },
+        {
+          "id": "h07",
+          "query": "The logs rotated and results are truncated. Do we have a complete history of the incident?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Retention and truncated evidence"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            10.090417000355956,
+            11.47840100020403
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "8326eed552a0ce9f159bb5a0f79c667f347d3e4a63d66c241aa5fbcb8083537d",
+              "document_id": "missing-evidence",
+              "heading": "Retention and truncated evidence"
+            },
+            {
+              "id": "00e8c1e7047c2207a76481b1eb9e675182d5cda21ba72569dd679e7b108c7b8b",
+              "document_id": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            },
+            {
+              "id": "2a60941ecadcb8dfc2562524240d7fd5388ff65de2fda9a78b6faba6b7ca6830",
+              "document_id": "source-failures",
+              "heading": "Adapter failure outcomes"
+            },
+            {
+              "id": "678fad66872b5dcf89bd46b847e3f709c81d4bb92a8caab6882a0c7b20c53db2",
+              "document_id": "source-failures",
+              "heading": "Bounded evidence reads"
+            },
+            {
+              "id": "f2db4fbaa5f8028e1a1f539183c67d257f36e851d97430079fdffa524b74506c",
+              "document_id": "release-correlation",
+              "heading": "Missing deployment history"
+            }
+          ]
+        },
+        {
+          "id": "h08",
+          "query": "The available records cannot distinguish competing explanations. What should the report say?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "document": "retry-safety",
+              "heading": "Guidance is not evidence"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 0.9197207891481876
+          },
+          "latencies_ms": [
+            11.204937000002246,
+            10.556115000326827
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "520f64482fa6178334013f0413781588aee8adbdd1d9d665bc7b4595e2356780",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "8326eed552a0ce9f159bb5a0f79c667f347d3e4a63d66c241aa5fbcb8083537d",
+              "document_id": "missing-evidence",
+              "heading": "Retention and truncated evidence"
+            },
+            {
+              "id": "76f503237d9fa3c3f97ec82f8d56a55a9f6f8934b0278de18be3d1116a4fa7cc",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            },
+            {
+              "id": "3fed0c653ac9d051cca160edaddb6dff3424450fbfdc57fefdce21d7162832ea",
+              "document_id": "payment-errors",
+              "heading": "Check impact and recovery"
+            },
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            }
+          ]
+        },
+        {
+          "id": "h09",
+          "query": "Does the nearest passage distance represent a calibrated probability of the cause?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            10.852675000023737,
+            11.30656999976054
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "520f64482fa6178334013f0413781588aee8adbdd1d9d665bc7b4595e2356780",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "83a77ccdc186320ceaf509019af40b7aaf00d9136d4bcb39105898bc9d69ff2d",
+              "document_id": "network-timeouts",
+              "heading": "Response failure versus transport failure"
+            },
+            {
+              "id": "3fed0c653ac9d051cca160edaddb6dff3424450fbfdc57fefdce21d7162832ea",
+              "document_id": "payment-errors",
+              "heading": "Check impact and recovery"
+            },
+            {
+              "id": "a3f24680946cd58b6db8d74b266bf29da231c597685c0476491121467cb85b76",
+              "document_id": "network-timeouts",
+              "heading": "Read-only follow-up"
+            },
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            }
+          ]
+        },
+        {
+          "id": "h10",
+          "query": "Health returns OK while charge requests fail. Are those observations contradictory?",
+          "relevant": [
+            {
+              "document": "health-semantics",
+              "heading": "A reachable process can reject work"
+            },
+            {
+              "document": "payment-errors",
+              "heading": "Competing explanations"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 0.5,
+            "ndcg_at_5": 0.6240505200038379
+          },
+          "latencies_ms": [
+            9.592375000465836,
+            10.480583000571642
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "6ab23c669cc472f517e68d411c386eda0ab56325f27d4b8bd6d4775dda8739c8",
+              "document_id": "health-semantics",
+              "heading": "Observed recovery"
+            },
+            {
+              "id": "b68ffabb7a602754946830e25f0ad8c7b5925ec8de76fa20801fad87b12a53b5",
+              "document_id": "health-semantics",
+              "heading": "A reachable process can reject work"
+            },
+            {
+              "id": "3fed0c653ac9d051cca160edaddb6dff3424450fbfdc57fefdce21d7162832ea",
+              "document_id": "payment-errors",
+              "heading": "Check impact and recovery"
+            },
+            {
+              "id": "00e8c1e7047c2207a76481b1eb9e675182d5cda21ba72569dd679e7b108c7b8b",
+              "document_id": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            },
+            {
+              "id": "b3dc8dc719e6d695881f08525745371732970ae5032ac36819ac6ec315257f3e",
+              "document_id": "payment-errors",
+              "heading": "Competing explanations"
+            }
+          ]
+        },
+        {
+          "id": "h11",
+          "query": "One request succeeds after the incident. Does that establish availability throughout the earlier window?",
+          "relevant": [
+            {
+              "document": "health-semantics",
+              "heading": "Observed recovery"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            12.800293000509555,
+            10.354243000620045
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "6ab23c669cc472f517e68d411c386eda0ab56325f27d4b8bd6d4775dda8739c8",
+              "document_id": "health-semantics",
+              "heading": "Observed recovery"
+            },
+            {
+              "id": "b68ffabb7a602754946830e25f0ad8c7b5925ec8de76fa20801fad87b12a53b5",
+              "document_id": "health-semantics",
+              "heading": "A reachable process can reject work"
+            },
+            {
+              "id": "7d430787da68e28e23f21ed7698378d851ad867f3787fae7609379e54c0cdf40",
+              "document_id": "network-timeouts",
+              "heading": "Bounded requests"
+            },
+            {
+              "id": "678fad66872b5dcf89bd46b847e3f709c81d4bb92a8caab6882a0c7b20c53db2",
+              "document_id": "source-failures",
+              "heading": "Bounded evidence reads"
+            },
+            {
+              "id": "2a60941ecadcb8dfc2562524240d7fd5388ff65de2fda9a78b6faba6b7ca6830",
+              "document_id": "source-failures",
+              "heading": "Adapter failure outcomes"
+            }
+          ]
+        },
+        {
+          "id": "h12",
+          "query": "Does a later successful business operation reveal why an earlier operation was rejected?",
+          "relevant": [
+            {
+              "document": "health-semantics",
+              "heading": "Observed recovery"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 0.5,
+            "ndcg_at_5": 0.6309297535714575
+          },
+          "latencies_ms": [
+            6.91164599993499,
+            6.617134999942209
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "b68ffabb7a602754946830e25f0ad8c7b5925ec8de76fa20801fad87b12a53b5",
+              "document_id": "health-semantics",
+              "heading": "A reachable process can reject work"
+            },
+            {
+              "id": "6ab23c669cc472f517e68d411c386eda0ab56325f27d4b8bd6d4775dda8739c8",
+              "document_id": "health-semantics",
+              "heading": "Observed recovery"
+            },
+            {
+              "id": "5cf268b76b289fa421131d979ced2023baef71efae87c4902b82ba9f324626f2",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            },
+            {
+              "id": "76f503237d9fa3c3f97ec82f8d56a55a9f6f8934b0278de18be3d1116a4fa7cc",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            },
+            {
+              "id": "678fad66872b5dcf89bd46b847e3f709c81d4bb92a8caab6882a0c7b20c53db2",
+              "document_id": "source-failures",
+              "heading": "Bounded evidence reads"
+            }
+          ]
+        },
+        {
+          "id": "h13",
+          "query": "May the investigator restart a service or repeat a charge suggested by a runbook?",
+          "relevant": [
+            {
+              "document": "retry-safety",
+              "heading": "No automatic transaction retries"
+            },
+            {
+              "document": "checkout-downstream",
+              "heading": "Verification and limits"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 0.8503449055347546
+          },
+          "latencies_ms": [
+            7.618761999765411,
+            7.815713999661966
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "75afb6005cd1d16101d781d08af0b167ad84240b80cf5a166cccbef972f34481",
+              "document_id": "retry-safety",
+              "heading": "No automatic transaction retries"
+            },
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "76f503237d9fa3c3f97ec82f8d56a55a9f6f8934b0278de18be3d1116a4fa7cc",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            },
+            {
+              "id": "520f64482fa6178334013f0413781588aee8adbdd1d9d665bc7b4595e2356780",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "8a263bd4e1fdcfce89c1b4e5f79e8cdd46072f1e27049c80c652fae5269fcecc",
+              "document_id": "checkout-downstream",
+              "heading": "Verification and limits"
+            }
+          ]
+        },
+        {
+          "id": "h14",
+          "query": "Can a relevant procedure itself prove the current incident is caused by that procedure's failure mode?",
+          "relevant": [
+            {
+              "document": "retry-safety",
+              "heading": "Guidance is not evidence"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            7.961607000652293,
+            8.108809999612276
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "76f503237d9fa3c3f97ec82f8d56a55a9f6f8934b0278de18be3d1116a4fa7cc",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence"
+            },
+            {
+              "id": "520f64482fa6178334013f0413781588aee8adbdd1d9d665bc7b4595e2356780",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "6ab23c669cc472f517e68d411c386eda0ab56325f27d4b8bd6d4775dda8739c8",
+              "document_id": "health-semantics",
+              "heading": "Observed recovery"
+            },
+            {
+              "id": "83a77ccdc186320ceaf509019af40b7aaf00d9136d4bcb39105898bc9d69ff2d",
+              "document_id": "network-timeouts",
+              "heading": "Response failure versus transport failure"
+            },
+            {
+              "id": "3fed0c653ac9d051cca160edaddb6dff3424450fbfdc57fefdce21d7162832ea",
+              "document_id": "payment-errors",
+              "heading": "Check impact and recovery"
+            }
+          ]
+        },
+        {
+          "id": "h15",
+          "query": "Does semantic similarity make staging guidance applicable to a local release?",
+          "relevant": [
+            {
+              "document": "configuration-scope",
+              "heading": "Environment and release"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            7.1169549992191605,
+            7.089405999977316
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "967f705385e3319f0872c79f3e319ad43f980874541686fd8266c21fa16de8e0",
+              "document_id": "configuration-scope",
+              "heading": "Environment and release"
+            },
+            {
+              "id": "5cf268b76b289fa421131d979ced2023baef71efae87c4902b82ba9f324626f2",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            },
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "f2db4fbaa5f8028e1a1f539183c67d257f36e851d97430079fdffa524b74506c",
+              "document_id": "release-correlation",
+              "heading": "Missing deployment history"
+            },
+            {
+              "id": "6a3284d5b1c2a80ff9b8dc6291731ba03d119260e0327a33fc640726f4637e96",
+              "document_id": "service-map",
+              "heading": "Supported architecture"
+            }
+          ]
+        },
+        {
+          "id": "h16",
+          "query": "What fraud scoring weights and chargeback dispute SLA does the merchant use?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": false
+          },
+          "latencies_ms": [
+            11.035147999791661,
+            10.324545000003127
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "id": "512c356f40f978515a09527059a0e0420d8bd76fbc82bcbaa527b5bfda116ae5",
+              "document_id": "service-map",
+              "heading": "Request correlation"
+            },
+            {
+              "id": "373a85fba2dc5fe99d558c7d5840d9552aa72c725a4e056f8385ed16817890bd",
+              "document_id": "request-correlation",
+              "heading": "Joining observations"
+            },
+            {
+              "id": "520f64482fa6178334013f0413781588aee8adbdd1d9d665bc7b4595e2356780",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "id": "5cf268b76b289fa421131d979ced2023baef71efae87c4902b82ba9f324626f2",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility"
+            }
+          ]
+        },
+        {
+          "id": "h17",
+          "query": "Explain the loyalty point expiry and customer membership upgrade algorithm",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": false
+          },
+          "latencies_ms": [
+            8.811040999717079,
+            10.56645600056072
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "6a3284d5b1c2a80ff9b8dc6291731ba03d119260e0327a33fc640726f4637e96",
+              "document_id": "service-map",
+              "heading": "Supported architecture"
+            }
+          ]
+        },
+        {
+          "id": "h18",
+          "query": "Which seasonal demand forecast determines automated supplier purchase orders?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": false
+          },
+          "latencies_ms": [
+            10.453953000251204,
+            8.943519000240485
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "678fad66872b5dcf89bd46b847e3f709c81d4bb92a8caab6882a0c7b20c53db2",
+              "document_id": "source-failures",
+              "heading": "Bounded evidence reads"
+            },
+            {
+              "id": "7282cbd68b40bf62dae77d2bfd2f6aa0c9a4de4d2aed099c9b57333e634b433f",
+              "document_id": "inventory-errors",
+              "heading": "Inventory is checked before payment"
+            },
+            {
+              "id": "512c356f40f978515a09527059a0e0420d8bd76fbc82bcbaa527b5bfda116ae5",
+              "document_id": "service-map",
+              "heading": "Request correlation"
+            },
+            {
+              "id": "6a3284d5b1c2a80ff9b8dc6291731ba03d119260e0327a33fc640726f4637e96",
+              "document_id": "service-map",
+              "heading": "Supported architecture"
+            },
+            {
+              "id": "c866b3f660527de90ddfbd684f0c10b476b0e2cf6ac9aede61dab4d200736414",
+              "document_id": "release-correlation",
+              "heading": "Timing is not causation"
+            }
+          ]
+        },
+        {
+          "id": "h19",
+          "query": "How do we correlate payment errors?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": true
+          },
+          "latencies_ms": [
+            7.827937000001839,
+            8.358631000191963
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": []
+        },
+        {
+          "id": "h20",
+          "query": "How should checkout bad gateway be investigated?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": true
+          },
+          "latencies_ms": [
+            9.496363000835117,
+            8.390202000555291
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": []
+        }
+      ]
+    },
+    "rerank": {
+      "summary": {
+        "recall_at_5": 0.7666666666666667,
+        "mrr_at_5": 0.8333333333333334,
+        "ndcg_at_5": 0.7742098128510305,
+        "no_answer_abstention": 1,
+        "p50_ms": 215.34388600002785,
+        "p95_ms": 348.41121599947655,
+        "answerable_cases": 15,
+        "no_answer_cases": 5
+      },
+      "cases": [
+        {
+          "id": "h01",
+          "query": "An error began around the release. Is the deployment definitely responsible?",
+          "relevant": [
+            {
+              "document": "release-correlation",
+              "heading": "Timing is not causation"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            285.9036429999833,
+            247.79127099918696
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "c866b3f660527de90ddfbd684f0c10b476b0e2cf6ac9aede61dab4d200736414",
+              "document_id": "release-correlation",
+              "heading": "Timing is not causation",
+              "rerank_score": 3.6340742111206055
+            }
+          ]
+        },
+        {
+          "id": "h02",
+          "query": "Can we produce a verified deployment timeline from these tools?",
+          "relevant": [
+            {
+              "document": "release-correlation",
+              "heading": "Missing deployment history"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            86.25008699982573,
+            80.1675669999895
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "f2db4fbaa5f8028e1a1f539183c67d257f36e851d97430079fdffa524b74506c",
+              "document_id": "release-correlation",
+              "heading": "Missing deployment history",
+              "rerank_score": 3.976942539215088
+            }
+          ]
+        },
+        {
+          "id": "h03",
+          "query": "Could an old architecture note send us to a dependency that no longer exists?",
+          "relevant": [
+            {
+              "document": "release-correlation",
+              "heading": "Applicability of guidance"
+            },
+            {
+              "document": "configuration-scope",
+              "heading": "Environment and release"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.5,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 0.6131471927654584
+          },
+          "latencies_ms": [
+            184.08147699938127,
+            234.869276999234
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "14e985136e757eb64fb9955a957f638988437947c759c30714ccc905f5e5063b",
+              "document_id": "release-correlation",
+              "heading": "Applicability of guidance",
+              "rerank_score": 3.5993266105651855
+            }
+          ]
+        },
+        {
+          "id": "h04",
+          "query": "If the runbook index changes halfway through an investigation what should happen to its references?",
+          "relevant": [
+            {
+              "document": "configuration-scope",
+              "heading": "Revision reproducibility"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.0,
+            "mrr_at_5": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "latencies_ms": [
+            133.00682099998085,
+            135.25028399999428
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": []
+        },
+        {
+          "id": "h05",
+          "query": "An updated knowledge index failed publication. Can old investigations still use the previous guidance?",
+          "relevant": [
+            {
+              "document": "configuration-scope",
+              "heading": "Revision reproducibility"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            216.76963599929877,
+            215.4596420004964
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "5cf268b76b289fa421131d979ced2023baef71efae87c4902b82ba9f324626f2",
+              "document_id": "configuration-scope",
+              "heading": "Revision reproducibility",
+              "rerank_score": 7.351584434509277
+            }
+          ]
+        },
+        {
+          "id": "h06",
+          "query": "The source successfully found zero matching rows. Is that equivalent to an unreadable log file?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Empty results versus unavailable sources"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            216.1657770002421,
+            276.0621170000377
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "00e8c1e7047c2207a76481b1eb9e675182d5cda21ba72569dd679e7b108c7b8b",
+              "document_id": "missing-evidence",
+              "heading": "Empty results versus unavailable sources",
+              "rerank_score": 5.832746505737305
+            }
+          ]
+        },
+        {
+          "id": "h07",
+          "query": "The logs rotated and results are truncated. Do we have a complete history of the incident?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Retention and truncated evidence"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            283.8835980001022,
+            316.768312000022
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "8326eed552a0ce9f159bb5a0f79c667f347d3e4a63d66c241aa5fbcb8083537d",
+              "document_id": "missing-evidence",
+              "heading": "Retention and truncated evidence",
+              "rerank_score": 6.914013862609863
+            }
+          ]
+        },
+        {
+          "id": "h08",
+          "query": "The available records cannot distinguish competing explanations. What should the report say?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            },
+            {
+              "document": "retry-safety",
+              "heading": "Guidance is not evidence"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.5,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 0.6131471927654584
+          },
+          "latencies_ms": [
+            279.7270569999455,
+            245.16928899993218
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "520f64482fa6178334013f0413781588aee8adbdd1d9d665bc7b4595e2356780",
+              "document_id": "missing-evidence",
+              "heading": "Abstain when support is missing",
+              "rerank_score": 3.546804904937744
+            }
+          ]
+        },
+        {
+          "id": "h09",
+          "query": "Does the nearest passage distance represent a calibrated probability of the cause?",
+          "relevant": [
+            {
+              "document": "missing-evidence",
+              "heading": "Abstain when support is missing"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.0,
+            "mrr_at_5": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "latencies_ms": [
+            129.9557709999135,
+            129.66994599992177
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": []
+        },
+        {
+          "id": "h10",
+          "query": "Health returns OK while charge requests fail. Are those observations contradictory?",
+          "relevant": [
+            {
+              "document": "health-semantics",
+              "heading": "A reachable process can reject work"
+            },
+            {
+              "document": "payment-errors",
+              "heading": "Competing explanations"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 0.5,
+            "mrr_at_5": 0.5,
+            "ndcg_at_5": 0.38685280723454163
+          },
+          "latencies_ms": [
+            315.944773999945,
+            288.5974159999023
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "6ab23c669cc472f517e68d411c386eda0ab56325f27d4b8bd6d4775dda8739c8",
+              "document_id": "health-semantics",
+              "heading": "Observed recovery",
+              "rerank_score": 2.139556646347046
+            },
+            {
+              "id": "b3dc8dc719e6d695881f08525745371732970ae5032ac36819ac6ec315257f3e",
+              "document_id": "payment-errors",
+              "heading": "Competing explanations",
+              "rerank_score": 0.26730185747146606
+            }
+          ]
+        },
+        {
+          "id": "h11",
+          "query": "One request succeeds after the incident. Does that establish availability throughout the earlier window?",
+          "relevant": [
+            {
+              "document": "health-semantics",
+              "heading": "Observed recovery"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            373.08541600032186,
+            361.83382499984873
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "6ab23c669cc472f517e68d411c386eda0ab56325f27d4b8bd6d4775dda8739c8",
+              "document_id": "health-semantics",
+              "heading": "Observed recovery",
+              "rerank_score": 4.23639440536499
+            },
+            {
+              "id": "b68ffabb7a602754946830e25f0ad8c7b5925ec8de76fa20801fad87b12a53b5",
+              "document_id": "health-semantics",
+              "heading": "A reachable process can reject work",
+              "rerank_score": 1.0821154117584229
+            }
+          ]
+        },
+        {
+          "id": "h12",
+          "query": "Does a later successful business operation reveal why an earlier operation was rejected?",
+          "relevant": [
+            {
+              "document": "health-semantics",
+              "heading": "Observed recovery"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            237.06836299970746,
+            230.95266400014225
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "6ab23c669cc472f517e68d411c386eda0ab56325f27d4b8bd6d4775dda8739c8",
+              "document_id": "health-semantics",
+              "heading": "Observed recovery",
+              "rerank_score": 4.254598617553711
+            }
+          ]
+        },
+        {
+          "id": "h13",
+          "query": "May the investigator restart a service or repeat a charge suggested by a runbook?",
+          "relevant": [
+            {
+              "document": "retry-safety",
+              "heading": "No automatic transaction retries"
+            },
+            {
+              "document": "checkout-downstream",
+              "heading": "Verification and limits"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            214.88753099947644,
+            215.22812999955931
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "75afb6005cd1d16101d781d08af0b167ad84240b80cf5a166cccbef972f34481",
+              "document_id": "retry-safety",
+              "heading": "No automatic transaction retries",
+              "rerank_score": 3.1979899406433105
+            },
+            {
+              "id": "8a263bd4e1fdcfce89c1b4e5f79e8cdd46072f1e27049c80c652fae5269fcecc",
+              "document_id": "checkout-downstream",
+              "heading": "Verification and limits",
+              "rerank_score": 1.3370661735534668
+            }
+          ]
+        },
+        {
+          "id": "h14",
+          "query": "Can a relevant procedure itself prove the current incident is caused by that procedure's failure mode?",
+          "relevant": [
+            {
+              "document": "retry-safety",
+              "heading": "Guidance is not evidence"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            269.4275170006222,
+            348.41121599947655
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "76f503237d9fa3c3f97ec82f8d56a55a9f6f8934b0278de18be3d1116a4fa7cc",
+              "document_id": "retry-safety",
+              "heading": "Guidance is not evidence",
+              "rerank_score": 2.3510055541992188
+            }
+          ]
+        },
+        {
+          "id": "h15",
+          "query": "Does semantic similarity make staging guidance applicable to a local release?",
+          "relevant": [
+            {
+              "document": "configuration-scope",
+              "heading": "Environment and release"
+            }
+          ],
+          "metrics": {
+            "answerable": true,
+            "recall_at_5": 1.0,
+            "mrr_at_5": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "latencies_ms": [
+            171.99592900033167,
+            240.63464800019574
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": [
+            {
+              "id": "967f705385e3319f0872c79f3e319ad43f980874541686fd8266c21fa16de8e0",
+              "document_id": "configuration-scope",
+              "heading": "Environment and release",
+              "rerank_score": 1.0301638841629028
+            }
+          ]
+        },
+        {
+          "id": "h16",
+          "query": "What fraud scoring weights and chargeback dispute SLA does the merchant use?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": true
+          },
+          "latencies_ms": [
+            189.3912770001407,
+            170.87771600017732
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": []
+        },
+        {
+          "id": "h17",
+          "query": "Explain the loyalty point expiry and customer membership upgrade algorithm",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": true
+          },
+          "latencies_ms": [
+            62.84551699991425,
+            47.142907999841555
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": []
+        },
+        {
+          "id": "h18",
+          "query": "Which seasonal demand forecast determines automated supplier purchase orders?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": true
+          },
+          "latencies_ms": [
+            106.21953200006828,
+            121.16246500045236
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": []
+        },
+        {
+          "id": "h19",
+          "query": "How do we correlate payment errors?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": true
+          },
+          "latencies_ms": [
+            10.515736000343168,
+            12.617517000762746
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": []
+        },
+        {
+          "id": "h20",
+          "query": "How should checkout bad gateway be investigated?",
+          "relevant": [],
+          "metrics": {
+            "answerable": false,
+            "abstained": true
+          },
+          "latencies_ms": [
+            9.136094000496087,
+            8.346153999809758
+          ],
+          "revision": "a79f7540cc208401f22a2b49357c9cfec2fb3977f8010dfc3a16adfd3de85139",
+          "hits": []
+        }
+      ]
+    }
+  },
+  "all_context": [
+    {
+      "id": "h01",
+      "passages": 27,
+      "context_tokens": 1722,
+      "available_relevance_coverage": 1.0
+    },
+    {
+      "id": "h02",
+      "passages": 27,
+      "context_tokens": 1722,
+      "available_relevance_coverage": 1.0
+    },
+    {
+      "id": "h03",
+      "passages": 25,
+      "context_tokens": 1596,
+      "available_relevance_coverage": 1.0
+    },
+    {
+      "id": "h04",
+      "passages": 27,
+      "context_tokens": 1722,
+      "available_relevance_coverage": 1.0
+    },
+    {
+      "id": "h05",
+      "passages": 25,
+      "context_tokens": 1596,
+      "available_relevance_coverage": 1.0
+    },
+    {
+      "id": "h06",
+      "passages": 24,
+      "context_tokens": 1509,
+      "available_relevance_coverage": 1.0
+    },
+    {
+      "id": "h07",
+      "passages": 27,
+      "context_tokens": 1722,
+      "available_relevance_coverage": 1.0
+    },
+    {
+      "id": "h08",
+      "passages": 25,
+      "context_tokens": 1596,
+      "available_relevance_coverage": 1.0
+    },
+    {
+      "id": "h09",
+      "passages": 25,
+      "context_tokens": 1596,
+      "available_relevance_coverage": 1.0
+    },
+    {
+      "id": "h10",
+      "passages": 25,
+      "context_tokens": 1596,
+      "available_relevance_coverage": 1.0
+    },
+    {
+      "id": "h11",
+      "passages": 27,
+      "context_tokens": 1722,
+      "available_relevance_coverage": 1.0
+    },
+    {
+      "id": "h12",
+      "passages": 25,
+      "context_tokens": 1596,
+      "available_relevance_coverage": 1.0
+    },
+    {
+      "id": "h13",
+      "passages": 27,
+      "context_tokens": 1722,
+      "available_relevance_coverage": 1.0
+    },
+    {
+      "id": "h14",
+      "passages": 25,
+      "context_tokens": 1596,
+      "available_relevance_coverage": 1.0
+    },
+    {
+      "id": "h15",
+      "passages": 27,
+      "context_tokens": 1722,
+      "available_relevance_coverage": 1.0
+    },
+    {
+      "id": "h16",
+      "passages": 25,
+      "context_tokens": 1596,
+      "available_relevance_coverage": null
+    },
+    {
+      "id": "h17",
+      "passages": 27,
+      "context_tokens": 1722,
+      "available_relevance_coverage": null
+    },
+    {
+      "id": "h18",
+      "passages": 24,
+      "context_tokens": 1509,
+      "available_relevance_coverage": null
+    },
+    {
+      "id": "h19",
+      "passages": 0,
+      "context_tokens": 0,
+      "available_relevance_coverage": null
+    },
+    {
+      "id": "h20",
+      "passages": 0,
+      "context_tokens": 0,
+      "available_relevance_coverage": null
+    }
+  ],
+  "selected_profile": "improved"
+}

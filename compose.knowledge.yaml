@@ -1,0 +1,36 @@
+services:
+  knowledge-index:
+    build: &knowledge-build
+      context: .
+      dockerfile: infra/Dockerfile
+      target: retrieval
+    environment: &knowledge-runtime
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-investigator}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-investigator}
+      KNOWLEDGE_ENABLED: '1'
+      KNOWLEDGE_MODEL_DIR: /models/minilm
+      HF_HUB_OFFLINE: '1'
+    command: [python, -m, investigator.knowledge.cli, ingest]
+    volumes: &knowledge-volumes
+      - ./data/embeddings/minilm:/models/minilm:ro
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    mem_limit: 512m
+
+  api:
+    mem_limit: 768m
+    build: *knowledge-build
+    environment: *knowledge-runtime
+    volumes: *knowledge-volumes
+    depends_on:
+      knowledge-index:
+        condition: service_completed_successfully
+
+  worker:
+    mem_limit: 768m
+    build: *knowledge-build
+    environment: *knowledge-runtime
+    volumes: *knowledge-volumes
+    depends_on:
+      knowledge-index:
+        condition: service_completed_successfully

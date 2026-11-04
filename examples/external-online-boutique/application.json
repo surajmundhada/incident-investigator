@@ -1,0 +1,25 @@
+{
+  "application": "external-online-boutique",
+  "environment": "staging",
+  "release": "rcaeval-re2",
+  "services": {
+    "adservice": {
+      "dependencies": []
+    },
+    "cartservice": {
+      "dependencies": []
+    },
+    "currencyservice": {
+      "dependencies": []
+    },
+    "frontend": {
+      "dependencies": []
+    },
+    "recommendationservice": {
+      "dependencies": []
+    },
+    "shippingservice": {
+      "dependencies": []
+    }
+  }
+}

@@ -1,0 +1,273 @@
+[
+  {
+    "id": "h01",
+    "family": "deployment-causality",
+    "query": "An error began around the release. Is the deployment definitely responsible?",
+    "service": "checkout",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "release-correlation",
+        "heading": "Timing is not causation"
+      }
+    ]
+  },
+  {
+    "id": "h02",
+    "family": "deployment-history",
+    "query": "Can we produce a verified deployment timeline from these tools?",
+    "service": "checkout",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "release-correlation",
+        "heading": "Missing deployment history"
+      }
+    ]
+  },
+  {
+    "id": "h03",
+    "family": "old-guidance",
+    "query": "Could an old architecture note send us to a dependency that no longer exists?",
+    "service": "payment",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "release-correlation",
+        "heading": "Applicability of guidance"
+      },
+      {
+        "document": "configuration-scope",
+        "heading": "Environment and release"
+      }
+    ]
+  },
+  {
+    "id": "h04",
+    "family": "corpus-update",
+    "query": "If the runbook index changes halfway through an investigation what should happen to its references?",
+    "service": "checkout",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "configuration-scope",
+        "heading": "Revision reproducibility"
+      }
+    ]
+  },
+  {
+    "id": "h05",
+    "family": "corpus-failure",
+    "query": "An updated knowledge index failed publication. Can old investigations still use the previous guidance?",
+    "service": "payment",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "configuration-scope",
+        "heading": "Revision reproducibility"
+      }
+    ]
+  },
+  {
+    "id": "h06",
+    "family": "empty-versus-missing",
+    "query": "The source successfully found zero matching rows. Is that equivalent to an unreadable log file?",
+    "service": "inventory",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "missing-evidence",
+        "heading": "Empty results versus unavailable sources"
+      }
+    ]
+  },
+  {
+    "id": "h07",
+    "family": "retention",
+    "query": "The logs rotated and results are truncated. Do we have a complete history of the incident?",
+    "service": "checkout",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "missing-evidence",
+        "heading": "Retention and truncated evidence"
+      }
+    ]
+  },
+  {
+    "id": "h08",
+    "family": "causal-abstention",
+    "query": "The available records cannot distinguish competing explanations. What should the report say?",
+    "service": "payment",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "missing-evidence",
+        "heading": "Abstain when support is missing"
+      },
+      {
+        "document": "retry-safety",
+        "heading": "Guidance is not evidence"
+      }
+    ]
+  },
+  {
+    "id": "h09",
+    "family": "score-meaning",
+    "query": "Does the nearest passage distance represent a calibrated probability of the cause?",
+    "service": "payment",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "missing-evidence",
+        "heading": "Abstain when support is missing"
+      }
+    ]
+  },
+  {
+    "id": "h10",
+    "family": "liveness",
+    "query": "Health returns OK while charge requests fail. Are those observations contradictory?",
+    "service": "payment",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "health-semantics",
+        "heading": "A reachable process can reject work"
+      },
+      {
+        "document": "payment-errors",
+        "heading": "Competing explanations"
+      }
+    ]
+  },
+  {
+    "id": "h11",
+    "family": "recovery-time",
+    "query": "One request succeeds after the incident. Does that establish availability throughout the earlier window?",
+    "service": "checkout",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "health-semantics",
+        "heading": "Observed recovery"
+      }
+    ]
+  },
+  {
+    "id": "h12",
+    "family": "live-cause-limit",
+    "query": "Does a later successful business operation reveal why an earlier operation was rejected?",
+    "service": "payment",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "health-semantics",
+        "heading": "Observed recovery"
+      }
+    ]
+  },
+  {
+    "id": "h13",
+    "family": "automatic-remediation",
+    "query": "May the investigator restart a service or repeat a charge suggested by a runbook?",
+    "service": "checkout",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "retry-safety",
+        "heading": "No automatic transaction retries"
+      },
+      {
+        "document": "checkout-downstream",
+        "heading": "Verification and limits"
+      }
+    ]
+  },
+  {
+    "id": "h14",
+    "family": "documentation-versus-fact",
+    "query": "Can a relevant procedure itself prove the current incident is caused by that procedure's failure mode?",
+    "service": "payment",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "retry-safety",
+        "heading": "Guidance is not evidence"
+      }
+    ]
+  },
+  {
+    "id": "h15",
+    "family": "scope-preservation",
+    "query": "Does semantic similarity make staging guidance applicable to a local release?",
+    "service": "checkout",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": [
+      {
+        "document": "configuration-scope",
+        "heading": "Environment and release"
+      }
+    ]
+  },
+  {
+    "id": "h16",
+    "family": "fraud-absence",
+    "query": "What fraud scoring weights and chargeback dispute SLA does the merchant use?",
+    "service": "payment",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": []
+  },
+  {
+    "id": "h17",
+    "family": "loyalty-absence",
+    "query": "Explain the loyalty point expiry and customer membership upgrade algorithm",
+    "service": "checkout",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": []
+  },
+  {
+    "id": "h18",
+    "family": "forecast-absence",
+    "query": "Which seasonal demand forecast determines automated supplier purchase orders?",
+    "service": "inventory",
+    "environment": "local",
+    "release": "demo-v1",
+    "relevant": []
+  },
+  {
+    "id": "h19",
+    "family": "wrong-release-filter",
+    "query": "How do we correlate payment errors?",
+    "service": "payment",
+    "environment": "local",
+    "release": "unknown-version",
+    "relevant": []
+  },
+  {
+    "id": "h20",
+    "family": "wrong-environment-filter",
+    "query": "How should checkout bad gateway be investigated?",
+    "service": "checkout",
+    "environment": "production",
+    "release": "demo-v1",
+    "relevant": []
+  }
+]

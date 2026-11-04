@@ -1,0 +1,4 @@
+{"timestamp":"2026-11-03T18:00:10Z","service":"booking-api","level":"INFO","message":"Synthetic example: booking request started","request_id":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"}
+{"timestamp":"2026-11-03T18:00:11Z","service":"availability-api","level":"ERROR","message":"Synthetic example: availability request completed with an error","request_id":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","status_code":503}
+{"timestamp":"2026-11-03T18:00:12Z","service":"booking-api","level":"ERROR","message":"Synthetic example: downstream request failed api_key=example-token-not-real","request_id":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","dependency":"availability-api","status_code":503}
+{"timestamp":"2026-11-03T18:00:13Z","service":"booking-api","level":"ERROR","message":"Synthetic example: booking HTTP request completed","request_id":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","status_code":502}

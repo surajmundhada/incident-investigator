@@ -1,0 +1,15 @@
+# Fresh fixed-evidence pilot and later diagnosis comparison
+
+Freeze before any provider call. This study is separate from the already-seen 40-question RAG study and never overwrites it.
+
+The operator captured 24 real HTTP windows from the controlled synthetic shopping demo, six instances each of healthy traffic, payment unavailability, a payment delay exceeding the caller deadline, and an injected handler failure. Captures include all three services before any investigator query. Eight instances are development and sixteen held out, with fault families shared between splits. These are repeated controlled instances, not 24 independent root-cause families or production incidents. Labels stay in evaluation/diagnosis-v2 and are excluded from application images.
+
+The initial development pilot uses the first four development instances, one per family, with three fixed-evidence methods: logs_only, all_context (all applicable reviewed runbooks), and baseline_rag (production hybrid ranking). Each receives the same complete service logs, reviewed topology, generic question, model, system prompt and output schema. The model can only finish_investigation, so this is a fixed-evidence generation pilot, not a test of production LangGraph durability or active-tool diagnosis. The knowledge revision and source hashes are frozen with the outputs. Do not choose a winner or claim RAG benefit from a four-instance pilot.
+
+Application limits: at most 12 provider starts, 2,048 requested output tokens per call, 32 KB serialized input per call, 384 KB aggregate serialized input and a 100,000 provider-reported token stop. Free-tier confirmation is mandatory. No automatic retries, fallback model, billing upgrade or held-out calls. Stop the whole pilot on provider error, retaining successful outputs, raw returned actions, usage and the stop reason. A crashed/incomplete pilot is not automatically resumed, to avoid repeating an unknown model-call outcome.
+
+Record structural validity, service hypotheses, typed-reference validity, usage and latency. A separate semantic review must check claim support, causality, missing evidence and healthy-case abstention. Valid IDs do not establish faithfulness. Deterministic service matching alone is not root-cause accuracy. Do not report an unsupported-claim or diagnosis-accuracy percentage without completing that review.
+
+Next, freeze a production-workflow replay comparison before consuming the sixteen held-out instances. Compare fixed summary, RAG and RAG with active tools on identical initial evidence and complete replay coverage, including missing-service and stale-runbook ablations. Pin model/prompt/corpus/config/software and choose changes on development data only. Add independently produced incidents before claiming external usefulness.
+
+Resume metrics must name the metric, denominator and workload. Percent-point recall gain is different from relative percent gain. Cache latency and retrieval recall are different from diagnosis quality. Preserve negative results and do not tune on the old held-out questions or the new held-out instances.

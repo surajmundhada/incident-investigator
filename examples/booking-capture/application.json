@@ -1,0 +1,10 @@
+{
+  "application": "booking-example",
+  "environment": "local",
+  "release": "v1",
+  "services": {
+    "booking-api": { "dependencies": ["availability-api", "notification-api"] },
+    "availability-api": { "dependencies": [] },
+    "notification-api": { "dependencies": [] }
+  }
+}

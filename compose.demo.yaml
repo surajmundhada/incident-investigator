@@ -1,0 +1,80 @@
+# Add to compose.yaml. This selects live evidence instead of the fixture profile.
+services:
+  api:
+    environment:
+      EVIDENCE_BASE_URL: http://demo-evidence:8000
+
+  worker:
+    environment:
+      EVIDENCE_BASE_URL: http://demo-evidence:8000
+    networks: [default, observations]
+
+  checkout:
+    build: &demo-build
+      context: .
+      dockerfile: infra/Dockerfile
+      target: base
+    command: [uvicorn, demo_app.service:create_app, --factory, --host, 0.0.0.0, --port, '8000']
+    environment:
+      DEMO_SERVICE: checkout
+    volumes: [demo_telemetry:/telemetry]
+    ports: [127.0.0.1:8002:8000]
+    networks: [targets]
+    healthcheck: &demo-health
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=2)"]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+    depends_on:
+      payment:
+        condition: service_healthy
+      inventory:
+        condition: service_healthy
+    mem_limit: 192m
+
+  payment:
+    build: *demo-build
+    command: [uvicorn, demo_app.service:create_app, --factory, --host, 0.0.0.0, --port, '8000']
+    environment:
+      DEMO_SERVICE: payment
+    volumes: [demo_telemetry:/telemetry, demo_control:/control:ro]
+    networks: [targets]
+    healthcheck: *demo-health
+    mem_limit: 192m
+
+  inventory:
+    build: *demo-build
+    command: [uvicorn, demo_app.service:create_app, --factory, --host, 0.0.0.0, --port, '8000']
+    environment:
+      DEMO_SERVICE: inventory
+    volumes: [demo_telemetry:/telemetry]
+    networks: [targets]
+    healthcheck: *demo-health
+    mem_limit: 192m
+
+  demo-evidence:
+    build: *demo-build
+    command: [uvicorn, demo_app.evidence:create_app, --factory, --host, 0.0.0.0, --port, '8000']
+    volumes: [demo_telemetry:/telemetry:ro]
+    networks: [observations]
+    healthcheck: *demo-health
+    mem_limit: 192m
+
+  fault-controller:
+    build: *demo-build
+    command: [uvicorn, demo_app.control:create_app, --factory, --host, 0.0.0.0, --port, '8000']
+    volumes: [demo_control:/control]
+    ports: [127.0.0.1:8003:8000]
+    networks: [control]
+    healthcheck: *demo-health
+    mem_limit: 128m
+
+networks:
+  targets:
+  observations:
+    internal: true
+  control:
+
+volumes:
+  demo_telemetry:
+  demo_control:

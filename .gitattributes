@@ -1,0 +1,8 @@
+# Reproducible source formatting on Windows and Unix.
+* text=auto eol=lf
+*.png -text
+*.webm -text
+# Preserve frozen evidence bytes and checksum locks without newline conversion.
+evaluation/** -text
+docs/*.json -text
+knowledge/*-lock.json -text

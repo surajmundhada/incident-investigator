@@ -1,0 +1,3254 @@
+{
+  "kind": "exploratory_fixed_evidence_answer_study",
+  "source_hash": "eb06e2a72fcff3b97db45f38667387380cc5dfa84fb3d3823868401451b33221",
+  "knowledge_revision": "c465bb25bbb18b6a51925d24b4afaf99aed5de7fde42fda9df23e6ff05fd74f1",
+  "model": "gemini:gemini-3.5-flash-lite",
+  "limitations": "Selected old observations; four authored questions; same-assistant review; no diagnosis accuracy claim.",
+  "calls_started": 16,
+  "input_bytes": 189244,
+  "reported_tokens": 64449,
+  "results": [
+    {
+      "case": "failure-path",
+      "method": "logs_only",
+      "question": "Describe the observed checkout failure path and distinguish it from why the downstream service became unavailable.",
+      "context_passages": 0,
+      "context_evidence": [
+        {
+          "id": "60398daaaf48406f8e5f64798291965d",
+          "tool_call_id": "agent.a32db66b4768a87db8f54fee489abce8307194ef6e305ba3b3b6cc9e6d5fe639",
+          "collected_at": "2026-11-03T19:30:00.365942+00:00",
+          "source": "http_log_adapter",
+          "service": "payment",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.738599Z",
+              "service": "payment",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 503,
+              "duration_ms": 0.13
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live",
+          "request_id_filter": "ff8639897f0b42ec99a2381912e93246"
+        },
+        {
+          "id": "272e94bd6ada4672ade629d4f6aeb61c",
+          "tool_call_id": "logs.v1",
+          "collected_at": "2026-11-03T19:29:57.840532+00:00",
+          "source": "http_log_adapter",
+          "service": "checkout",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.720351Z",
+              "service": "checkout",
+              "level": "INFO",
+              "message": "HTTP request completed",
+              "request_id": "1b9c14aa511449c2a62251cb9fe35d54",
+              "dependency": null,
+              "status_code": 200,
+              "duration_ms": 44.747
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739513Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "Downstream request failed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": "payment",
+              "status_code": 503,
+              "duration_ms": null
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739598Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 502,
+              "duration_ms": 14.106
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live"
+        }
+      ],
+      "request_hash": "1526644900e9d6f5fb4d8525fc47779f6b730b7a7f873bf751dff55252d17d61",
+      "usage": {
+        "input": 2010,
+        "output": 513,
+        "thought": 0,
+        "total": 2523
+      },
+      "served_model_version": "gemini-3.5-flash-lite",
+      "status": "structurally_valid",
+      "report": {
+        "summary": "Checkout received an HTTP 502 due to a downstream failure in the payment service, which returned an HTTP 503. The underlying reason for the payment service unavailability cannot be established from the available generic status codes.",
+        "observations": [
+          {
+            "text": "Checkout encountered a downstream request failure when calling the payment service (request ID ff8639897f0b42ec99a2381912e93246), resulting in an HTTP 502 response.",
+            "references": [
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              },
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 2
+              }
+            ]
+          },
+          {
+            "text": "The payment service returned an HTTP 503 error for the corresponding request ID, but the underlying cause cannot be established.",
+            "references": [
+              {
+                "evidence_id": "60398daaaf48406f8e5f64798291965d",
+                "record_index": 0
+              }
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "explanation": "Checkout returned HTTP 502 because its downstream dependency payment returned an HTTP 503 error, but the underlying cause of the payment service failure cannot be established from the generic 503 status.",
+            "service": "checkout",
+            "supporting": [
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              },
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 2
+              },
+              {
+                "evidence_id": "60398daaaf48406f8e5f64798291965d",
+                "record_index": 0
+              }
+            ],
+            "contradicting": []
+          }
+        ],
+        "runbook_references": [],
+        "missing_evidence": [
+          "Root cause logs inside the payment service"
+        ],
+        "suggested_checks": [
+          "Inspect payment service internal error logs or metrics for the 503 response"
+        ],
+        "conclusion": "supported_hypothesis"
+      }
+    },
+    {
+      "case": "failure-path",
+      "method": "all_context",
+      "question": "Describe the observed checkout failure path and distinguish it from why the downstream service became unavailable.",
+      "context_passages": 27,
+      "context_evidence": [
+        {
+          "id": "60398daaaf48406f8e5f64798291965d",
+          "tool_call_id": "agent.a32db66b4768a87db8f54fee489abce8307194ef6e305ba3b3b6cc9e6d5fe639",
+          "collected_at": "2026-11-03T19:30:00.365942+00:00",
+          "source": "http_log_adapter",
+          "service": "payment",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.738599Z",
+              "service": "payment",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 503,
+              "duration_ms": 0.13
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live",
+          "request_id_filter": "ff8639897f0b42ec99a2381912e93246"
+        },
+        {
+          "id": "272e94bd6ada4672ade629d4f6aeb61c",
+          "tool_call_id": "logs.v1",
+          "collected_at": "2026-11-03T19:29:57.840532+00:00",
+          "source": "http_log_adapter",
+          "service": "checkout",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.720351Z",
+              "service": "checkout",
+              "level": "INFO",
+              "message": "HTTP request completed",
+              "request_id": "1b9c14aa511449c2a62251cb9fe35d54",
+              "dependency": null,
+              "status_code": 200,
+              "duration_ms": 44.747
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739513Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "Downstream request failed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": "payment",
+              "status_code": 503,
+              "duration_ms": null
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739598Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 502,
+              "duration_ms": 14.106
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live"
+        },
+        {
+          "id": "f1714c29ed9f587db0c935a70781f983",
+          "source": "versioned_runbooks",
+          "availability": "available",
+          "revision": "c465bb25bbb18b6a51925d24b4afaf99aed5de7fde42fda9df23e6ff05fd74f1",
+          "hits": [
+            {
+              "id": "bb6db4a9d174039634aa89f8c81ef2acc408d93c57f4f30099f712919cd708af",
+              "document_id": "checkout-downstream",
+              "title": "Checkout downstream errors and bad gateway responses",
+              "heading": "HTTP 502 from checkout",
+              "body": "A checkout bad gateway response means a downstream call failed or could not complete. Inspect the ERROR record for its dependency field. Payment dependency and downstream status 503 support a failed payment boundary. Checkout status alone cannot distinguish payment from inventory failure or a network timeout."
+            },
+            {
+              "id": "643de0d56d1935fa425a821e61a3e6c4c675a86904db3537004dca2c11f87c86",
+              "document_id": "checkout-downstream",
+              "title": "Checkout downstream errors and bad gateway responses",
+              "heading": "Follow the failing dependency",
+              "body": "Use the checkout request ID and incident window to inspect the named dependency's logs. Compare its HTTP status with the caller's downstream error. Successful neighboring requests are counterevidence to a continuous outage. Missing downstream records may mean unavailable telemetry, transport failure, or a mismatched time window."
+            },
+            {
+              "id": "f3e63171d6de37ab1fd42436ab5d838cf5d62bd58d363151ff00385c0ed0c4f2",
+              "document_id": "checkout-downstream",
+              "title": "Checkout downstream errors and bad gateway responses",
+              "heading": "Verification and limits",
+              "body": "Read-only verification compares both sides of the request with the applicable service map. Do not restart services, change settings, or retry a real payment merely because a runbook suggests a hypothesis. Recovery after an operator action establishes observed recovery, not proof of the original cause."
+            },
+            {
+              "id": "d6d458723196761b7be842a2824b781fcc35a689cc41debfa8195a924867fbd4",
+              "document_id": "configuration-scope",
+              "title": "Applicability of versioned operational guidance",
+              "heading": "Environment and release",
+              "body": "Choose guidance for the incident environment and release, retaining applicable global guidance. A staging or archived release procedure can describe different dependencies. Similar words do not override applicability metadata."
+            },
+            {
+              "id": "11f915631f52f99c33c8779fcb9c009ad0e13ff1c06c0a420a5f60db186e76da",
+              "document_id": "configuration-scope",
+              "title": "Applicability of versioned operational guidance",
+              "heading": "Revision reproducibility",
+              "body": "Preserve the knowledge revision and immutable passage references used by an investigation. Publishing a new index must not rewrite old citations or silently change follow-up retrieval in an ongoing investigation. A failed publication leaves the previous corpus usable."
+            },
+            {
+              "id": "b7ccd3e78db5c9663511965cebd18f42845bc6291a1a9bca5bb9075e1e8d3ab5",
+              "document_id": "health-semantics",
+              "title": "Process liveness versus business availability",
+              "heading": "A reachable process can reject work",
+              "body": "A successful health endpoint establishes that the service process responded. It does not establish that payment charge requests or inventory business requests succeeded. Compare business request status and correlated caller logs before claiming recovery or availability."
+            },
+            {
+              "id": "93a2e2c79d29f87d2dee8233a45ae57b07908264385bd55cce7b85b2ff976143",
+              "document_id": "health-semantics",
+              "title": "Process liveness versus business availability",
+              "heading": "Observed recovery",
+              "body": "A later business request returning HTTP 200 demonstrates recovery for that request at that time. It does not prove service health during an earlier incident or reveal why the earlier request failed. Avoid extending one observation into a continuous availability claim."
+            },
+            {
+              "id": "dcc2ddf90013b663b3a4706496ea1b6b13dc21b6258dc2752213b0a502d9b40f",
+              "document_id": "http-validation",
+              "title": "Cart validation and HTTP client errors",
+              "heading": "Invalid carts",
+              "body": "The checkout schema accepts the book item and quantities from one through ten. A missing or invalid field, zero quantity, or quantity eleven is rejected with HTTP 422 before business processing. Extra fields are forbidden. Invalid input is not evidence of a failing dependency."
+            },
+            {
+              "id": "f33733d8335bdec4d7ffb19043f0d74a1336a9bbfc52f771dae600e73d30c412",
+              "document_id": "http-validation",
+              "title": "Cart validation and HTTP client errors",
+              "heading": "Client errors versus dependency failures",
+              "body": "HTTP 422 describes invalid cart input. HTTP 502 describes checkout failing to complete a downstream call. Compare the response, dependency field, and correlated logs. Do not attribute a rejected cart to payment or inventory without observations of those services."
+            },
+            {
+              "id": "60deca27d93233295bad593f80ce64f029f6007ad42870a17e36f9255b89e561",
+              "document_id": "missing-evidence",
+              "title": "Missing logs and insufficient evidence",
+              "heading": "Empty results versus unavailable sources",
+              "body": "A successful query with zero matching records differs from a timeout, unreadable log file, or unavailable service telemetry. Empty results cover only the requested service, time window, and retained data. An unavailable source provides no evidence that requests were healthy."
+            },
+            {
+              "id": "2ed1a5a4f5714782ccf93186e602984f3ab6dbef972fc528dddd4f4ccf75fb88",
+              "document_id": "missing-evidence",
+              "title": "Missing logs and insufficient evidence",
+              "heading": "Retention and truncated evidence",
+              "body": "Local logs rotate and queries return a bounded number of records. Truncated responses may omit relevant errors; older coverage after rotation cannot be guaranteed. Preserve truncation and the query window. Do not describe retained records as a complete incident history."
+            },
+            {
+              "id": "26891eb3e822df9429441cc669fafed65e5c378104c101a2fe3394f98945697c",
+              "document_id": "missing-evidence",
+              "title": "Missing logs and insufficient evidence",
+              "heading": "Abstain when support is missing",
+              "body": "Separate observed facts from possible explanations. A runbook provides general guidance, not a current incident observation. If no available observation distinguishes competing causes, mark the cause inconclusive and suggest permitted read-only checks. A retrieval score is not a calibrated probability."
+            },
+            {
+              "id": "495a203ff99eceb35a56fe7d732a2948fe2b4b1d31a3b3386be5fe50e6739010",
+              "document_id": "network-timeouts",
+              "title": "Dependency timeouts and network reachability",
+              "heading": "Response failure versus transport failure",
+              "body": "A downstream request failed record with an HTTP status means an error response was received. A downstream request unavailable record without a status indicates a transport problem such as timeout, name resolution failure, or refused connection. This generic message does not distinguish those causes. Do not claim an unmeasured timeout duration."
+            },
+            {
+              "id": "8b74f47a16872fc5cfd01cadb59f1081ff12e236eeb08a8458a5a8a51f3d76d5",
+              "document_id": "network-timeouts",
+              "title": "Dependency timeouts and network reachability",
+              "heading": "Bounded requests",
+              "body": "Checkout configures a one-second HTTP client timeout for dependency calls and does not retry transactions automatically. Compare recorded duration, neighboring requests, and downstream logs. The configured timeout does not prove that every unavailable response was a timeout. Timeout categories apply to phases of the HTTP operation rather than guaranteeing a one-second total duration."
+            },
+            {
+              "id": "9b002507968e4be5d9fd2523c83a4add8204f7c434b50c1894b1788ac9e099a7",
+              "document_id": "network-timeouts",
+              "title": "Dependency timeouts and network reachability",
+              "heading": "Read-only follow-up",
+              "body": "Compare dependency health, request errors, and available configuration evidence. A later successful response does not prove connectivity during the incident. Missing network observations should be listed as missing evidence rather than converted into a specific transport diagnosis."
+            },
+            {
+              "id": "d3798ed71aaa0be2b3ca431fb58d0f054ae6ff0ef4ef172cb7e24d197881e125",
+              "document_id": "release-correlation",
+              "title": "Deployment timing and causal investigation",
+              "heading": "Timing is not causation",
+              "body": "An error beginning near a deployment is a useful lead, not proof of a regression. Compare affected and unaffected services, request IDs, signatures, and observations before and after the change. Determine whether the deployed component is on the failing dependency path."
+            },
+            {
+              "id": "4dd6898916ed4738cf2135d3f73f7c2d6118520e704db89f1b7b0419174f3499",
+              "document_id": "release-correlation",
+              "title": "Deployment timing and causal investigation",
+              "heading": "Missing deployment history",
+              "body": "This release has no deployment-history tool. If deployment events cannot be observed, state that limitation instead of inventing a timeline. A user's description of a change should be distinguished from independently collected deployment evidence."
+            },
+            {
+              "id": "0fc31f831664157ecdc4a8bb40d86f9e2d42c9482ec1258e2e33b056886583c5",
+              "document_id": "release-correlation",
+              "title": "Deployment timing and causal investigation",
+              "heading": "Applicability of guidance",
+              "body": "Use guidance for the correct environment and release. Older architecture may describe dependencies that no longer exist. Cite the document revision and preserve the observation window. Relevant documentation suggests checks but cannot establish that a particular change caused this incident."
+            },
+            {
+              "id": "504e55e2356d0c47004187c59b6786aea51230a14c2d46bc3e9c78396162c281",
+              "document_id": "request-correlation",
+              "title": "Request ID correlation across HTTP services",
+              "heading": "Joining observations",
+              "body": "Use request_id to join checkout, inventory, and payment logs in the same observation window. Accepted IDs contain exactly 32 lowercase hexadecimal characters. Invalid supplied IDs are replaced at ingress. Timestamp proximity alone does not establish that two errors belong to the same request."
+            },
+            {
+              "id": "a4d0d82de7ab435d7f1d68df56f6c41bd8969d8b65588431394421a821244b10",
+              "document_id": "request-correlation",
+              "title": "Request ID correlation across HTTP services",
+              "heading": "Partial correlation",
+              "body": "A matching request ID supports following a dependency boundary. A missing match can arise from log retention, an incorrect time window, a transport failure, or a request that never reached the downstream service. Preserve missing evidence; do not invent a trace or assume downstream success."
+            },
+            {
+              "id": "a6e30ef1148c5fe5178f5c3293a7e5a5f55e8b04b0d309f848c088d9ec68cf5f",
+              "document_id": "retry-safety",
+              "title": "Read-only investigation and transaction retry safety",
+              "heading": "No automatic transaction retries",
+              "body": "Checkout does not automatically retry inventory or payment transactions. The investigator's tools only read observations and reviewed guidance. Suggested verification steps must not become automatic restarts, configuration changes, repeated charges, or shell execution."
+            },
+            {
+              "id": "d0ac07910b51b27a24533c1269a7c60e7df4e87a8fdcdc42640c4e0fa69abcb5",
+              "document_id": "retry-safety",
+              "title": "Read-only investigation and transaction retry safety",
+              "heading": "Guidance is not evidence",
+              "body": "A procedure describes what an operator might verify. It does not establish that its described failure is happening now. Link current observations to each hypothesis, acknowledge contradictory evidence, and leave the underlying cause inconclusive when available signals cannot distinguish alternatives."
+            },
+            {
+              "id": "b9c5c7e4932763ebede6a3db8d76502c47e7f9d6ee981ab9cfc88df9ea3c5ee7",
+              "document_id": "service-map",
+              "title": "Shopping service dependencies and boundaries",
+              "heading": "Request flow",
+              "body": "Checkout calls inventory availability first, then payment processing. Inventory success does not establish payment success. If inventory fails, checkout stops without calling payment. Use the dependency name as well as the response status to localize the failing boundary."
+            },
+            {
+              "id": "7ae3790e661617754221915b0df8303ccf458a979220fc21358aab8d4fe874b7",
+              "document_id": "service-map",
+              "title": "Shopping service dependencies and boundaries",
+              "heading": "Request correlation",
+              "body": "Checkout propagates a valid request ID to inventory and payment. Compare records from the same request and incident window. A shared ID links observations but does not identify the underlying cause. Match service, timestamp, dependency, and status before correlating unrelated errors."
+            },
+            {
+              "id": "425fb413544df5c6023e3be4eabfe2950af9f0add1669e2c6f50f4e18439e1dc",
+              "document_id": "service-map",
+              "title": "Shopping service dependencies and boundaries",
+              "heading": "Supported architecture",
+              "body": "This release is an HTTP shopping simulation. It has no real payment gateway, order database, customer accounts, or stock reservation. Do not infer database connection exhaustion or external financial failures without an applicable architecture revision and actual observations. Process health is separate from successful business requests."
+            },
+            {
+              "id": "6252c6da92a33190ed8d7596f2ebb9bf228d32102dd356c025e4d729565f07f8",
+              "document_id": "source-failures",
+              "title": "Operational log adapter availability",
+              "heading": "Adapter failure outcomes",
+              "body": "source_timeout, source_unreachable, source_http_error, and invalid_source_response mean logs are unavailable. These adapter errors do not prove target application failure or target health. A successful empty query is a different outcome. Preserve the source error, query scope, and truncation status."
+            },
+            {
+              "id": "29155f4d97f07cf6b2740469aad3b7526eaff6c9a08956cab16ea676c53e4e64",
+              "document_id": "source-failures",
+              "title": "Operational log adapter availability",
+              "heading": "Bounded evidence reads",
+              "body": "The adapter permits a fixed configured source URL, a service allowlist, ordered incident windows no longer than an hour, at most 100 returned records, and a response-size cap. It does not accept arbitrary SQL, shell commands, or user-selected destinations."
+            }
+          ]
+        }
+      ],
+      "request_hash": "80a47b2dcfcef4e39e86759024f8bb14b4da39ee55bd5f4f33f6f79da20d2dbb",
+      "usage": {
+        "input": 6041,
+        "output": 879,
+        "thought": 0,
+        "total": 6920
+      },
+      "served_model_version": "gemini-3.5-flash-lite",
+      "status": "structurally_valid",
+      "report": {
+        "summary": "During the incident window, checkout processed a request (ff8639897f0b42ec99a2381912e93246) that called the payment dependency. The payment service responded with an HTTP 503 error. Consequently, checkout recorded a downstream request failure and returned an HTTP 502 Bad Gateway to the client. The underlying cause of why the payment service returned 503 cannot be established from the available payment log record alone.",
+        "observations": [
+          {
+            "text": "Checkout received a downstream request failure from the payment dependency with status 503 and responded with HTTP 502 Bad Gateway for request ff8639897f0b42ec99a2381912e93246.",
+            "references": [
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              },
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 2
+              }
+            ]
+          },
+          {
+            "text": "The payment service log confirms an HTTP request completed with status 503 for request ff8639897f0b42ec99a2381912e93246.",
+            "references": [
+              {
+                "evidence_id": "60398daaaf48406f8e5f64798291965d",
+                "record_index": 0
+              }
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "explanation": "Checkout attempted a payment processing call (dependency 'payment') which returned a 503 Service Unavailable status, leading checkout to return HTTP 502 Bad Gateway. The downstream log confirms payment returned 503 for request ID ff8639897f0b42ec99a2381912e93246.",
+            "service": "checkout",
+            "supporting": [
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              },
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 2
+              },
+              {
+                "evidence_id": "60398daaaf48406f8e5f64798291965d",
+                "record_index": 0
+              }
+            ],
+            "contradicting": []
+          }
+        ],
+        "runbook_references": [
+          {
+            "evidence_id": "f1714c29ed9f587db0c935a70781f983",
+            "passage_id": "bb6db4a9d174039634aa89f8c81ef2acc408d93c57f4f30099f712919cd708af"
+          },
+          {
+            "evidence_id": "f1714c29ed9f587db0c935a70781f983",
+            "passage_id": "643de0d56d1935fa425a821e61a3e6c4c675a86904db3537004dca2c11f87c86"
+          }
+        ],
+        "missing_evidence": [
+          "Internal payment service telemetry or root cause logs explaining why payment returned 503."
+        ],
+        "suggested_checks": [
+          "Inspect payment service implementation and internal metrics for errors corresponding to request ff8639897f0b42ec99a2381912e93246."
+        ],
+        "conclusion": "supported_hypothesis"
+      }
+    },
+    {
+      "case": "failure-path",
+      "method": "v2_baseline",
+      "question": "Describe the observed checkout failure path and distinguish it from why the downstream service became unavailable.",
+      "context_passages": 6,
+      "context_evidence": [
+        {
+          "id": "60398daaaf48406f8e5f64798291965d",
+          "tool_call_id": "agent.a32db66b4768a87db8f54fee489abce8307194ef6e305ba3b3b6cc9e6d5fe639",
+          "collected_at": "2026-11-03T19:30:00.365942+00:00",
+          "source": "http_log_adapter",
+          "service": "payment",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.738599Z",
+              "service": "payment",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 503,
+              "duration_ms": 0.13
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live",
+          "request_id_filter": "ff8639897f0b42ec99a2381912e93246"
+        },
+        {
+          "id": "272e94bd6ada4672ade629d4f6aeb61c",
+          "tool_call_id": "logs.v1",
+          "collected_at": "2026-11-03T19:29:57.840532+00:00",
+          "source": "http_log_adapter",
+          "service": "checkout",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.720351Z",
+              "service": "checkout",
+              "level": "INFO",
+              "message": "HTTP request completed",
+              "request_id": "1b9c14aa511449c2a62251cb9fe35d54",
+              "dependency": null,
+              "status_code": 200,
+              "duration_ms": 44.747
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739513Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "Downstream request failed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": "payment",
+              "status_code": 503,
+              "duration_ms": null
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739598Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 502,
+              "duration_ms": 14.106
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live"
+        },
+        {
+          "id": "260e33a7be5a53409d3309ed5117c854",
+          "source": "versioned_runbooks",
+          "availability": "available",
+          "revision": "c465bb25bbb18b6a51925d24b4afaf99aed5de7fde42fda9df23e6ff05fd74f1",
+          "hits": [
+            {
+              "id": "643de0d56d1935fa425a821e61a3e6c4c675a86904db3537004dca2c11f87c86",
+              "document_id": "checkout-downstream",
+              "title": "Checkout downstream errors and bad gateway responses",
+              "heading": "Follow the failing dependency",
+              "body": "Use the checkout request ID and incident window to inspect the named dependency's logs. Compare its HTTP status with the caller's downstream error. Successful neighboring requests are counterevidence to a continuous outage. Missing downstream records may mean unavailable telemetry, transport failure, or a mismatched time window."
+            },
+            {
+              "id": "bb6db4a9d174039634aa89f8c81ef2acc408d93c57f4f30099f712919cd708af",
+              "document_id": "checkout-downstream",
+              "title": "Checkout downstream errors and bad gateway responses",
+              "heading": "HTTP 502 from checkout",
+              "body": "A checkout bad gateway response means a downstream call failed or could not complete. Inspect the ERROR record for its dependency field. Payment dependency and downstream status 503 support a failed payment boundary. Checkout status alone cannot distinguish payment from inventory failure or a network timeout."
+            },
+            {
+              "id": "495a203ff99eceb35a56fe7d732a2948fe2b4b1d31a3b3386be5fe50e6739010",
+              "document_id": "network-timeouts",
+              "title": "Dependency timeouts and network reachability",
+              "heading": "Response failure versus transport failure",
+              "body": "A downstream request failed record with an HTTP status means an error response was received. A downstream request unavailable record without a status indicates a transport problem such as timeout, name resolution failure, or refused connection. This generic message does not distinguish those causes. Do not claim an unmeasured timeout duration."
+            },
+            {
+              "id": "f3e63171d6de37ab1fd42436ab5d838cf5d62bd58d363151ff00385c0ed0c4f2",
+              "document_id": "checkout-downstream",
+              "title": "Checkout downstream errors and bad gateway responses",
+              "heading": "Verification and limits",
+              "body": "Read-only verification compares both sides of the request with the applicable service map. Do not restart services, change settings, or retry a real payment merely because a runbook suggests a hypothesis. Recovery after an operator action establishes observed recovery, not proof of the original cause."
+            },
+            {
+              "id": "9b002507968e4be5d9fd2523c83a4add8204f7c434b50c1894b1788ac9e099a7",
+              "document_id": "network-timeouts",
+              "title": "Dependency timeouts and network reachability",
+              "heading": "Read-only follow-up",
+              "body": "Compare dependency health, request errors, and available configuration evidence. A later successful response does not prove connectivity during the incident. Missing network observations should be listed as missing evidence rather than converted into a specific transport diagnosis."
+            },
+            {
+              "id": "b9c5c7e4932763ebede6a3db8d76502c47e7f9d6ee981ab9cfc88df9ea3c5ee7",
+              "document_id": "service-map",
+              "title": "Shopping service dependencies and boundaries",
+              "heading": "Request flow",
+              "body": "Checkout calls inventory availability first, then payment processing. Inventory success does not establish payment success. If inventory fails, checkout stops without calling payment. Use the dependency name as well as the response status to localize the failing boundary."
+            }
+          ]
+        }
+      ],
+      "request_hash": "c86a3aca48f8433e299f8b018acbc9932af40824faa130b1adf11cf5ad65e1a2",
+      "usage": {
+        "input": 3013,
+        "output": 602,
+        "thought": 0,
+        "total": 3615
+      },
+      "served_model_version": "gemini-3.5-flash-lite",
+      "status": "structurally_valid",
+      "report": {
+        "summary": "Checkout returned HTTP 502 because its downstream dependency 'payment' failed with an HTTP 503 status code. While the payment service returned a 503 status response, underlying reasons for the payment service failure cannot be established from the application logs alone.",
+        "observations": [
+          {
+            "text": "Checkout logged a downstream request failure for dependency 'payment' with status 503, resulting in an HTTP 502 response for request ff8639897f0b42ec99a2381912e93246.",
+            "references": [
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              },
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 2
+              }
+            ]
+          },
+          {
+            "text": "Payment service logged the HTTP request completing with status 503 for request ff8639897f0b42ec99a2381912e93246.",
+            "references": [
+              {
+                "evidence_id": "60398daaaf48406f8e5f64798291965d",
+                "record_index": 0
+              }
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "explanation": "Checkout experienced an HTTP 502 bad gateway because its call to the payment dependency failed with an HTTP 503 status.",
+            "service": "checkout",
+            "supporting": [
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              },
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 2
+              }
+            ],
+            "contradicting": []
+          }
+        ],
+        "runbook_references": [
+          {
+            "evidence_id": "260e33a7be5a53409d3309ed5117c854",
+            "passage_id": "bb6db4a9d174039634aa89f8c81ef2acc408d93c57f4f30099f712919cd708af"
+          }
+        ],
+        "missing_evidence": [
+          "Direct network layer packet captures or DNS resolution logs between checkout and payment services."
+        ],
+        "suggested_checks": [
+          "Inspect payment service logs prior to the request to see why it returned 503."
+        ],
+        "conclusion": "supported_hypothesis"
+      }
+    },
+    {
+      "case": "failure-path",
+      "method": "development_selected",
+      "question": "Describe the observed checkout failure path and distinguish it from why the downstream service became unavailable.",
+      "context_passages": 6,
+      "context_evidence": [
+        {
+          "id": "60398daaaf48406f8e5f64798291965d",
+          "tool_call_id": "agent.a32db66b4768a87db8f54fee489abce8307194ef6e305ba3b3b6cc9e6d5fe639",
+          "collected_at": "2026-11-03T19:30:00.365942+00:00",
+          "source": "http_log_adapter",
+          "service": "payment",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.738599Z",
+              "service": "payment",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 503,
+              "duration_ms": 0.13
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live",
+          "request_id_filter": "ff8639897f0b42ec99a2381912e93246"
+        },
+        {
+          "id": "272e94bd6ada4672ade629d4f6aeb61c",
+          "tool_call_id": "logs.v1",
+          "collected_at": "2026-11-03T19:29:57.840532+00:00",
+          "source": "http_log_adapter",
+          "service": "checkout",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.720351Z",
+              "service": "checkout",
+              "level": "INFO",
+              "message": "HTTP request completed",
+              "request_id": "1b9c14aa511449c2a62251cb9fe35d54",
+              "dependency": null,
+              "status_code": 200,
+              "duration_ms": 44.747
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739513Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "Downstream request failed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": "payment",
+              "status_code": 503,
+              "duration_ms": null
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739598Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 502,
+              "duration_ms": 14.106
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live"
+        },
+        {
+          "id": "39f05f667b215bdbae8604fb1dd07a79",
+          "source": "versioned_runbooks",
+          "availability": "available",
+          "revision": "c465bb25bbb18b6a51925d24b4afaf99aed5de7fde42fda9df23e6ff05fd74f1",
+          "hits": [
+            {
+              "id": "643de0d56d1935fa425a821e61a3e6c4c675a86904db3537004dca2c11f87c86",
+              "document_id": "checkout-downstream",
+              "title": "Checkout downstream errors and bad gateway responses",
+              "heading": "Follow the failing dependency",
+              "body": "Use the checkout request ID and incident window to inspect the named dependency's logs. Compare its HTTP status with the caller's downstream error. Successful neighboring requests are counterevidence to a continuous outage. Missing downstream records may mean unavailable telemetry, transport failure, or a mismatched time window."
+            },
+            {
+              "id": "bb6db4a9d174039634aa89f8c81ef2acc408d93c57f4f30099f712919cd708af",
+              "document_id": "checkout-downstream",
+              "title": "Checkout downstream errors and bad gateway responses",
+              "heading": "HTTP 502 from checkout",
+              "body": "A checkout bad gateway response means a downstream call failed or could not complete. Inspect the ERROR record for its dependency field. Payment dependency and downstream status 503 support a failed payment boundary. Checkout status alone cannot distinguish payment from inventory failure or a network timeout."
+            },
+            {
+              "id": "495a203ff99eceb35a56fe7d732a2948fe2b4b1d31a3b3386be5fe50e6739010",
+              "document_id": "network-timeouts",
+              "title": "Dependency timeouts and network reachability",
+              "heading": "Response failure versus transport failure",
+              "body": "A downstream request failed record with an HTTP status means an error response was received. A downstream request unavailable record without a status indicates a transport problem such as timeout, name resolution failure, or refused connection. This generic message does not distinguish those causes. Do not claim an unmeasured timeout duration."
+            },
+            {
+              "id": "7ae3790e661617754221915b0df8303ccf458a979220fc21358aab8d4fe874b7",
+              "document_id": "service-map",
+              "title": "Shopping service dependencies and boundaries",
+              "heading": "Request correlation",
+              "body": "Checkout propagates a valid request ID to inventory and payment. Compare records from the same request and incident window. A shared ID links observations but does not identify the underlying cause. Match service, timestamp, dependency, and status before correlating unrelated errors."
+            },
+            {
+              "id": "b9c5c7e4932763ebede6a3db8d76502c47e7f9d6ee981ab9cfc88df9ea3c5ee7",
+              "document_id": "service-map",
+              "title": "Shopping service dependencies and boundaries",
+              "heading": "Request flow",
+              "body": "Checkout calls inventory availability first, then payment processing. Inventory success does not establish payment success. If inventory fails, checkout stops without calling payment. Use the dependency name as well as the response status to localize the failing boundary."
+            },
+            {
+              "id": "f33733d8335bdec4d7ffb19043f0d74a1336a9bbfc52f771dae600e73d30c412",
+              "document_id": "http-validation",
+              "title": "Cart validation and HTTP client errors",
+              "heading": "Client errors versus dependency failures",
+              "body": "HTTP 422 describes invalid cart input. HTTP 502 describes checkout failing to complete a downstream call. Compare the response, dependency field, and correlated logs. Do not attribute a rejected cart to payment or inventory without observations of those services."
+            }
+          ]
+        }
+      ],
+      "request_hash": "5fbe2332951f9b23a7eedaae8a340071eeadca3682d4d7df90c00c46f97faab7",
+      "usage": {
+        "input": 3009,
+        "output": 583,
+        "thought": 0,
+        "total": 3592
+      },
+      "served_model_version": "gemini-3.5-flash-lite",
+      "status": "structurally_valid",
+      "report": {
+        "summary": "During the incident window, checkout called the payment dependency for request ff8639897f0b42ec99a2381912e93246. Payment returned a 503 status code, which resulted in checkout logging a downstream request failure and returning an HTTP 502 bad gateway to the client. The underlying cause of the payment service 503 status cannot be established from the current logs.",
+        "observations": [
+          {
+            "text": "Checkout received an HTTP 503 from the payment dependency and responded with an HTTP 502.",
+            "references": [
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              },
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 2
+              }
+            ]
+          },
+          {
+            "text": "Payment service recorded an HTTP request completed with status 503 for the correlated request ID.",
+            "references": [
+              {
+                "evidence_id": "60398daaaf48406f8e5f64798291965d",
+                "record_index": 0
+              }
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "explanation": "Checkout attempted a payment dependency call which returned an HTTP 503 error, causing checkout to return an HTTP 502 bad gateway response. The specific underlying cause of the payment service error cannot be established from the available telemetry.",
+            "service": "checkout",
+            "supporting": [
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              },
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 2
+              }
+            ],
+            "contradicting": []
+          }
+        ],
+        "runbook_references": [
+          {
+            "evidence_id": "39f05f667b215bdbae8604fb1dd07a79",
+            "passage_id": "bb6db4a9d174039634aa89f8c81ef2acc408d93c57f4f30099f712919cd708af"
+          }
+        ],
+        "missing_evidence": [
+          "Underlying cause of the payment service 503 error"
+        ],
+        "suggested_checks": [
+          "Inspect payment service internal error logs if available"
+        ],
+        "conclusion": "supported_hypothesis"
+      }
+    },
+    {
+      "case": "unsupported-database",
+      "method": "logs_only",
+      "question": "Do these observations establish that database connection exhaustion caused the failure? Explain what can and cannot be concluded.",
+      "context_passages": 0,
+      "context_evidence": [
+        {
+          "id": "60398daaaf48406f8e5f64798291965d",
+          "tool_call_id": "agent.a32db66b4768a87db8f54fee489abce8307194ef6e305ba3b3b6cc9e6d5fe639",
+          "collected_at": "2026-11-03T19:30:00.365942+00:00",
+          "source": "http_log_adapter",
+          "service": "payment",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.738599Z",
+              "service": "payment",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 503,
+              "duration_ms": 0.13
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live",
+          "request_id_filter": "ff8639897f0b42ec99a2381912e93246"
+        },
+        {
+          "id": "272e94bd6ada4672ade629d4f6aeb61c",
+          "tool_call_id": "logs.v1",
+          "collected_at": "2026-11-03T19:29:57.840532+00:00",
+          "source": "http_log_adapter",
+          "service": "checkout",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.720351Z",
+              "service": "checkout",
+              "level": "INFO",
+              "message": "HTTP request completed",
+              "request_id": "1b9c14aa511449c2a62251cb9fe35d54",
+              "dependency": null,
+              "status_code": 200,
+              "duration_ms": 44.747
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739513Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "Downstream request failed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": "payment",
+              "status_code": 503,
+              "duration_ms": null
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739598Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 502,
+              "duration_ms": 14.106
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live"
+        }
+      ],
+      "request_hash": "9b6c9cf5d3fb0af871e06ebfb3ee844b9e4379a2d0f7d5ba7b3aef64118a4996",
+      "usage": {
+        "input": 2013,
+        "output": 432,
+        "thought": 275,
+        "total": 2720
+      },
+      "served_model_version": "gemini-3.5-flash-lite",
+      "status": "structurally_valid",
+      "report": {
+        "summary": "The observations show checkout returning 502 due to a downstream 503 error from the payment service. They do not establish database connection exhaustion or the underlying cause of the payment service 503 error.",
+        "observations": [
+          {
+            "text": "Checkout service received an HTTP 503 from the payment dependency and returned an HTTP 502.",
+            "references": [
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              },
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 2
+              }
+            ]
+          },
+          {
+            "text": "Payment service logged an HTTP request completed with status 503.",
+            "references": [
+              {
+                "evidence_id": "60398daaaf48406f8e5f64798291965d",
+                "record_index": 0
+              }
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "explanation": "The checkout service experienced a downstream failure when calling the payment service (returning 503), but the logs do not establish database connection exhaustion or any other underlying cause for the 503 error.",
+            "service": "checkout",
+            "supporting": [
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              },
+              {
+                "evidence_id": "60398daaaf48406f8e5f64798291965d",
+                "record_index": 0
+              }
+            ],
+            "contradicting": []
+          }
+        ],
+        "runbook_references": [],
+        "missing_evidence": [
+          "Database connection pool metrics",
+          "Payment service internal error logs"
+        ],
+        "suggested_checks": [
+          "Inspect database connection pool metrics during the incident window",
+          "Check detailed application logs for the payment service"
+        ],
+        "conclusion": "inconclusive"
+      }
+    },
+    {
+      "case": "unsupported-database",
+      "method": "all_context",
+      "question": "Do these observations establish that database connection exhaustion caused the failure? Explain what can and cannot be concluded.",
+      "context_passages": 27,
+      "context_evidence": [
+        {
+          "id": "60398daaaf48406f8e5f64798291965d",
+          "tool_call_id": "agent.a32db66b4768a87db8f54fee489abce8307194ef6e305ba3b3b6cc9e6d5fe639",
+          "collected_at": "2026-11-03T19:30:00.365942+00:00",
+          "source": "http_log_adapter",
+          "service": "payment",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.738599Z",
+              "service": "payment",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 503,
+              "duration_ms": 0.13
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live",
+          "request_id_filter": "ff8639897f0b42ec99a2381912e93246"
+        },
+        {
+          "id": "272e94bd6ada4672ade629d4f6aeb61c",
+          "tool_call_id": "logs.v1",
+          "collected_at": "2026-11-03T19:29:57.840532+00:00",
+          "source": "http_log_adapter",
+          "service": "checkout",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.720351Z",
+              "service": "checkout",
+              "level": "INFO",
+              "message": "HTTP request completed",
+              "request_id": "1b9c14aa511449c2a62251cb9fe35d54",
+              "dependency": null,
+              "status_code": 200,
+              "duration_ms": 44.747
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739513Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "Downstream request failed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": "payment",
+              "status_code": 503,
+              "duration_ms": null
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739598Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 502,
+              "duration_ms": 14.106
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live"
+        },
+        {
+          "id": "b8e1bb8da93954e9a13cdd987ebd0259",
+          "source": "versioned_runbooks",
+          "availability": "available",
+          "revision": "c465bb25bbb18b6a51925d24b4afaf99aed5de7fde42fda9df23e6ff05fd74f1",
+          "hits": [
+            {
+              "id": "bb6db4a9d174039634aa89f8c81ef2acc408d93c57f4f30099f712919cd708af",
+              "document_id": "checkout-downstream",
+              "title": "Checkout downstream errors and bad gateway responses",
+              "heading": "HTTP 502 from checkout",
+              "body": "A checkout bad gateway response means a downstream call failed or could not complete. Inspect the ERROR record for its dependency field. Payment dependency and downstream status 503 support a failed payment boundary. Checkout status alone cannot distinguish payment from inventory failure or a network timeout."
+            },
+            {
+              "id": "643de0d56d1935fa425a821e61a3e6c4c675a86904db3537004dca2c11f87c86",
+              "document_id": "checkout-downstream",
+              "title": "Checkout downstream errors and bad gateway responses",
+              "heading": "Follow the failing dependency",
+              "body": "Use the checkout request ID and incident window to inspect the named dependency's logs. Compare its HTTP status with the caller's downstream error. Successful neighboring requests are counterevidence to a continuous outage. Missing downstream records may mean unavailable telemetry, transport failure, or a mismatched time window."
+            },
+            {
+              "id": "f3e63171d6de37ab1fd42436ab5d838cf5d62bd58d363151ff00385c0ed0c4f2",
+              "document_id": "checkout-downstream",
+              "title": "Checkout downstream errors and bad gateway responses",
+              "heading": "Verification and limits",
+              "body": "Read-only verification compares both sides of the request with the applicable service map. Do not restart services, change settings, or retry a real payment merely because a runbook suggests a hypothesis. Recovery after an operator action establishes observed recovery, not proof of the original cause."
+            },
+            {
+              "id": "d6d458723196761b7be842a2824b781fcc35a689cc41debfa8195a924867fbd4",
+              "document_id": "configuration-scope",
+              "title": "Applicability of versioned operational guidance",
+              "heading": "Environment and release",
+              "body": "Choose guidance for the incident environment and release, retaining applicable global guidance. A staging or archived release procedure can describe different dependencies. Similar words do not override applicability metadata."
+            },
+            {
+              "id": "11f915631f52f99c33c8779fcb9c009ad0e13ff1c06c0a420a5f60db186e76da",
+              "document_id": "configuration-scope",
+              "title": "Applicability of versioned operational guidance",
+              "heading": "Revision reproducibility",
+              "body": "Preserve the knowledge revision and immutable passage references used by an investigation. Publishing a new index must not rewrite old citations or silently change follow-up retrieval in an ongoing investigation. A failed publication leaves the previous corpus usable."
+            },
+            {
+              "id": "b7ccd3e78db5c9663511965cebd18f42845bc6291a1a9bca5bb9075e1e8d3ab5",
+              "document_id": "health-semantics",
+              "title": "Process liveness versus business availability",
+              "heading": "A reachable process can reject work",
+              "body": "A successful health endpoint establishes that the service process responded. It does not establish that payment charge requests or inventory business requests succeeded. Compare business request status and correlated caller logs before claiming recovery or availability."
+            },
+            {
+              "id": "93a2e2c79d29f87d2dee8233a45ae57b07908264385bd55cce7b85b2ff976143",
+              "document_id": "health-semantics",
+              "title": "Process liveness versus business availability",
+              "heading": "Observed recovery",
+              "body": "A later business request returning HTTP 200 demonstrates recovery for that request at that time. It does not prove service health during an earlier incident or reveal why the earlier request failed. Avoid extending one observation into a continuous availability claim."
+            },
+            {
+              "id": "dcc2ddf90013b663b3a4706496ea1b6b13dc21b6258dc2752213b0a502d9b40f",
+              "document_id": "http-validation",
+              "title": "Cart validation and HTTP client errors",
+              "heading": "Invalid carts",
+              "body": "The checkout schema accepts the book item and quantities from one through ten. A missing or invalid field, zero quantity, or quantity eleven is rejected with HTTP 422 before business processing. Extra fields are forbidden. Invalid input is not evidence of a failing dependency."
+            },
+            {
+              "id": "f33733d8335bdec4d7ffb19043f0d74a1336a9bbfc52f771dae600e73d30c412",
+              "document_id": "http-validation",
+              "title": "Cart validation and HTTP client errors",
+              "heading": "Client errors versus dependency failures",
+              "body": "HTTP 422 describes invalid cart input. HTTP 502 describes checkout failing to complete a downstream call. Compare the response, dependency field, and correlated logs. Do not attribute a rejected cart to payment or inventory without observations of those services."
+            },
+            {
+              "id": "60deca27d93233295bad593f80ce64f029f6007ad42870a17e36f9255b89e561",
+              "document_id": "missing-evidence",
+              "title": "Missing logs and insufficient evidence",
+              "heading": "Empty results versus unavailable sources",
+              "body": "A successful query with zero matching records differs from a timeout, unreadable log file, or unavailable service telemetry. Empty results cover only the requested service, time window, and retained data. An unavailable source provides no evidence that requests were healthy."
+            },
+            {
+              "id": "2ed1a5a4f5714782ccf93186e602984f3ab6dbef972fc528dddd4f4ccf75fb88",
+              "document_id": "missing-evidence",
+              "title": "Missing logs and insufficient evidence",
+              "heading": "Retention and truncated evidence",
+              "body": "Local logs rotate and queries return a bounded number of records. Truncated responses may omit relevant errors; older coverage after rotation cannot be guaranteed. Preserve truncation and the query window. Do not describe retained records as a complete incident history."
+            },
+            {
+              "id": "26891eb3e822df9429441cc669fafed65e5c378104c101a2fe3394f98945697c",
+              "document_id": "missing-evidence",
+              "title": "Missing logs and insufficient evidence",
+              "heading": "Abstain when support is missing",
+              "body": "Separate observed facts from possible explanations. A runbook provides general guidance, not a current incident observation. If no available observation distinguishes competing causes, mark the cause inconclusive and suggest permitted read-only checks. A retrieval score is not a calibrated probability."
+            },
+            {
+              "id": "495a203ff99eceb35a56fe7d732a2948fe2b4b1d31a3b3386be5fe50e6739010",
+              "document_id": "network-timeouts",
+              "title": "Dependency timeouts and network reachability",
+              "heading": "Response failure versus transport failure",
+              "body": "A downstream request failed record with an HTTP status means an error response was received. A downstream request unavailable record without a status indicates a transport problem such as timeout, name resolution failure, or refused connection. This generic message does not distinguish those causes. Do not claim an unmeasured timeout duration."
+            },
+            {
+              "id": "8b74f47a16872fc5cfd01cadb59f1081ff12e236eeb08a8458a5a8a51f3d76d5",
+              "document_id": "network-timeouts",
+              "title": "Dependency timeouts and network reachability",
+              "heading": "Bounded requests",
+              "body": "Checkout configures a one-second HTTP client timeout for dependency calls and does not retry transactions automatically. Compare recorded duration, neighboring requests, and downstream logs. The configured timeout does not prove that every unavailable response was a timeout. Timeout categories apply to phases of the HTTP operation rather than guaranteeing a one-second total duration."
+            },
+            {
+              "id": "9b002507968e4be5d9fd2523c83a4add8204f7c434b50c1894b1788ac9e099a7",
+              "document_id": "network-timeouts",
+              "title": "Dependency timeouts and network reachability",
+              "heading": "Read-only follow-up",
+              "body": "Compare dependency health, request errors, and available configuration evidence. A later successful response does not prove connectivity during the incident. Missing network observations should be listed as missing evidence rather than converted into a specific transport diagnosis."
+            },
+            {
+              "id": "d3798ed71aaa0be2b3ca431fb58d0f054ae6ff0ef4ef172cb7e24d197881e125",
+              "document_id": "release-correlation",
+              "title": "Deployment timing and causal investigation",
+              "heading": "Timing is not causation",
+              "body": "An error beginning near a deployment is a useful lead, not proof of a regression. Compare affected and unaffected services, request IDs, signatures, and observations before and after the change. Determine whether the deployed component is on the failing dependency path."
+            },
+            {
+              "id": "4dd6898916ed4738cf2135d3f73f7c2d6118520e704db89f1b7b0419174f3499",
+              "document_id": "release-correlation",
+              "title": "Deployment timing and causal investigation",
+              "heading": "Missing deployment history",
+              "body": "This release has no deployment-history tool. If deployment events cannot be observed, state that limitation instead of inventing a timeline. A user's description of a change should be distinguished from independently collected deployment evidence."
+            },
+            {
+              "id": "0fc31f831664157ecdc4a8bb40d86f9e2d42c9482ec1258e2e33b056886583c5",
+              "document_id": "release-correlation",
+              "title": "Deployment timing and causal investigation",
+              "heading": "Applicability of guidance",
+              "body": "Use guidance for the correct environment and release. Older architecture may describe dependencies that no longer exist. Cite the document revision and preserve the observation window. Relevant documentation suggests checks but cannot establish that a particular change caused this incident."
+            },
+            {
+              "id": "504e55e2356d0c47004187c59b6786aea51230a14c2d46bc3e9c78396162c281",
+              "document_id": "request-correlation",
+              "title": "Request ID correlation across HTTP services",
+              "heading": "Joining observations",
+              "body": "Use request_id to join checkout, inventory, and payment logs in the same observation window. Accepted IDs contain exactly 32 lowercase hexadecimal characters. Invalid supplied IDs are replaced at ingress. Timestamp proximity alone does not establish that two errors belong to the same request."
+            },
+            {
+              "id": "a4d0d82de7ab435d7f1d68df56f6c41bd8969d8b65588431394421a821244b10",
+              "document_id": "request-correlation",
+              "title": "Request ID correlation across HTTP services",
+              "heading": "Partial correlation",
+              "body": "A matching request ID supports following a dependency boundary. A missing match can arise from log retention, an incorrect time window, a transport failure, or a request that never reached the downstream service. Preserve missing evidence; do not invent a trace or assume downstream success."
+            },
+            {
+              "id": "a6e30ef1148c5fe5178f5c3293a7e5a5f55e8b04b0d309f848c088d9ec68cf5f",
+              "document_id": "retry-safety",
+              "title": "Read-only investigation and transaction retry safety",
+              "heading": "No automatic transaction retries",
+              "body": "Checkout does not automatically retry inventory or payment transactions. The investigator's tools only read observations and reviewed guidance. Suggested verification steps must not become automatic restarts, configuration changes, repeated charges, or shell execution."
+            },
+            {
+              "id": "d0ac07910b51b27a24533c1269a7c60e7df4e87a8fdcdc42640c4e0fa69abcb5",
+              "document_id": "retry-safety",
+              "title": "Read-only investigation and transaction retry safety",
+              "heading": "Guidance is not evidence",
+              "body": "A procedure describes what an operator might verify. It does not establish that its described failure is happening now. Link current observations to each hypothesis, acknowledge contradictory evidence, and leave the underlying cause inconclusive when available signals cannot distinguish alternatives."
+            },
+            {
+              "id": "b9c5c7e4932763ebede6a3db8d76502c47e7f9d6ee981ab9cfc88df9ea3c5ee7",
+              "document_id": "service-map",
+              "title": "Shopping service dependencies and boundaries",
+              "heading": "Request flow",
+              "body": "Checkout calls inventory availability first, then payment processing. Inventory success does not establish payment success. If inventory fails, checkout stops without calling payment. Use the dependency name as well as the response status to localize the failing boundary."
+            },
+            {
+              "id": "7ae3790e661617754221915b0df8303ccf458a979220fc21358aab8d4fe874b7",
+              "document_id": "service-map",
+              "title": "Shopping service dependencies and boundaries",
+              "heading": "Request correlation",
+              "body": "Checkout propagates a valid request ID to inventory and payment. Compare records from the same request and incident window. A shared ID links observations but does not identify the underlying cause. Match service, timestamp, dependency, and status before correlating unrelated errors."
+            },
+            {
+              "id": "425fb413544df5c6023e3be4eabfe2950af9f0add1669e2c6f50f4e18439e1dc",
+              "document_id": "service-map",
+              "title": "Shopping service dependencies and boundaries",
+              "heading": "Supported architecture",
+              "body": "This release is an HTTP shopping simulation. It has no real payment gateway, order database, customer accounts, or stock reservation. Do not infer database connection exhaustion or external financial failures without an applicable architecture revision and actual observations. Process health is separate from successful business requests."
+            },
+            {
+              "id": "6252c6da92a33190ed8d7596f2ebb9bf228d32102dd356c025e4d729565f07f8",
+              "document_id": "source-failures",
+              "title": "Operational log adapter availability",
+              "heading": "Adapter failure outcomes",
+              "body": "source_timeout, source_unreachable, source_http_error, and invalid_source_response mean logs are unavailable. These adapter errors do not prove target application failure or target health. A successful empty query is a different outcome. Preserve the source error, query scope, and truncation status."
+            },
+            {
+              "id": "29155f4d97f07cf6b2740469aad3b7526eaff6c9a08956cab16ea676c53e4e64",
+              "document_id": "source-failures",
+              "title": "Operational log adapter availability",
+              "heading": "Bounded evidence reads",
+              "body": "The adapter permits a fixed configured source URL, a service allowlist, ordered incident windows no longer than an hour, at most 100 returned records, and a response-size cap. It does not accept arbitrary SQL, shell commands, or user-selected destinations."
+            }
+          ]
+        }
+      ],
+      "request_hash": "2ec0424e24ec0073be45b5d9cf0ccd91959ac1b8e1940fdb94067a4330a0ef56",
+      "usage": {
+        "input": 6041,
+        "output": 756,
+        "thought": 0,
+        "total": 6797
+      },
+      "served_model_version": "gemini-3.5-flash-lite",
+      "status": "structurally_valid",
+      "report": {
+        "summary": "The observations establish that the payment service returned an HTTP 503 error for request ff8639897f0b42ec99a2381912e93246, which resulted in checkout returning HTTP 502. However, the available logs and architecture information do not establish that database connection exhaustion caused the failure. According to operational guidance, database connection exhaustion or underlying causes cannot be inferred from a generic HTTP 503 without specific telemetry. Therefore, the underlying cause must remain inconclusive.",
+        "observations": [
+          {
+            "text": "The payment service returned an HTTP 503 error for request ff8639897f0b42ec99a2381912e93246, leading checkout to fail with a downstream error and return HTTP 502.",
+            "references": [
+              {
+                "evidence_id": "60398daaaf48406f8e5f64798291965d",
+                "record_index": 0
+              },
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              },
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 2
+              }
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "explanation": "The payment service returned an HTTP 503 error for request ff8639897f0b42ec99a2381912e93246, which caused checkout to return HTTP 502, but the available observations do not establish whether database connection exhaustion or some other internal/external failure caused the payment service HTTP 503.",
+            "service": "payment",
+            "supporting": [
+              {
+                "evidence_id": "60398daaaf48406f8e5f64798291965d",
+                "record_index": 0
+              },
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              }
+            ],
+            "contradicting": []
+          }
+        ],
+        "runbook_references": [
+          {
+            "evidence_id": "b8e1bb8da93954e9a13cdd987ebd0259",
+            "passage_id": "bb6db4a9d174039634aa89f8c81ef2acc408d93c57f4f30099f712919cd708af"
+          },
+          {
+            "evidence_id": "b8e1bb8da93954e9a13cdd987ebd0259",
+            "passage_id": "425fb413544df5c6023e3be4eabfe2950af9f0add1669e2c6f50f4e18439e1dc"
+          }
+        ],
+        "missing_evidence": [
+          "Database connection metrics or logs from the payment service showing resource exhaustion."
+        ],
+        "suggested_checks": [
+          "Inspect resource utilization, connection pool metrics, and detailed error diagnostics on the payment service."
+        ],
+        "conclusion": "inconclusive"
+      }
+    },
+    {
+      "case": "unsupported-database",
+      "method": "v2_baseline",
+      "question": "Do these observations establish that database connection exhaustion caused the failure? Explain what can and cannot be concluded.",
+      "context_passages": 6,
+      "context_evidence": [
+        {
+          "id": "60398daaaf48406f8e5f64798291965d",
+          "tool_call_id": "agent.a32db66b4768a87db8f54fee489abce8307194ef6e305ba3b3b6cc9e6d5fe639",
+          "collected_at": "2026-11-03T19:30:00.365942+00:00",
+          "source": "http_log_adapter",
+          "service": "payment",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.738599Z",
+              "service": "payment",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 503,
+              "duration_ms": 0.13
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live",
+          "request_id_filter": "ff8639897f0b42ec99a2381912e93246"
+        },
+        {
+          "id": "272e94bd6ada4672ade629d4f6aeb61c",
+          "tool_call_id": "logs.v1",
+          "collected_at": "2026-11-03T19:29:57.840532+00:00",
+          "source": "http_log_adapter",
+          "service": "checkout",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.720351Z",
+              "service": "checkout",
+              "level": "INFO",
+              "message": "HTTP request completed",
+              "request_id": "1b9c14aa511449c2a62251cb9fe35d54",
+              "dependency": null,
+              "status_code": 200,
+              "duration_ms": 44.747
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739513Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "Downstream request failed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": "payment",
+              "status_code": 503,
+              "duration_ms": null
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739598Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 502,
+              "duration_ms": 14.106
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live"
+        },
+        {
+          "id": "eb7aba9a3f3e5ed18f624dbf19654333",
+          "source": "versioned_runbooks",
+          "availability": "available",
+          "revision": "c465bb25bbb18b6a51925d24b4afaf99aed5de7fde42fda9df23e6ff05fd74f1",
+          "hits": [
+            {
+              "id": "9b002507968e4be5d9fd2523c83a4add8204f7c434b50c1894b1788ac9e099a7",
+              "document_id": "network-timeouts",
+              "title": "Dependency timeouts and network reachability",
+              "heading": "Read-only follow-up",
+              "body": "Compare dependency health, request errors, and available configuration evidence. A later successful response does not prove connectivity during the incident. Missing network observations should be listed as missing evidence rather than converted into a specific transport diagnosis."
+            },
+            {
+              "id": "495a203ff99eceb35a56fe7d732a2948fe2b4b1d31a3b3386be5fe50e6739010",
+              "document_id": "network-timeouts",
+              "title": "Dependency timeouts and network reachability",
+              "heading": "Response failure versus transport failure",
+              "body": "A downstream request failed record with an HTTP status means an error response was received. A downstream request unavailable record without a status indicates a transport problem such as timeout, name resolution failure, or refused connection. This generic message does not distinguish those causes. Do not claim an unmeasured timeout duration."
+            },
+            {
+              "id": "6252c6da92a33190ed8d7596f2ebb9bf228d32102dd356c025e4d729565f07f8",
+              "document_id": "source-failures",
+              "title": "Operational log adapter availability",
+              "heading": "Adapter failure outcomes",
+              "body": "source_timeout, source_unreachable, source_http_error, and invalid_source_response mean logs are unavailable. These adapter errors do not prove target application failure or target health. A successful empty query is a different outcome. Preserve the source error, query scope, and truncation status."
+            },
+            {
+              "id": "60deca27d93233295bad593f80ce64f029f6007ad42870a17e36f9255b89e561",
+              "document_id": "missing-evidence",
+              "title": "Missing logs and insufficient evidence",
+              "heading": "Empty results versus unavailable sources",
+              "body": "A successful query with zero matching records differs from a timeout, unreadable log file, or unavailable service telemetry. Empty results cover only the requested service, time window, and retained data. An unavailable source provides no evidence that requests were healthy."
+            },
+            {
+              "id": "643de0d56d1935fa425a821e61a3e6c4c675a86904db3537004dca2c11f87c86",
+              "document_id": "checkout-downstream",
+              "title": "Checkout downstream errors and bad gateway responses",
+              "heading": "Follow the failing dependency",
+              "body": "Use the checkout request ID and incident window to inspect the named dependency's logs. Compare its HTTP status with the caller's downstream error. Successful neighboring requests are counterevidence to a continuous outage. Missing downstream records may mean unavailable telemetry, transport failure, or a mismatched time window."
+            },
+            {
+              "id": "93a2e2c79d29f87d2dee8233a45ae57b07908264385bd55cce7b85b2ff976143",
+              "document_id": "health-semantics",
+              "title": "Process liveness versus business availability",
+              "heading": "Observed recovery",
+              "body": "A later business request returning HTTP 200 demonstrates recovery for that request at that time. It does not prove service health during an earlier incident or reveal why the earlier request failed. Avoid extending one observation into a continuous availability claim."
+            }
+          ]
+        }
+      ],
+      "request_hash": "5221fb0b0812c0197496f0881258756d33b419501d16a495f067c6b8f2eac9d6",
+      "usage": {
+        "input": 3018,
+        "output": 733,
+        "thought": 0,
+        "total": 3751
+      },
+      "served_model_version": "gemini-3.5-flash-lite",
+      "status": "structurally_valid",
+      "report": {
+        "summary": "The checkout failure is directly correlated with a 503 error returned by the payment dependency. While the downstream failure from payment caused checkout to return an HTTP 502, database connection exhaustion cannot be established from the generic 503 status codes and HTTP logs alone.",
+        "observations": [
+          {
+            "text": "Checkout received a 503 from the payment dependency and returned a 502 bad gateway for request ff8639897f0b42ec99a2381912e93246.",
+            "references": [
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              },
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 2
+              }
+            ]
+          },
+          {
+            "text": "The payment service log confirms returning an HTTP 503 for the same request ID.",
+            "references": [
+              {
+                "evidence_id": "60398daaaf48406f8e5f64798291965d",
+                "record_index": 0
+              }
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "explanation": "The checkout service returned an HTTP 502 error because its downstream dependency 'payment' returned an HTTP 503 error. However, database connection exhaustion or other underlying causes cannot be established from the available generic status codes and logs.",
+            "service": "checkout",
+            "supporting": [
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              },
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 2
+              },
+              {
+                "evidence_id": "60398daaaf48406f8e5f64798291965d",
+                "record_index": 0
+              }
+            ],
+            "contradicting": []
+          }
+        ],
+        "runbook_references": [
+          {
+            "evidence_id": "eb7aba9a3f3e5ed18f624dbf19654333",
+            "passage_id": "495a203ff99eceb35a56fe7d732a2948fe2b4b1d31a3b3386be5fe50e6739010"
+          },
+          {
+            "evidence_id": "eb7aba9a3f3e5ed18f624dbf19654333",
+            "passage_id": "643de0d56d1935fa425a821e61a3e6c4c675a86904db3537004dca2c11f87c86"
+          }
+        ],
+        "missing_evidence": [
+          "Database connection pool metrics",
+          "Payment service internal error logs"
+        ],
+        "suggested_checks": [
+          "Inspect payment service internal logs for database or resource errors",
+          "Check database connection pool utilization metrics during the incident window"
+        ],
+        "conclusion": "supported_hypothesis"
+      }
+    },
+    {
+      "case": "unsupported-database",
+      "method": "development_selected",
+      "question": "Do these observations establish that database connection exhaustion caused the failure? Explain what can and cannot be concluded.",
+      "context_passages": 6,
+      "context_evidence": [
+        {
+          "id": "60398daaaf48406f8e5f64798291965d",
+          "tool_call_id": "agent.a32db66b4768a87db8f54fee489abce8307194ef6e305ba3b3b6cc9e6d5fe639",
+          "collected_at": "2026-11-03T19:30:00.365942+00:00",
+          "source": "http_log_adapter",
+          "service": "payment",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.738599Z",
+              "service": "payment",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 503,
+              "duration_ms": 0.13
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live",
+          "request_id_filter": "ff8639897f0b42ec99a2381912e93246"
+        },
+        {
+          "id": "272e94bd6ada4672ade629d4f6aeb61c",
+          "tool_call_id": "logs.v1",
+          "collected_at": "2026-11-03T19:29:57.840532+00:00",
+          "source": "http_log_adapter",
+          "service": "checkout",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.720351Z",
+              "service": "checkout",
+              "level": "INFO",
+              "message": "HTTP request completed",
+              "request_id": "1b9c14aa511449c2a62251cb9fe35d54",
+              "dependency": null,
+              "status_code": 200,
+              "duration_ms": 44.747
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739513Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "Downstream request failed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": "payment",
+              "status_code": 503,
+              "duration_ms": null
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739598Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 502,
+              "duration_ms": 14.106
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live"
+        },
+        {
+          "id": "6c1057f1040f51c0960057b5e91eb387",
+          "source": "versioned_runbooks",
+          "availability": "available",
+          "revision": "c465bb25bbb18b6a51925d24b4afaf99aed5de7fde42fda9df23e6ff05fd74f1",
+          "hits": [
+            {
+              "id": "495a203ff99eceb35a56fe7d732a2948fe2b4b1d31a3b3386be5fe50e6739010",
+              "document_id": "network-timeouts",
+              "title": "Dependency timeouts and network reachability",
+              "heading": "Response failure versus transport failure",
+              "body": "A downstream request failed record with an HTTP status means an error response was received. A downstream request unavailable record without a status indicates a transport problem such as timeout, name resolution failure, or refused connection. This generic message does not distinguish those causes. Do not claim an unmeasured timeout duration."
+            },
+            {
+              "id": "6252c6da92a33190ed8d7596f2ebb9bf228d32102dd356c025e4d729565f07f8",
+              "document_id": "source-failures",
+              "title": "Operational log adapter availability",
+              "heading": "Adapter failure outcomes",
+              "body": "source_timeout, source_unreachable, source_http_error, and invalid_source_response mean logs are unavailable. These adapter errors do not prove target application failure or target health. A successful empty query is a different outcome. Preserve the source error, query scope, and truncation status."
+            },
+            {
+              "id": "26891eb3e822df9429441cc669fafed65e5c378104c101a2fe3394f98945697c",
+              "document_id": "missing-evidence",
+              "title": "Missing logs and insufficient evidence",
+              "heading": "Abstain when support is missing",
+              "body": "Separate observed facts from possible explanations. A runbook provides general guidance, not a current incident observation. If no available observation distinguishes competing causes, mark the cause inconclusive and suggest permitted read-only checks. A retrieval score is not a calibrated probability."
+            },
+            {
+              "id": "d0ac07910b51b27a24533c1269a7c60e7df4e87a8fdcdc42640c4e0fa69abcb5",
+              "document_id": "retry-safety",
+              "title": "Read-only investigation and transaction retry safety",
+              "heading": "Guidance is not evidence",
+              "body": "A procedure describes what an operator might verify. It does not establish that its described failure is happening now. Link current observations to each hypothesis, acknowledge contradictory evidence, and leave the underlying cause inconclusive when available signals cannot distinguish alternatives."
+            },
+            {
+              "id": "9b002507968e4be5d9fd2523c83a4add8204f7c434b50c1894b1788ac9e099a7",
+              "document_id": "network-timeouts",
+              "title": "Dependency timeouts and network reachability",
+              "heading": "Read-only follow-up",
+              "body": "Compare dependency health, request errors, and available configuration evidence. A later successful response does not prove connectivity during the incident. Missing network observations should be listed as missing evidence rather than converted into a specific transport diagnosis."
+            },
+            {
+              "id": "93a2e2c79d29f87d2dee8233a45ae57b07908264385bd55cce7b85b2ff976143",
+              "document_id": "health-semantics",
+              "title": "Process liveness versus business availability",
+              "heading": "Observed recovery",
+              "body": "A later business request returning HTTP 200 demonstrates recovery for that request at that time. It does not prove service health during an earlier incident or reveal why the earlier request failed. Avoid extending one observation into a continuous availability claim."
+            }
+          ]
+        }
+      ],
+      "request_hash": "3e30d850acde35b237daf7a9e27cf907adc5b768fe6b032292fdc7eed4beca14",
+      "usage": {
+        "input": 3009,
+        "output": 353,
+        "thought": 0,
+        "total": 3362
+      },
+      "served_model_version": "gemini-3.5-flash-lite",
+      "status": "structurally_valid",
+      "report": {
+        "summary": "The checkout service experienced a failure when calling the payment service, resulting in an HTTP 503 from payment and an HTTP 502 to the client. The provided observations do not establish database connection exhaustion as the cause, and that underlying cause remains inconclusive.",
+        "observations": [
+          {
+            "text": "Checkout returned HTTP 502 due to a downstream HTTP 503 from the payment service.",
+            "references": [
+              {
+                "evidence_id": "60398daaaf48406f8e5f64798291965d",
+                "record_index": 0
+              },
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              },
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 2
+              }
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "explanation": "The payment service returned an HTTP 503 error, but there is no evidence establishing database connection exhaustion as the cause.",
+            "service": "payment",
+            "supporting": [
+              {
+                "evidence_id": "60398daaaf48406f8e5f64798291965d",
+                "record_index": 0
+              }
+            ],
+            "contradicting": []
+          }
+        ],
+        "runbook_references": [],
+        "missing_evidence": [
+          "Database connection metrics or internal error logs for the payment service"
+        ],
+        "suggested_checks": [
+          "Inspect payment service database connection pool metrics and internal logs."
+        ],
+        "conclusion": "inconclusive"
+      }
+    },
+    {
+      "case": "deployment-correlation",
+      "method": "logs_only",
+      "question": "The operator suspects a deployment around the same time. Can the collected observations establish a deployment regression?",
+      "context_passages": 0,
+      "context_evidence": [
+        {
+          "id": "60398daaaf48406f8e5f64798291965d",
+          "tool_call_id": "agent.a32db66b4768a87db8f54fee489abce8307194ef6e305ba3b3b6cc9e6d5fe639",
+          "collected_at": "2026-11-03T19:30:00.365942+00:00",
+          "source": "http_log_adapter",
+          "service": "payment",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.738599Z",
+              "service": "payment",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 503,
+              "duration_ms": 0.13
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live",
+          "request_id_filter": "ff8639897f0b42ec99a2381912e93246"
+        },
+        {
+          "id": "272e94bd6ada4672ade629d4f6aeb61c",
+          "tool_call_id": "logs.v1",
+          "collected_at": "2026-11-03T19:29:57.840532+00:00",
+          "source": "http_log_adapter",
+          "service": "checkout",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.720351Z",
+              "service": "checkout",
+              "level": "INFO",
+              "message": "HTTP request completed",
+              "request_id": "1b9c14aa511449c2a62251cb9fe35d54",
+              "dependency": null,
+              "status_code": 200,
+              "duration_ms": 44.747
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739513Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "Downstream request failed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": "payment",
+              "status_code": 503,
+              "duration_ms": null
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739598Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 502,
+              "duration_ms": 14.106
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live"
+        }
+      ],
+      "request_hash": "f5b24ff0c65137f07173b430909b4c0f669f9a5606dd05e4d82227f839d3413f",
+      "usage": {
+        "input": 2013,
+        "output": 249,
+        "thought": 249,
+        "total": 2511
+      },
+      "served_model_version": "gemini-3.5-flash-lite",
+      "status": "structurally_valid",
+      "report": {
+        "summary": "The checkout service returns HTTP 502 due to a downstream payment service failure returning 503. The collected observations do not contain deployment details, so a deployment regression cannot be established.",
+        "observations": [
+          {
+            "text": "Checkout service experienced a downstream request failure calling payment resulting in HTTP 502.",
+            "references": [
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              }
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "explanation": "The collected logs and observations do not contain any version or deployment information, so a deployment regression cannot be established.",
+            "service": "checkout",
+            "supporting": [
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 2
+              }
+            ],
+            "contradicting": []
+          }
+        ],
+        "runbook_references": [],
+        "missing_evidence": [
+          "Deployment version logs or change audit logs"
+        ],
+        "suggested_checks": [
+          "Check CI/CD deployment history and container image tags around the incident time window."
+        ],
+        "conclusion": "supported_hypothesis"
+      }
+    },
+    {
+      "case": "deployment-correlation",
+      "method": "all_context",
+      "question": "The operator suspects a deployment around the same time. Can the collected observations establish a deployment regression?",
+      "context_passages": 27,
+      "context_evidence": [
+        {
+          "id": "60398daaaf48406f8e5f64798291965d",
+          "tool_call_id": "agent.a32db66b4768a87db8f54fee489abce8307194ef6e305ba3b3b6cc9e6d5fe639",
+          "collected_at": "2026-11-03T19:30:00.365942+00:00",
+          "source": "http_log_adapter",
+          "service": "payment",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.738599Z",
+              "service": "payment",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 503,
+              "duration_ms": 0.13
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live",
+          "request_id_filter": "ff8639897f0b42ec99a2381912e93246"
+        },
+        {
+          "id": "272e94bd6ada4672ade629d4f6aeb61c",
+          "tool_call_id": "logs.v1",
+          "collected_at": "2026-11-03T19:29:57.840532+00:00",
+          "source": "http_log_adapter",
+          "service": "checkout",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.720351Z",
+              "service": "checkout",
+              "level": "INFO",
+              "message": "HTTP request completed",
+              "request_id": "1b9c14aa511449c2a62251cb9fe35d54",
+              "dependency": null,
+              "status_code": 200,
+              "duration_ms": 44.747
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739513Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "Downstream request failed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": "payment",
+              "status_code": 503,
+              "duration_ms": null
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739598Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 502,
+              "duration_ms": 14.106
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live"
+        },
+        {
+          "id": "3e66e4e7e460566e87af9f3a3c94e5b2",
+          "source": "versioned_runbooks",
+          "availability": "available",
+          "revision": "c465bb25bbb18b6a51925d24b4afaf99aed5de7fde42fda9df23e6ff05fd74f1",
+          "hits": [
+            {
+              "id": "bb6db4a9d174039634aa89f8c81ef2acc408d93c57f4f30099f712919cd708af",
+              "document_id": "checkout-downstream",
+              "title": "Checkout downstream errors and bad gateway responses",
+              "heading": "HTTP 502 from checkout",
+              "body": "A checkout bad gateway response means a downstream call failed or could not complete. Inspect the ERROR record for its dependency field. Payment dependency and downstream status 503 support a failed payment boundary. Checkout status alone cannot distinguish payment from inventory failure or a network timeout."
+            },
+            {
+              "id": "643de0d56d1935fa425a821e61a3e6c4c675a86904db3537004dca2c11f87c86",
+              "document_id": "checkout-downstream",
+              "title": "Checkout downstream errors and bad gateway responses",
+              "heading": "Follow the failing dependency",
+              "body": "Use the checkout request ID and incident window to inspect the named dependency's logs. Compare its HTTP status with the caller's downstream error. Successful neighboring requests are counterevidence to a continuous outage. Missing downstream records may mean unavailable telemetry, transport failure, or a mismatched time window."
+            },
+            {
+              "id": "f3e63171d6de37ab1fd42436ab5d838cf5d62bd58d363151ff00385c0ed0c4f2",
+              "document_id": "checkout-downstream",
+              "title": "Checkout downstream errors and bad gateway responses",
+              "heading": "Verification and limits",
+              "body": "Read-only verification compares both sides of the request with the applicable service map. Do not restart services, change settings, or retry a real payment merely because a runbook suggests a hypothesis. Recovery after an operator action establishes observed recovery, not proof of the original cause."
+            },
+            {
+              "id": "d6d458723196761b7be842a2824b781fcc35a689cc41debfa8195a924867fbd4",
+              "document_id": "configuration-scope",
+              "title": "Applicability of versioned operational guidance",
+              "heading": "Environment and release",
+              "body": "Choose guidance for the incident environment and release, retaining applicable global guidance. A staging or archived release procedure can describe different dependencies. Similar words do not override applicability metadata."
+            },
+            {
+              "id": "11f915631f52f99c33c8779fcb9c009ad0e13ff1c06c0a420a5f60db186e76da",
+              "document_id": "configuration-scope",
+              "title": "Applicability of versioned operational guidance",
+              "heading": "Revision reproducibility",
+              "body": "Preserve the knowledge revision and immutable passage references used by an investigation. Publishing a new index must not rewrite old citations or silently change follow-up retrieval in an ongoing investigation. A failed publication leaves the previous corpus usable."
+            },
+            {
+              "id": "b7ccd3e78db5c9663511965cebd18f42845bc6291a1a9bca5bb9075e1e8d3ab5",
+              "document_id": "health-semantics",
+              "title": "Process liveness versus business availability",
+              "heading": "A reachable process can reject work",
+              "body": "A successful health endpoint establishes that the service process responded. It does not establish that payment charge requests or inventory business requests succeeded. Compare business request status and correlated caller logs before claiming recovery or availability."
+            },
+            {
+              "id": "93a2e2c79d29f87d2dee8233a45ae57b07908264385bd55cce7b85b2ff976143",
+              "document_id": "health-semantics",
+              "title": "Process liveness versus business availability",
+              "heading": "Observed recovery",
+              "body": "A later business request returning HTTP 200 demonstrates recovery for that request at that time. It does not prove service health during an earlier incident or reveal why the earlier request failed. Avoid extending one observation into a continuous availability claim."
+            },
+            {
+              "id": "dcc2ddf90013b663b3a4706496ea1b6b13dc21b6258dc2752213b0a502d9b40f",
+              "document_id": "http-validation",
+              "title": "Cart validation and HTTP client errors",
+              "heading": "Invalid carts",
+              "body": "The checkout schema accepts the book item and quantities from one through ten. A missing or invalid field, zero quantity, or quantity eleven is rejected with HTTP 422 before business processing. Extra fields are forbidden. Invalid input is not evidence of a failing dependency."
+            },
+            {
+              "id": "f33733d8335bdec4d7ffb19043f0d74a1336a9bbfc52f771dae600e73d30c412",
+              "document_id": "http-validation",
+              "title": "Cart validation and HTTP client errors",
+              "heading": "Client errors versus dependency failures",
+              "body": "HTTP 422 describes invalid cart input. HTTP 502 describes checkout failing to complete a downstream call. Compare the response, dependency field, and correlated logs. Do not attribute a rejected cart to payment or inventory without observations of those services."
+            },
+            {
+              "id": "60deca27d93233295bad593f80ce64f029f6007ad42870a17e36f9255b89e561",
+              "document_id": "missing-evidence",
+              "title": "Missing logs and insufficient evidence",
+              "heading": "Empty results versus unavailable sources",
+              "body": "A successful query with zero matching records differs from a timeout, unreadable log file, or unavailable service telemetry. Empty results cover only the requested service, time window, and retained data. An unavailable source provides no evidence that requests were healthy."
+            },
+            {
+              "id": "2ed1a5a4f5714782ccf93186e602984f3ab6dbef972fc528dddd4f4ccf75fb88",
+              "document_id": "missing-evidence",
+              "title": "Missing logs and insufficient evidence",
+              "heading": "Retention and truncated evidence",
+              "body": "Local logs rotate and queries return a bounded number of records. Truncated responses may omit relevant errors; older coverage after rotation cannot be guaranteed. Preserve truncation and the query window. Do not describe retained records as a complete incident history."
+            },
+            {
+              "id": "26891eb3e822df9429441cc669fafed65e5c378104c101a2fe3394f98945697c",
+              "document_id": "missing-evidence",
+              "title": "Missing logs and insufficient evidence",
+              "heading": "Abstain when support is missing",
+              "body": "Separate observed facts from possible explanations. A runbook provides general guidance, not a current incident observation. If no available observation distinguishes competing causes, mark the cause inconclusive and suggest permitted read-only checks. A retrieval score is not a calibrated probability."
+            },
+            {
+              "id": "495a203ff99eceb35a56fe7d732a2948fe2b4b1d31a3b3386be5fe50e6739010",
+              "document_id": "network-timeouts",
+              "title": "Dependency timeouts and network reachability",
+              "heading": "Response failure versus transport failure",
+              "body": "A downstream request failed record with an HTTP status means an error response was received. A downstream request unavailable record without a status indicates a transport problem such as timeout, name resolution failure, or refused connection. This generic message does not distinguish those causes. Do not claim an unmeasured timeout duration."
+            },
+            {
+              "id": "8b74f47a16872fc5cfd01cadb59f1081ff12e236eeb08a8458a5a8a51f3d76d5",
+              "document_id": "network-timeouts",
+              "title": "Dependency timeouts and network reachability",
+              "heading": "Bounded requests",
+              "body": "Checkout configures a one-second HTTP client timeout for dependency calls and does not retry transactions automatically. Compare recorded duration, neighboring requests, and downstream logs. The configured timeout does not prove that every unavailable response was a timeout. Timeout categories apply to phases of the HTTP operation rather than guaranteeing a one-second total duration."
+            },
+            {
+              "id": "9b002507968e4be5d9fd2523c83a4add8204f7c434b50c1894b1788ac9e099a7",
+              "document_id": "network-timeouts",
+              "title": "Dependency timeouts and network reachability",
+              "heading": "Read-only follow-up",
+              "body": "Compare dependency health, request errors, and available configuration evidence. A later successful response does not prove connectivity during the incident. Missing network observations should be listed as missing evidence rather than converted into a specific transport diagnosis."
+            },
+            {
+              "id": "d3798ed71aaa0be2b3ca431fb58d0f054ae6ff0ef4ef172cb7e24d197881e125",
+              "document_id": "release-correlation",
+              "title": "Deployment timing and causal investigation",
+              "heading": "Timing is not causation",
+              "body": "An error beginning near a deployment is a useful lead, not proof of a regression. Compare affected and unaffected services, request IDs, signatures, and observations before and after the change. Determine whether the deployed component is on the failing dependency path."
+            },
+            {
+              "id": "4dd6898916ed4738cf2135d3f73f7c2d6118520e704db89f1b7b0419174f3499",
+              "document_id": "release-correlation",
+              "title": "Deployment timing and causal investigation",
+              "heading": "Missing deployment history",
+              "body": "This release has no deployment-history tool. If deployment events cannot be observed, state that limitation instead of inventing a timeline. A user's description of a change should be distinguished from independently collected deployment evidence."
+            },
+            {
+              "id": "0fc31f831664157ecdc4a8bb40d86f9e2d42c9482ec1258e2e33b056886583c5",
+              "document_id": "release-correlation",
+              "title": "Deployment timing and causal investigation",
+              "heading": "Applicability of guidance",
+              "body": "Use guidance for the correct environment and release. Older architecture may describe dependencies that no longer exist. Cite the document revision and preserve the observation window. Relevant documentation suggests checks but cannot establish that a particular change caused this incident."
+            },
+            {
+              "id": "504e55e2356d0c47004187c59b6786aea51230a14c2d46bc3e9c78396162c281",
+              "document_id": "request-correlation",
+              "title": "Request ID correlation across HTTP services",
+              "heading": "Joining observations",
+              "body": "Use request_id to join checkout, inventory, and payment logs in the same observation window. Accepted IDs contain exactly 32 lowercase hexadecimal characters. Invalid supplied IDs are replaced at ingress. Timestamp proximity alone does not establish that two errors belong to the same request."
+            },
+            {
+              "id": "a4d0d82de7ab435d7f1d68df56f6c41bd8969d8b65588431394421a821244b10",
+              "document_id": "request-correlation",
+              "title": "Request ID correlation across HTTP services",
+              "heading": "Partial correlation",
+              "body": "A matching request ID supports following a dependency boundary. A missing match can arise from log retention, an incorrect time window, a transport failure, or a request that never reached the downstream service. Preserve missing evidence; do not invent a trace or assume downstream success."
+            },
+            {
+              "id": "a6e30ef1148c5fe5178f5c3293a7e5a5f55e8b04b0d309f848c088d9ec68cf5f",
+              "document_id": "retry-safety",
+              "title": "Read-only investigation and transaction retry safety",
+              "heading": "No automatic transaction retries",
+              "body": "Checkout does not automatically retry inventory or payment transactions. The investigator's tools only read observations and reviewed guidance. Suggested verification steps must not become automatic restarts, configuration changes, repeated charges, or shell execution."
+            },
+            {
+              "id": "d0ac07910b51b27a24533c1269a7c60e7df4e87a8fdcdc42640c4e0fa69abcb5",
+              "document_id": "retry-safety",
+              "title": "Read-only investigation and transaction retry safety",
+              "heading": "Guidance is not evidence",
+              "body": "A procedure describes what an operator might verify. It does not establish that its described failure is happening now. Link current observations to each hypothesis, acknowledge contradictory evidence, and leave the underlying cause inconclusive when available signals cannot distinguish alternatives."
+            },
+            {
+              "id": "b9c5c7e4932763ebede6a3db8d76502c47e7f9d6ee981ab9cfc88df9ea3c5ee7",
+              "document_id": "service-map",
+              "title": "Shopping service dependencies and boundaries",
+              "heading": "Request flow",
+              "body": "Checkout calls inventory availability first, then payment processing. Inventory success does not establish payment success. If inventory fails, checkout stops without calling payment. Use the dependency name as well as the response status to localize the failing boundary."
+            },
+            {
+              "id": "7ae3790e661617754221915b0df8303ccf458a979220fc21358aab8d4fe874b7",
+              "document_id": "service-map",
+              "title": "Shopping service dependencies and boundaries",
+              "heading": "Request correlation",
+              "body": "Checkout propagates a valid request ID to inventory and payment. Compare records from the same request and incident window. A shared ID links observations but does not identify the underlying cause. Match service, timestamp, dependency, and status before correlating unrelated errors."
+            },
+            {
+              "id": "425fb413544df5c6023e3be4eabfe2950af9f0add1669e2c6f50f4e18439e1dc",
+              "document_id": "service-map",
+              "title": "Shopping service dependencies and boundaries",
+              "heading": "Supported architecture",
+              "body": "This release is an HTTP shopping simulation. It has no real payment gateway, order database, customer accounts, or stock reservation. Do not infer database connection exhaustion or external financial failures without an applicable architecture revision and actual observations. Process health is separate from successful business requests."
+            },
+            {
+              "id": "6252c6da92a33190ed8d7596f2ebb9bf228d32102dd356c025e4d729565f07f8",
+              "document_id": "source-failures",
+              "title": "Operational log adapter availability",
+              "heading": "Adapter failure outcomes",
+              "body": "source_timeout, source_unreachable, source_http_error, and invalid_source_response mean logs are unavailable. These adapter errors do not prove target application failure or target health. A successful empty query is a different outcome. Preserve the source error, query scope, and truncation status."
+            },
+            {
+              "id": "29155f4d97f07cf6b2740469aad3b7526eaff6c9a08956cab16ea676c53e4e64",
+              "document_id": "source-failures",
+              "title": "Operational log adapter availability",
+              "heading": "Bounded evidence reads",
+              "body": "The adapter permits a fixed configured source URL, a service allowlist, ordered incident windows no longer than an hour, at most 100 returned records, and a response-size cap. It does not accept arbitrary SQL, shell commands, or user-selected destinations."
+            }
+          ]
+        }
+      ],
+      "request_hash": "d1d1a29f3255095597625ec8cf4e5f49bcb0918c2594c5b22b9f7139728c4f91",
+      "usage": {
+        "input": 6045,
+        "output": 578,
+        "thought": 0,
+        "total": 6623
+      },
+      "served_model_version": "gemini-3.5-flash-lite",
+      "status": "structurally_valid",
+      "report": {
+        "summary": "Checkout experienced HTTP 502 due to a downstream failure in the payment service (HTTP 503). There is no deployment history available to establish whether a deployment regression occurred.",
+        "observations": [
+          {
+            "text": "Payment service returned HTTP 503 for request ff8639897f0b42ec99a2381912e93246, causing checkout to fail with HTTP 502.",
+            "references": [
+              {
+                "evidence_id": "60398daaaf48406f8e5f64798291965d",
+                "record_index": 0
+              },
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              }
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "explanation": "The payment dependency returned an HTTP 503 error for the request, but deployment history is unavailable to establish a deployment regression.",
+            "service": "payment",
+            "supporting": [
+              {
+                "evidence_id": "60398daaaf48406f8e5f64798291965d",
+                "record_index": 0
+              },
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              }
+            ],
+            "contradicting": []
+          }
+        ],
+        "runbook_references": [
+          {
+            "evidence_id": "3e66e4e7e460566e87af9f3a3c94e5b2",
+            "passage_id": "bb6db4a9d174039634aa89f8c81ef2acc408d93c57f4f30099f712919cd708af"
+          },
+          {
+            "evidence_id": "3e66e4e7e460566e87af9f3a3c94e5b2",
+            "passage_id": "4dd6898916ed4738cf2135d3f73f7c2d6118520e704db89f1b7b0419174f3499"
+          }
+        ],
+        "missing_evidence": [
+          "deployment history or release telemetry"
+        ],
+        "suggested_checks": [
+          "Check deployment logs or release notes if available outside the restricted tool set."
+        ],
+        "conclusion": "inconclusive"
+      }
+    },
+    {
+      "case": "deployment-correlation",
+      "method": "v2_baseline",
+      "question": "The operator suspects a deployment around the same time. Can the collected observations establish a deployment regression?",
+      "context_passages": 6,
+      "context_evidence": [
+        {
+          "id": "60398daaaf48406f8e5f64798291965d",
+          "tool_call_id": "agent.a32db66b4768a87db8f54fee489abce8307194ef6e305ba3b3b6cc9e6d5fe639",
+          "collected_at": "2026-11-03T19:30:00.365942+00:00",
+          "source": "http_log_adapter",
+          "service": "payment",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.738599Z",
+              "service": "payment",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 503,
+              "duration_ms": 0.13
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live",
+          "request_id_filter": "ff8639897f0b42ec99a2381912e93246"
+        },
+        {
+          "id": "272e94bd6ada4672ade629d4f6aeb61c",
+          "tool_call_id": "logs.v1",
+          "collected_at": "2026-11-03T19:29:57.840532+00:00",
+          "source": "http_log_adapter",
+          "service": "checkout",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.720351Z",
+              "service": "checkout",
+              "level": "INFO",
+              "message": "HTTP request completed",
+              "request_id": "1b9c14aa511449c2a62251cb9fe35d54",
+              "dependency": null,
+              "status_code": 200,
+              "duration_ms": 44.747
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739513Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "Downstream request failed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": "payment",
+              "status_code": 503,
+              "duration_ms": null
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739598Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 502,
+              "duration_ms": 14.106
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live"
+        },
+        {
+          "id": "bec1a7b1b7835d97aaa05a09dc55ead8",
+          "source": "versioned_runbooks",
+          "availability": "available",
+          "revision": "c465bb25bbb18b6a51925d24b4afaf99aed5de7fde42fda9df23e6ff05fd74f1",
+          "hits": [
+            {
+              "id": "4dd6898916ed4738cf2135d3f73f7c2d6118520e704db89f1b7b0419174f3499",
+              "document_id": "release-correlation",
+              "title": "Deployment timing and causal investigation",
+              "heading": "Missing deployment history",
+              "body": "This release has no deployment-history tool. If deployment events cannot be observed, state that limitation instead of inventing a timeline. A user's description of a change should be distinguished from independently collected deployment evidence."
+            },
+            {
+              "id": "d3798ed71aaa0be2b3ca431fb58d0f054ae6ff0ef4ef172cb7e24d197881e125",
+              "document_id": "release-correlation",
+              "title": "Deployment timing and causal investigation",
+              "heading": "Timing is not causation",
+              "body": "An error beginning near a deployment is a useful lead, not proof of a regression. Compare affected and unaffected services, request IDs, signatures, and observations before and after the change. Determine whether the deployed component is on the failing dependency path."
+            },
+            {
+              "id": "0fc31f831664157ecdc4a8bb40d86f9e2d42c9482ec1258e2e33b056886583c5",
+              "document_id": "release-correlation",
+              "title": "Deployment timing and causal investigation",
+              "heading": "Applicability of guidance",
+              "body": "Use guidance for the correct environment and release. Older architecture may describe dependencies that no longer exist. Cite the document revision and preserve the observation window. Relevant documentation suggests checks but cannot establish that a particular change caused this incident."
+            },
+            {
+              "id": "d6d458723196761b7be842a2824b781fcc35a689cc41debfa8195a924867fbd4",
+              "document_id": "configuration-scope",
+              "title": "Applicability of versioned operational guidance",
+              "heading": "Environment and release",
+              "body": "Choose guidance for the incident environment and release, retaining applicable global guidance. A staging or archived release procedure can describe different dependencies. Similar words do not override applicability metadata."
+            },
+            {
+              "id": "9b002507968e4be5d9fd2523c83a4add8204f7c434b50c1894b1788ac9e099a7",
+              "document_id": "network-timeouts",
+              "title": "Dependency timeouts and network reachability",
+              "heading": "Read-only follow-up",
+              "body": "Compare dependency health, request errors, and available configuration evidence. A later successful response does not prove connectivity during the incident. Missing network observations should be listed as missing evidence rather than converted into a specific transport diagnosis."
+            },
+            {
+              "id": "11f915631f52f99c33c8779fcb9c009ad0e13ff1c06c0a420a5f60db186e76da",
+              "document_id": "configuration-scope",
+              "title": "Applicability of versioned operational guidance",
+              "heading": "Revision reproducibility",
+              "body": "Preserve the knowledge revision and immutable passage references used by an investigation. Publishing a new index must not rewrite old citations or silently change follow-up retrieval in an ongoing investigation. A failed publication leaves the previous corpus usable."
+            }
+          ]
+        }
+      ],
+      "request_hash": "c9050142b0f134dbbcb887e8f942acb97dab0d84eb9ea1705e66263d01ff366d",
+      "usage": {
+        "input": 2950,
+        "output": 367,
+        "thought": 0,
+        "total": 3317
+      },
+      "served_model_version": "gemini-3.5-flash-lite",
+      "status": "invalid_references_or_schema"
+    },
+    {
+      "case": "deployment-correlation",
+      "method": "development_selected",
+      "question": "The operator suspects a deployment around the same time. Can the collected observations establish a deployment regression?",
+      "context_passages": 6,
+      "context_evidence": [
+        {
+          "id": "60398daaaf48406f8e5f64798291965d",
+          "tool_call_id": "agent.a32db66b4768a87db8f54fee489abce8307194ef6e305ba3b3b6cc9e6d5fe639",
+          "collected_at": "2026-11-03T19:30:00.365942+00:00",
+          "source": "http_log_adapter",
+          "service": "payment",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.738599Z",
+              "service": "payment",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 503,
+              "duration_ms": 0.13
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live",
+          "request_id_filter": "ff8639897f0b42ec99a2381912e93246"
+        },
+        {
+          "id": "272e94bd6ada4672ade629d4f6aeb61c",
+          "tool_call_id": "logs.v1",
+          "collected_at": "2026-11-03T19:29:57.840532+00:00",
+          "source": "http_log_adapter",
+          "service": "checkout",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.720351Z",
+              "service": "checkout",
+              "level": "INFO",
+              "message": "HTTP request completed",
+              "request_id": "1b9c14aa511449c2a62251cb9fe35d54",
+              "dependency": null,
+              "status_code": 200,
+              "duration_ms": 44.747
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739513Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "Downstream request failed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": "payment",
+              "status_code": 503,
+              "duration_ms": null
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739598Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 502,
+              "duration_ms": 14.106
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live"
+        },
+        {
+          "id": "c898df0de64a5ea0aa343db015c8833c",
+          "source": "versioned_runbooks",
+          "availability": "available",
+          "revision": "c465bb25bbb18b6a51925d24b4afaf99aed5de7fde42fda9df23e6ff05fd74f1",
+          "hits": [
+            {
+              "id": "4dd6898916ed4738cf2135d3f73f7c2d6118520e704db89f1b7b0419174f3499",
+              "document_id": "release-correlation",
+              "title": "Deployment timing and causal investigation",
+              "heading": "Missing deployment history",
+              "body": "This release has no deployment-history tool. If deployment events cannot be observed, state that limitation instead of inventing a timeline. A user's description of a change should be distinguished from independently collected deployment evidence."
+            },
+            {
+              "id": "d3798ed71aaa0be2b3ca431fb58d0f054ae6ff0ef4ef172cb7e24d197881e125",
+              "document_id": "release-correlation",
+              "title": "Deployment timing and causal investigation",
+              "heading": "Timing is not causation",
+              "body": "An error beginning near a deployment is a useful lead, not proof of a regression. Compare affected and unaffected services, request IDs, signatures, and observations before and after the change. Determine whether the deployed component is on the failing dependency path."
+            },
+            {
+              "id": "11f915631f52f99c33c8779fcb9c009ad0e13ff1c06c0a420a5f60db186e76da",
+              "document_id": "configuration-scope",
+              "title": "Applicability of versioned operational guidance",
+              "heading": "Revision reproducibility",
+              "body": "Preserve the knowledge revision and immutable passage references used by an investigation. Publishing a new index must not rewrite old citations or silently change follow-up retrieval in an ongoing investigation. A failed publication leaves the previous corpus usable."
+            },
+            {
+              "id": "d6d458723196761b7be842a2824b781fcc35a689cc41debfa8195a924867fbd4",
+              "document_id": "configuration-scope",
+              "title": "Applicability of versioned operational guidance",
+              "heading": "Environment and release",
+              "body": "Choose guidance for the incident environment and release, retaining applicable global guidance. A staging or archived release procedure can describe different dependencies. Similar words do not override applicability metadata."
+            },
+            {
+              "id": "29155f4d97f07cf6b2740469aad3b7526eaff6c9a08956cab16ea676c53e4e64",
+              "document_id": "source-failures",
+              "title": "Operational log adapter availability",
+              "heading": "Bounded evidence reads",
+              "body": "The adapter permits a fixed configured source URL, a service allowlist, ordered incident windows no longer than an hour, at most 100 returned records, and a response-size cap. It does not accept arbitrary SQL, shell commands, or user-selected destinations."
+            },
+            {
+              "id": "9b002507968e4be5d9fd2523c83a4add8204f7c434b50c1894b1788ac9e099a7",
+              "document_id": "network-timeouts",
+              "title": "Dependency timeouts and network reachability",
+              "heading": "Read-only follow-up",
+              "body": "Compare dependency health, request errors, and available configuration evidence. A later successful response does not prove connectivity during the incident. Missing network observations should be listed as missing evidence rather than converted into a specific transport diagnosis."
+            }
+          ]
+        }
+      ],
+      "request_hash": "a10802fe48fd44dd718fa8959f6345d3dda6c2e1570878430a302c95fed5453a",
+      "usage": {
+        "input": 2958,
+        "output": 660,
+        "thought": 223,
+        "total": 3841
+      },
+      "served_model_version": "gemini-3.5-flash-lite",
+      "status": "invalid_references_or_schema"
+    },
+    {
+      "case": "missing-downstream",
+      "method": "logs_only",
+      "question": "Using the supplied caller-side observations, what can be established about payment and what is missing about its underlying failure?",
+      "context_passages": 0,
+      "context_evidence": [
+        {
+          "id": "272e94bd6ada4672ade629d4f6aeb61c",
+          "tool_call_id": "logs.v1",
+          "collected_at": "2026-11-03T19:29:57.840532+00:00",
+          "source": "http_log_adapter",
+          "service": "checkout",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.720351Z",
+              "service": "checkout",
+              "level": "INFO",
+              "message": "HTTP request completed",
+              "request_id": "1b9c14aa511449c2a62251cb9fe35d54",
+              "dependency": null,
+              "status_code": 200,
+              "duration_ms": 44.747
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739513Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "Downstream request failed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": "payment",
+              "status_code": 503,
+              "duration_ms": null
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739598Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 502,
+              "duration_ms": 14.106
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live"
+        }
+      ],
+      "request_hash": "cdc483370d20153544d6f3d50b4cc42151b01933ff6f98ef7335582a6c1d3b90",
+      "usage": {
+        "input": 1640,
+        "output": 389,
+        "thought": 322,
+        "total": 2351
+      },
+      "served_model_version": "gemini-3.5-flash-lite",
+      "status": "structurally_valid",
+      "report": {
+        "summary": "The checkout service attempted a request to the payment dependency which returned a 503 status code. Consequently, checkout failed with an HTTP 502. The underlying cause of the payment service failure cannot be established from the caller-side logs.",
+        "observations": [
+          {
+            "text": "Checkout received a 503 status code when calling the payment service, resulting in a 502 HTTP response to the client.",
+            "references": [
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              },
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 2
+              }
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "explanation": "Checkout encountered a downstream 503 from the payment service, but the underlying cause or specific error details of the payment failure cannot be established from caller-side logs alone.",
+            "service": "payment",
+            "supporting": [
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              },
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 2
+              }
+            ],
+            "contradicting": []
+          }
+        ],
+        "runbook_references": [],
+        "missing_evidence": [
+          "Payment service logs or error body details explaining the 503 response"
+        ],
+        "suggested_checks": [
+          "Inspect payment service logs for request ff8639897f0b42ec99a2381912e93246"
+        ],
+        "conclusion": "supported_hypothesis"
+      }
+    },
+    {
+      "case": "missing-downstream",
+      "method": "all_context",
+      "question": "Using the supplied caller-side observations, what can be established about payment and what is missing about its underlying failure?",
+      "context_passages": 27,
+      "context_evidence": [
+        {
+          "id": "272e94bd6ada4672ade629d4f6aeb61c",
+          "tool_call_id": "logs.v1",
+          "collected_at": "2026-11-03T19:29:57.840532+00:00",
+          "source": "http_log_adapter",
+          "service": "checkout",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.720351Z",
+              "service": "checkout",
+              "level": "INFO",
+              "message": "HTTP request completed",
+              "request_id": "1b9c14aa511449c2a62251cb9fe35d54",
+              "dependency": null,
+              "status_code": 200,
+              "duration_ms": 44.747
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739513Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "Downstream request failed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": "payment",
+              "status_code": 503,
+              "duration_ms": null
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739598Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 502,
+              "duration_ms": 14.106
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live"
+        },
+        {
+          "id": "1cb70c02e5855b998f97340cbd93ec98",
+          "source": "versioned_runbooks",
+          "availability": "available",
+          "revision": "c465bb25bbb18b6a51925d24b4afaf99aed5de7fde42fda9df23e6ff05fd74f1",
+          "hits": [
+            {
+              "id": "bb6db4a9d174039634aa89f8c81ef2acc408d93c57f4f30099f712919cd708af",
+              "document_id": "checkout-downstream",
+              "title": "Checkout downstream errors and bad gateway responses",
+              "heading": "HTTP 502 from checkout",
+              "body": "A checkout bad gateway response means a downstream call failed or could not complete. Inspect the ERROR record for its dependency field. Payment dependency and downstream status 503 support a failed payment boundary. Checkout status alone cannot distinguish payment from inventory failure or a network timeout."
+            },
+            {
+              "id": "643de0d56d1935fa425a821e61a3e6c4c675a86904db3537004dca2c11f87c86",
+              "document_id": "checkout-downstream",
+              "title": "Checkout downstream errors and bad gateway responses",
+              "heading": "Follow the failing dependency",
+              "body": "Use the checkout request ID and incident window to inspect the named dependency's logs. Compare its HTTP status with the caller's downstream error. Successful neighboring requests are counterevidence to a continuous outage. Missing downstream records may mean unavailable telemetry, transport failure, or a mismatched time window."
+            },
+            {
+              "id": "f3e63171d6de37ab1fd42436ab5d838cf5d62bd58d363151ff00385c0ed0c4f2",
+              "document_id": "checkout-downstream",
+              "title": "Checkout downstream errors and bad gateway responses",
+              "heading": "Verification and limits",
+              "body": "Read-only verification compares both sides of the request with the applicable service map. Do not restart services, change settings, or retry a real payment merely because a runbook suggests a hypothesis. Recovery after an operator action establishes observed recovery, not proof of the original cause."
+            },
+            {
+              "id": "d6d458723196761b7be842a2824b781fcc35a689cc41debfa8195a924867fbd4",
+              "document_id": "configuration-scope",
+              "title": "Applicability of versioned operational guidance",
+              "heading": "Environment and release",
+              "body": "Choose guidance for the incident environment and release, retaining applicable global guidance. A staging or archived release procedure can describe different dependencies. Similar words do not override applicability metadata."
+            },
+            {
+              "id": "11f915631f52f99c33c8779fcb9c009ad0e13ff1c06c0a420a5f60db186e76da",
+              "document_id": "configuration-scope",
+              "title": "Applicability of versioned operational guidance",
+              "heading": "Revision reproducibility",
+              "body": "Preserve the knowledge revision and immutable passage references used by an investigation. Publishing a new index must not rewrite old citations or silently change follow-up retrieval in an ongoing investigation. A failed publication leaves the previous corpus usable."
+            },
+            {
+              "id": "b7ccd3e78db5c9663511965cebd18f42845bc6291a1a9bca5bb9075e1e8d3ab5",
+              "document_id": "health-semantics",
+              "title": "Process liveness versus business availability",
+              "heading": "A reachable process can reject work",
+              "body": "A successful health endpoint establishes that the service process responded. It does not establish that payment charge requests or inventory business requests succeeded. Compare business request status and correlated caller logs before claiming recovery or availability."
+            },
+            {
+              "id": "93a2e2c79d29f87d2dee8233a45ae57b07908264385bd55cce7b85b2ff976143",
+              "document_id": "health-semantics",
+              "title": "Process liveness versus business availability",
+              "heading": "Observed recovery",
+              "body": "A later business request returning HTTP 200 demonstrates recovery for that request at that time. It does not prove service health during an earlier incident or reveal why the earlier request failed. Avoid extending one observation into a continuous availability claim."
+            },
+            {
+              "id": "dcc2ddf90013b663b3a4706496ea1b6b13dc21b6258dc2752213b0a502d9b40f",
+              "document_id": "http-validation",
+              "title": "Cart validation and HTTP client errors",
+              "heading": "Invalid carts",
+              "body": "The checkout schema accepts the book item and quantities from one through ten. A missing or invalid field, zero quantity, or quantity eleven is rejected with HTTP 422 before business processing. Extra fields are forbidden. Invalid input is not evidence of a failing dependency."
+            },
+            {
+              "id": "f33733d8335bdec4d7ffb19043f0d74a1336a9bbfc52f771dae600e73d30c412",
+              "document_id": "http-validation",
+              "title": "Cart validation and HTTP client errors",
+              "heading": "Client errors versus dependency failures",
+              "body": "HTTP 422 describes invalid cart input. HTTP 502 describes checkout failing to complete a downstream call. Compare the response, dependency field, and correlated logs. Do not attribute a rejected cart to payment or inventory without observations of those services."
+            },
+            {
+              "id": "60deca27d93233295bad593f80ce64f029f6007ad42870a17e36f9255b89e561",
+              "document_id": "missing-evidence",
+              "title": "Missing logs and insufficient evidence",
+              "heading": "Empty results versus unavailable sources",
+              "body": "A successful query with zero matching records differs from a timeout, unreadable log file, or unavailable service telemetry. Empty results cover only the requested service, time window, and retained data. An unavailable source provides no evidence that requests were healthy."
+            },
+            {
+              "id": "2ed1a5a4f5714782ccf93186e602984f3ab6dbef972fc528dddd4f4ccf75fb88",
+              "document_id": "missing-evidence",
+              "title": "Missing logs and insufficient evidence",
+              "heading": "Retention and truncated evidence",
+              "body": "Local logs rotate and queries return a bounded number of records. Truncated responses may omit relevant errors; older coverage after rotation cannot be guaranteed. Preserve truncation and the query window. Do not describe retained records as a complete incident history."
+            },
+            {
+              "id": "26891eb3e822df9429441cc669fafed65e5c378104c101a2fe3394f98945697c",
+              "document_id": "missing-evidence",
+              "title": "Missing logs and insufficient evidence",
+              "heading": "Abstain when support is missing",
+              "body": "Separate observed facts from possible explanations. A runbook provides general guidance, not a current incident observation. If no available observation distinguishes competing causes, mark the cause inconclusive and suggest permitted read-only checks. A retrieval score is not a calibrated probability."
+            },
+            {
+              "id": "495a203ff99eceb35a56fe7d732a2948fe2b4b1d31a3b3386be5fe50e6739010",
+              "document_id": "network-timeouts",
+              "title": "Dependency timeouts and network reachability",
+              "heading": "Response failure versus transport failure",
+              "body": "A downstream request failed record with an HTTP status means an error response was received. A downstream request unavailable record without a status indicates a transport problem such as timeout, name resolution failure, or refused connection. This generic message does not distinguish those causes. Do not claim an unmeasured timeout duration."
+            },
+            {
+              "id": "8b74f47a16872fc5cfd01cadb59f1081ff12e236eeb08a8458a5a8a51f3d76d5",
+              "document_id": "network-timeouts",
+              "title": "Dependency timeouts and network reachability",
+              "heading": "Bounded requests",
+              "body": "Checkout configures a one-second HTTP client timeout for dependency calls and does not retry transactions automatically. Compare recorded duration, neighboring requests, and downstream logs. The configured timeout does not prove that every unavailable response was a timeout. Timeout categories apply to phases of the HTTP operation rather than guaranteeing a one-second total duration."
+            },
+            {
+              "id": "9b002507968e4be5d9fd2523c83a4add8204f7c434b50c1894b1788ac9e099a7",
+              "document_id": "network-timeouts",
+              "title": "Dependency timeouts and network reachability",
+              "heading": "Read-only follow-up",
+              "body": "Compare dependency health, request errors, and available configuration evidence. A later successful response does not prove connectivity during the incident. Missing network observations should be listed as missing evidence rather than converted into a specific transport diagnosis."
+            },
+            {
+              "id": "d3798ed71aaa0be2b3ca431fb58d0f054ae6ff0ef4ef172cb7e24d197881e125",
+              "document_id": "release-correlation",
+              "title": "Deployment timing and causal investigation",
+              "heading": "Timing is not causation",
+              "body": "An error beginning near a deployment is a useful lead, not proof of a regression. Compare affected and unaffected services, request IDs, signatures, and observations before and after the change. Determine whether the deployed component is on the failing dependency path."
+            },
+            {
+              "id": "4dd6898916ed4738cf2135d3f73f7c2d6118520e704db89f1b7b0419174f3499",
+              "document_id": "release-correlation",
+              "title": "Deployment timing and causal investigation",
+              "heading": "Missing deployment history",
+              "body": "This release has no deployment-history tool. If deployment events cannot be observed, state that limitation instead of inventing a timeline. A user's description of a change should be distinguished from independently collected deployment evidence."
+            },
+            {
+              "id": "0fc31f831664157ecdc4a8bb40d86f9e2d42c9482ec1258e2e33b056886583c5",
+              "document_id": "release-correlation",
+              "title": "Deployment timing and causal investigation",
+              "heading": "Applicability of guidance",
+              "body": "Use guidance for the correct environment and release. Older architecture may describe dependencies that no longer exist. Cite the document revision and preserve the observation window. Relevant documentation suggests checks but cannot establish that a particular change caused this incident."
+            },
+            {
+              "id": "504e55e2356d0c47004187c59b6786aea51230a14c2d46bc3e9c78396162c281",
+              "document_id": "request-correlation",
+              "title": "Request ID correlation across HTTP services",
+              "heading": "Joining observations",
+              "body": "Use request_id to join checkout, inventory, and payment logs in the same observation window. Accepted IDs contain exactly 32 lowercase hexadecimal characters. Invalid supplied IDs are replaced at ingress. Timestamp proximity alone does not establish that two errors belong to the same request."
+            },
+            {
+              "id": "a4d0d82de7ab435d7f1d68df56f6c41bd8969d8b65588431394421a821244b10",
+              "document_id": "request-correlation",
+              "title": "Request ID correlation across HTTP services",
+              "heading": "Partial correlation",
+              "body": "A matching request ID supports following a dependency boundary. A missing match can arise from log retention, an incorrect time window, a transport failure, or a request that never reached the downstream service. Preserve missing evidence; do not invent a trace or assume downstream success."
+            },
+            {
+              "id": "a6e30ef1148c5fe5178f5c3293a7e5a5f55e8b04b0d309f848c088d9ec68cf5f",
+              "document_id": "retry-safety",
+              "title": "Read-only investigation and transaction retry safety",
+              "heading": "No automatic transaction retries",
+              "body": "Checkout does not automatically retry inventory or payment transactions. The investigator's tools only read observations and reviewed guidance. Suggested verification steps must not become automatic restarts, configuration changes, repeated charges, or shell execution."
+            },
+            {
+              "id": "d0ac07910b51b27a24533c1269a7c60e7df4e87a8fdcdc42640c4e0fa69abcb5",
+              "document_id": "retry-safety",
+              "title": "Read-only investigation and transaction retry safety",
+              "heading": "Guidance is not evidence",
+              "body": "A procedure describes what an operator might verify. It does not establish that its described failure is happening now. Link current observations to each hypothesis, acknowledge contradictory evidence, and leave the underlying cause inconclusive when available signals cannot distinguish alternatives."
+            },
+            {
+              "id": "b9c5c7e4932763ebede6a3db8d76502c47e7f9d6ee981ab9cfc88df9ea3c5ee7",
+              "document_id": "service-map",
+              "title": "Shopping service dependencies and boundaries",
+              "heading": "Request flow",
+              "body": "Checkout calls inventory availability first, then payment processing. Inventory success does not establish payment success. If inventory fails, checkout stops without calling payment. Use the dependency name as well as the response status to localize the failing boundary."
+            },
+            {
+              "id": "7ae3790e661617754221915b0df8303ccf458a979220fc21358aab8d4fe874b7",
+              "document_id": "service-map",
+              "title": "Shopping service dependencies and boundaries",
+              "heading": "Request correlation",
+              "body": "Checkout propagates a valid request ID to inventory and payment. Compare records from the same request and incident window. A shared ID links observations but does not identify the underlying cause. Match service, timestamp, dependency, and status before correlating unrelated errors."
+            },
+            {
+              "id": "425fb413544df5c6023e3be4eabfe2950af9f0add1669e2c6f50f4e18439e1dc",
+              "document_id": "service-map",
+              "title": "Shopping service dependencies and boundaries",
+              "heading": "Supported architecture",
+              "body": "This release is an HTTP shopping simulation. It has no real payment gateway, order database, customer accounts, or stock reservation. Do not infer database connection exhaustion or external financial failures without an applicable architecture revision and actual observations. Process health is separate from successful business requests."
+            },
+            {
+              "id": "6252c6da92a33190ed8d7596f2ebb9bf228d32102dd356c025e4d729565f07f8",
+              "document_id": "source-failures",
+              "title": "Operational log adapter availability",
+              "heading": "Adapter failure outcomes",
+              "body": "source_timeout, source_unreachable, source_http_error, and invalid_source_response mean logs are unavailable. These adapter errors do not prove target application failure or target health. A successful empty query is a different outcome. Preserve the source error, query scope, and truncation status."
+            },
+            {
+              "id": "29155f4d97f07cf6b2740469aad3b7526eaff6c9a08956cab16ea676c53e4e64",
+              "document_id": "source-failures",
+              "title": "Operational log adapter availability",
+              "heading": "Bounded evidence reads",
+              "body": "The adapter permits a fixed configured source URL, a service allowlist, ordered incident windows no longer than an hour, at most 100 returned records, and a response-size cap. It does not accept arbitrary SQL, shell commands, or user-selected destinations."
+            }
+          ]
+        }
+      ],
+      "request_hash": "7db6a4e67bc32ef5cccb309dfffe04e7bf3e0b8776320b70eebf05ab1254c128",
+      "usage": {
+        "input": 5669,
+        "output": 354,
+        "thought": 0,
+        "total": 6023
+      },
+      "served_model_version": "gemini-3.5-flash-lite",
+      "status": "structurally_valid",
+      "report": {
+        "summary": "During the incident window, checkout requests encountered a downstream failure when calling the payment service, returning HTTP 502 to the client due to a payment service HTTP 503 response. The exact underlying cause of the payment failure cannot be established from caller-side observations alone.",
+        "observations": [
+          {
+            "text": "Checkout log shows a downstream request failed for dependency 'payment' with status 503 for request ff8639897f0b42ec99a2381912e93246.",
+            "references": [
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              }
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "explanation": "Payment dependency failed with a 503 status during checkout processing, but underlying cause telemetry is missing.",
+            "service": "payment",
+            "supporting": [
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              }
+            ],
+            "contradicting": []
+          }
+        ],
+        "runbook_references": [],
+        "missing_evidence": [
+          "Payment service internal logs or downstream error details for request ff8639897f0b42ec99a2381912e93246"
+        ],
+        "suggested_checks": [
+          "Inspect payment service logs using request ID ff8639897f0b42ec99a2381912e93246."
+        ],
+        "conclusion": "inconclusive"
+      }
+    },
+    {
+      "case": "missing-downstream",
+      "method": "v2_baseline",
+      "question": "Using the supplied caller-side observations, what can be established about payment and what is missing about its underlying failure?",
+      "context_passages": 6,
+      "context_evidence": [
+        {
+          "id": "272e94bd6ada4672ade629d4f6aeb61c",
+          "tool_call_id": "logs.v1",
+          "collected_at": "2026-11-03T19:29:57.840532+00:00",
+          "source": "http_log_adapter",
+          "service": "checkout",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.720351Z",
+              "service": "checkout",
+              "level": "INFO",
+              "message": "HTTP request completed",
+              "request_id": "1b9c14aa511449c2a62251cb9fe35d54",
+              "dependency": null,
+              "status_code": 200,
+              "duration_ms": 44.747
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739513Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "Downstream request failed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": "payment",
+              "status_code": 503,
+              "duration_ms": null
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739598Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 502,
+              "duration_ms": 14.106
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live"
+        },
+        {
+          "id": "83ba3cfa64fb533b806adf82bbeb836f",
+          "source": "versioned_runbooks",
+          "availability": "available",
+          "revision": "c465bb25bbb18b6a51925d24b4afaf99aed5de7fde42fda9df23e6ff05fd74f1",
+          "hits": [
+            {
+              "id": "643de0d56d1935fa425a821e61a3e6c4c675a86904db3537004dca2c11f87c86",
+              "document_id": "checkout-downstream",
+              "title": "Checkout downstream errors and bad gateway responses",
+              "heading": "Follow the failing dependency",
+              "body": "Use the checkout request ID and incident window to inspect the named dependency's logs. Compare its HTTP status with the caller's downstream error. Successful neighboring requests are counterevidence to a continuous outage. Missing downstream records may mean unavailable telemetry, transport failure, or a mismatched time window."
+            },
+            {
+              "id": "f3e63171d6de37ab1fd42436ab5d838cf5d62bd58d363151ff00385c0ed0c4f2",
+              "document_id": "checkout-downstream",
+              "title": "Checkout downstream errors and bad gateway responses",
+              "heading": "Verification and limits",
+              "body": "Read-only verification compares both sides of the request with the applicable service map. Do not restart services, change settings, or retry a real payment merely because a runbook suggests a hypothesis. Recovery after an operator action establishes observed recovery, not proof of the original cause."
+            },
+            {
+              "id": "bb6db4a9d174039634aa89f8c81ef2acc408d93c57f4f30099f712919cd708af",
+              "document_id": "checkout-downstream",
+              "title": "Checkout downstream errors and bad gateway responses",
+              "heading": "HTTP 502 from checkout",
+              "body": "A checkout bad gateway response means a downstream call failed or could not complete. Inspect the ERROR record for its dependency field. Payment dependency and downstream status 503 support a failed payment boundary. Checkout status alone cannot distinguish payment from inventory failure or a network timeout."
+            },
+            {
+              "id": "b9c5c7e4932763ebede6a3db8d76502c47e7f9d6ee981ab9cfc88df9ea3c5ee7",
+              "document_id": "service-map",
+              "title": "Shopping service dependencies and boundaries",
+              "heading": "Request flow",
+              "body": "Checkout calls inventory availability first, then payment processing. Inventory success does not establish payment success. If inventory fails, checkout stops without calling payment. Use the dependency name as well as the response status to localize the failing boundary."
+            },
+            {
+              "id": "b7ccd3e78db5c9663511965cebd18f42845bc6291a1a9bca5bb9075e1e8d3ab5",
+              "document_id": "health-semantics",
+              "title": "Process liveness versus business availability",
+              "heading": "A reachable process can reject work",
+              "body": "A successful health endpoint establishes that the service process responded. It does not establish that payment charge requests or inventory business requests succeeded. Compare business request status and correlated caller logs before claiming recovery or availability."
+            },
+            {
+              "id": "7ae3790e661617754221915b0df8303ccf458a979220fc21358aab8d4fe874b7",
+              "document_id": "service-map",
+              "title": "Shopping service dependencies and boundaries",
+              "heading": "Request correlation",
+              "body": "Checkout propagates a valid request ID to inventory and payment. Compare records from the same request and incident window. A shared ID links observations but does not identify the underlying cause. Match service, timestamp, dependency, and status before correlating unrelated errors."
+            }
+          ]
+        }
+      ],
+      "request_hash": "2138d8931c59846582335caa9587500b5bb784e2fedcb4d44b7fb47b52d24cbd",
+      "usage": {
+        "input": 2618,
+        "output": 593,
+        "thought": 0,
+        "total": 3211
+      },
+      "served_model_version": "gemini-3.5-flash-lite",
+      "status": "structurally_valid",
+      "report": {
+        "summary": "Caller-side checkout logs establish that the payment dependency call failed with a 503 status. However, underlying payment service-side telemetry or root cause details cannot be established from the supplied caller logs alone.",
+        "observations": [
+          {
+            "text": "Checkout experienced a downstream failure calling the payment dependency with status 503, returning a 502 status to the client for request id ff8639897f0b42ec99a2381912e93246.",
+            "references": [
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              },
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 2
+              }
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "explanation": "Checkout logs show a downstream request to payment failed with status 503, resulting in a 502 bad gateway response for request ff8639897f0b42ec99a2381912e93246. Therefore, it is established that the payment dependency call failed, but the underlying cause or logs from the payment service itself are missing from the caller-side observations.",
+            "service": "payment",
+            "supporting": [
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              },
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 2
+              }
+            ],
+            "contradicting": []
+          }
+        ],
+        "runbook_references": [
+          {
+            "evidence_id": "83ba3cfa64fb533b806adf82bbeb836f",
+            "passage_id": "bb6db4a9d174039634aa89f8c81ef2acc408d93c57f4f30099f712919cd708af"
+          }
+        ],
+        "missing_evidence": [
+          "Payment service-side logs for request ff8639897f0b42ec99a2381912e93246"
+        ],
+        "suggested_checks": [
+          "Inspect payment service logs for request ff8639897f0b42ec99a2381912e93246"
+        ],
+        "conclusion": "supported_hypothesis"
+      }
+    },
+    {
+      "case": "missing-downstream",
+      "method": "development_selected",
+      "question": "Using the supplied caller-side observations, what can be established about payment and what is missing about its underlying failure?",
+      "context_passages": 6,
+      "context_evidence": [
+        {
+          "id": "272e94bd6ada4672ade629d4f6aeb61c",
+          "tool_call_id": "logs.v1",
+          "collected_at": "2026-11-03T19:29:57.840532+00:00",
+          "source": "http_log_adapter",
+          "service": "checkout",
+          "window": {
+            "start": 1793734197.711233,
+            "end": 1793734197.740272
+          },
+          "availability": "available",
+          "records": [
+            {
+              "timestamp": "2026-11-03T19:29:57.720351Z",
+              "service": "checkout",
+              "level": "INFO",
+              "message": "HTTP request completed",
+              "request_id": "1b9c14aa511449c2a62251cb9fe35d54",
+              "dependency": null,
+              "status_code": 200,
+              "duration_ms": 44.747
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739513Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "Downstream request failed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": "payment",
+              "status_code": 503,
+              "duration_ms": null
+            },
+            {
+              "timestamp": "2026-11-03T19:29:57.739598Z",
+              "service": "checkout",
+              "level": "ERROR",
+              "message": "HTTP request completed",
+              "request_id": "ff8639897f0b42ec99a2381912e93246",
+              "dependency": null,
+              "status_code": 502,
+              "duration_ms": 14.106
+            }
+          ],
+          "truncated": false,
+          "data_origin": "live"
+        },
+        {
+          "id": "857ef12a699b5d5ca0fa5494698dadf9",
+          "source": "versioned_runbooks",
+          "availability": "available",
+          "revision": "c465bb25bbb18b6a51925d24b4afaf99aed5de7fde42fda9df23e6ff05fd74f1",
+          "hits": [
+            {
+              "id": "bb6db4a9d174039634aa89f8c81ef2acc408d93c57f4f30099f712919cd708af",
+              "document_id": "checkout-downstream",
+              "title": "Checkout downstream errors and bad gateway responses",
+              "heading": "HTTP 502 from checkout",
+              "body": "A checkout bad gateway response means a downstream call failed or could not complete. Inspect the ERROR record for its dependency field. Payment dependency and downstream status 503 support a failed payment boundary. Checkout status alone cannot distinguish payment from inventory failure or a network timeout."
+            },
+            {
+              "id": "b9c5c7e4932763ebede6a3db8d76502c47e7f9d6ee981ab9cfc88df9ea3c5ee7",
+              "document_id": "service-map",
+              "title": "Shopping service dependencies and boundaries",
+              "heading": "Request flow",
+              "body": "Checkout calls inventory availability first, then payment processing. Inventory success does not establish payment success. If inventory fails, checkout stops without calling payment. Use the dependency name as well as the response status to localize the failing boundary."
+            },
+            {
+              "id": "26891eb3e822df9429441cc669fafed65e5c378104c101a2fe3394f98945697c",
+              "document_id": "missing-evidence",
+              "title": "Missing logs and insufficient evidence",
+              "heading": "Abstain when support is missing",
+              "body": "Separate observed facts from possible explanations. A runbook provides general guidance, not a current incident observation. If no available observation distinguishes competing causes, mark the cause inconclusive and suggest permitted read-only checks. A retrieval score is not a calibrated probability."
+            },
+            {
+              "id": "643de0d56d1935fa425a821e61a3e6c4c675a86904db3537004dca2c11f87c86",
+              "document_id": "checkout-downstream",
+              "title": "Checkout downstream errors and bad gateway responses",
+              "heading": "Follow the failing dependency",
+              "body": "Use the checkout request ID and incident window to inspect the named dependency's logs. Compare its HTTP status with the caller's downstream error. Successful neighboring requests are counterevidence to a continuous outage. Missing downstream records may mean unavailable telemetry, transport failure, or a mismatched time window."
+            },
+            {
+              "id": "495a203ff99eceb35a56fe7d732a2948fe2b4b1d31a3b3386be5fe50e6739010",
+              "document_id": "network-timeouts",
+              "title": "Dependency timeouts and network reachability",
+              "heading": "Response failure versus transport failure",
+              "body": "A downstream request failed record with an HTTP status means an error response was received. A downstream request unavailable record without a status indicates a transport problem such as timeout, name resolution failure, or refused connection. This generic message does not distinguish those causes. Do not claim an unmeasured timeout duration."
+            },
+            {
+              "id": "d0ac07910b51b27a24533c1269a7c60e7df4e87a8fdcdc42640c4e0fa69abcb5",
+              "document_id": "retry-safety",
+              "title": "Read-only investigation and transaction retry safety",
+              "heading": "Guidance is not evidence",
+              "body": "A procedure describes what an operator might verify. It does not establish that its described failure is happening now. Link current observations to each hypothesis, acknowledge contradictory evidence, and leave the underlying cause inconclusive when available signals cannot distinguish alternatives."
+            }
+          ]
+        }
+      ],
+      "request_hash": "05014b912b62338e0b701901ea3871590f36f0c79b15def6ca93c7567f543529",
+      "usage": {
+        "input": 2638,
+        "output": 654,
+        "thought": 0,
+        "total": 3292
+      },
+      "served_model_version": "gemini-3.5-flash-lite",
+      "status": "structurally_valid",
+      "report": {
+        "summary": "Checkout requests experienced a failure due to the payment dependency returning an HTTP 503 error, resulting in a 502 Bad Gateway response to the client. While the payment boundary is established as the failing dependency, the underlying cause within the payment service cannot be established from the current caller-side observations alone without payment service logs.",
+        "observations": [
+          {
+            "text": "Checkout log shows a downstream request failed for dependency 'payment' with status code 503 during request ff8639897f0b42ec99a2381912e93246.",
+            "references": [
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              }
+            ]
+          },
+          {
+            "text": "Checkout request completed with HTTP 502 status code due to the downstream payment failure.",
+            "references": [
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 2
+              }
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "explanation": "Payment dependency returned an HTTP 503 status code for the failing checkout request, but direct payment service logs are not available in the current evidence to establish the underlying cause of the failure.",
+            "service": "payment",
+            "supporting": [
+              {
+                "evidence_id": "272e94bd6ada4672ade629d4f6aeb61c",
+                "record_index": 1
+              }
+            ],
+            "contradicting": []
+          }
+        ],
+        "runbook_references": [
+          {
+            "evidence_id": "857ef12a699b5d5ca0fa5494698dadf9",
+            "passage_id": "bb6db4a9d174039634aa89f8c81ef2acc408d93c57f4f30099f712919cd708af"
+          },
+          {
+            "evidence_id": "857ef12a699b5d5ca0fa5494698dadf9",
+            "passage_id": "643de0d56d1935fa425a821e61a3e6c4c675a86904db3537004dca2c11f87c86"
+          }
+        ],
+        "missing_evidence": [
+          "Direct logs from the payment service for request_id ff8639897f0b42ec99a2381912e93246"
+        ],
+        "suggested_checks": [
+          "Inspect payment service logs directly using the request ID ff8639897f0b42ec99a2381912e93246."
+        ],
+        "conclusion": "inconclusive"
+      }
+    }
+  ],
+  "stop": "completed"
+}

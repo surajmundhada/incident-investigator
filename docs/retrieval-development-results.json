@@ -1,0 +1,215 @@
+{
+  "kind": "authored_retrieval_development_checks",
+  "revision": "e47a66de758e24d33458ebbdefc89cbd006f286df74b6f1626148972cbe96c1c",
+  "modes": {
+    "lexical": {
+      "found_at_3": 2,
+      "total": 6,
+      "cases": [
+        {
+          "query": "payment 503",
+          "expected_document": "payment-errors",
+          "returned_documents": [
+            "payment-errors",
+            "payment-errors",
+            "payment-errors"
+          ],
+          "found_at_3": true
+        },
+        {
+          "query": "bad gateway downstream",
+          "expected_document": "checkout-downstream",
+          "returned_documents": [
+            "checkout-downstream",
+            "checkout-downstream",
+            "checkout-downstream"
+          ],
+          "found_at_3": true
+        },
+        {
+          "query": "stock check fails before charging the customer",
+          "expected_document": "inventory-errors",
+          "returned_documents": [],
+          "found_at_3": false
+        },
+        {
+          "query": "request cannot reach a downstream endpoint",
+          "expected_document": "network-timeouts",
+          "returned_documents": [],
+          "found_at_3": false
+        },
+        {
+          "query": "no logs were returned and the source is unavailable",
+          "expected_document": "missing-evidence",
+          "returned_documents": [],
+          "found_at_3": false
+        },
+        {
+          "query": "a release happened near the errors but could be unrelated",
+          "expected_document": "release-correlation",
+          "returned_documents": [],
+          "found_at_3": false
+        }
+      ]
+    },
+    "semantic": {
+      "found_at_3": 6,
+      "total": 6,
+      "cases": [
+        {
+          "query": "payment 503",
+          "expected_document": "payment-errors",
+          "returned_documents": [
+            "payment-errors",
+            "payment-errors",
+            "payment-errors"
+          ],
+          "found_at_3": true
+        },
+        {
+          "query": "bad gateway downstream",
+          "expected_document": "checkout-downstream",
+          "returned_documents": [
+            "checkout-downstream",
+            "checkout-downstream",
+            "checkout-downstream"
+          ],
+          "found_at_3": true
+        },
+        {
+          "query": "stock check fails before charging the customer",
+          "expected_document": "inventory-errors",
+          "returned_documents": [
+            "inventory-errors",
+            "inventory-errors",
+            "service-map"
+          ],
+          "found_at_3": true
+        },
+        {
+          "query": "request cannot reach a downstream endpoint",
+          "expected_document": "network-timeouts",
+          "returned_documents": [
+            "checkout-downstream",
+            "checkout-downstream",
+            "network-timeouts"
+          ],
+          "found_at_3": true
+        },
+        {
+          "query": "no logs were returned and the source is unavailable",
+          "expected_document": "missing-evidence",
+          "returned_documents": [
+            "missing-evidence",
+            "missing-evidence",
+            "payment-errors"
+          ],
+          "found_at_3": true
+        },
+        {
+          "query": "a release happened near the errors but could be unrelated",
+          "expected_document": "release-correlation",
+          "returned_documents": [
+            "release-correlation",
+            "release-correlation",
+            "checkout-downstream"
+          ],
+          "found_at_3": true
+        }
+      ]
+    },
+    "hybrid": {
+      "found_at_3": 6,
+      "total": 6,
+      "cases": [
+        {
+          "query": "payment 503",
+          "expected_document": "payment-errors",
+          "returned_documents": [
+            "payment-errors",
+            "payment-errors",
+            "payment-errors"
+          ],
+          "found_at_3": true
+        },
+        {
+          "query": "bad gateway downstream",
+          "expected_document": "checkout-downstream",
+          "returned_documents": [
+            "checkout-downstream",
+            "checkout-downstream",
+            "checkout-downstream"
+          ],
+          "found_at_3": true
+        },
+        {
+          "query": "stock check fails before charging the customer",
+          "expected_document": "inventory-errors",
+          "returned_documents": [
+            "inventory-errors",
+            "inventory-errors",
+            "service-map"
+          ],
+          "found_at_3": true
+        },
+        {
+          "query": "request cannot reach a downstream endpoint",
+          "expected_document": "network-timeouts",
+          "returned_documents": [
+            "checkout-downstream",
+            "checkout-downstream",
+            "network-timeouts"
+          ],
+          "found_at_3": true
+        },
+        {
+          "query": "no logs were returned and the source is unavailable",
+          "expected_document": "missing-evidence",
+          "returned_documents": [
+            "missing-evidence",
+            "missing-evidence",
+            "payment-errors"
+          ],
+          "found_at_3": true
+        },
+        {
+          "query": "a release happened near the errors but could be unrelated",
+          "expected_document": "release-correlation",
+          "returned_documents": [
+            "release-correlation",
+            "release-correlation",
+            "checkout-downstream"
+          ],
+          "found_at_3": true
+        }
+      ]
+    }
+  },
+  "limitations": "Six author-written cases on the development corpus; not held-out evidence of accuracy or improvement.",
+  "recorded_date": "2026-11-04",
+  "model_spec": {
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "repository": "Qdrant/all-MiniLM-L6-v2-onnx",
+    "revision": "d13954661f83248295ba75c1ed411eef3b7b936e",
+    "fastembed_version": "0.9.1",
+    "dimensions": 384,
+    "files": {
+      "config.json": "1b4d8e2a3988377ed8b519a31d8d31025a25f1c5f8606998e8014111438efcd7",
+      "model.onnx": "bbd7b466f6d58e646fdc2bd5fd67b2f5e93c0b687011bd4548c420f7bd46f0c5",
+      "special_tokens_map.json": "5d5b662e421ea9fac075174bb0688ee0d9431699900b90662acd44b2a350503a",
+      "tokenizer.json": "851ca67100d372ca3ae031a6abd168f53489eebfd7d89523f35c5c9b4d372c3c",
+      "tokenizer_config.json": "abda01c8c14c5151ae498aceb30db406d6b91242c394fd88d3b6fd5a63a101e6",
+      "vocab.txt": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3",
+      "README.md": "2c47a70b94fe29e24841acf0e177949f1c9aa543e450d43af7e872ea81e43501"
+    }
+  },
+  "retrieval_config": "fts-cosine-rrf60-top20-context1200-v1",
+  "implementation_checksums": {
+    "backend/investigator/knowledge/__init__.py": "eaca890d3303f7f88d9f9532783ac9e6439831c1921fecabc6cd210ddc330a5f",
+    "backend/investigator/knowledge/cli.py": "d3b9c1644b01cedb37905e8d9c71fabcf8782c0cb02f2e607141034f9b49b1f2",
+    "backend/investigator/knowledge/corpus.py": "d37e0f74d39225a16ba67977f336c025059004aa6d137562e3c2d192e70268c2",
+    "backend/investigator/knowledge/embeddings.py": "570074bbf0d03b8ba646b5be947345244302a04cd2b56c4d91e3bdfcaf9b4190",
+    "backend/investigator/knowledge/store.py": "e2a42e63d6af2f6edc0dda1608400575ab80f0495afc8319fdb21681a6dc080f",
+    "backend/investigator/knowledge/tool.py": "c5b0649806082940ef24108cad9375df2a7f98aa9e105d6f9a22269e552186a5"
+  }
+}

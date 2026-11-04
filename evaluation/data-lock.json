@@ -1,0 +1,20 @@
+{
+  "data/corpus/manifest.json": "9aabfaee2a9a3e2ea00ed809bd3c994576161b1335a29af0b6433e33605729ed",
+  "data/corpus/runbooks/checkout-archive.md": "f03f97bad3eb5d5386b3e29874e4f063e9e24739522656be84e521e937016f20",
+  "data/corpus/runbooks/checkout-downstream.md": "ea5467f3d0139c0d1b13798cf5d6bc02aab1edf81293a2242fbf62a645bcf817",
+  "data/corpus/runbooks/configuration-scope.md": "f15869afd0b9f996162621511a37aa8d367c2c1eba32f1eec20e5cf5dcae126e",
+  "data/corpus/runbooks/health-semantics.md": "359980c94d806156e08cf73375d70fbf722173d8bceb2425b9749745fe34bdc2",
+  "data/corpus/runbooks/http-validation.md": "c050206d73e621abccbd88926037b5bda8652e5b850c16543ea3fe31e4e914ec",
+  "data/corpus/runbooks/inventory-errors.md": "1eee42adfb531f95d42c358fb51376c2bb0725db1e538c5e704ac7ba0c57c4a9",
+  "data/corpus/runbooks/missing-evidence.md": "0e97e67febd6947c88312e8d43083c4ff9edbc8b56e7d2516e35af1ec26aeead",
+  "data/corpus/runbooks/network-timeouts.md": "ea6d94209c9d87d812b327e4f28fc0f01b39ddae2603cdada17badef39224cdb",
+  "data/corpus/runbooks/payment-errors.md": "ef598b2bf05ba28f9026685e7d4d65ccb5edcf8ae663bf7c1f7c417f4392aaf1",
+  "data/corpus/runbooks/payment-staging.md": "ae212bd318b12e253fc4111d40a6a392fc0d611297c629fe21e8744d09be5343",
+  "data/corpus/runbooks/release-correlation.md": "1d6a7b97dd9960a642dadaae16a2afd7a55a57b81496869919006e6e078c214c",
+  "data/corpus/runbooks/request-correlation.md": "ca7acdc3dbc2027d62aa901b1a457e3d9a5223dc88d1b7746e6a93fd9b80f904",
+  "data/corpus/runbooks/retry-safety.md": "381866e2b2ca8c9ed97fdc37ebcdf4d96c2834b20f9fdcf187ad5ddac8cf7785",
+  "data/corpus/runbooks/service-map.md": "c8f4bc7330808dd18763af68efc62dd6a61a8c841e07d280f1a98834f2161134",
+  "data/corpus/runbooks/source-failures.md": "e1df33076b314ced8b6edff4130c420bec8f77ae4fd0ec09a8a530e2cd428178",
+  "data/development.json": "049aa3e575a25960d72d00ee4432d8df4ceb6dd2ddc21b6a92021d9c11ac92c3",
+  "data/heldout.json": "70e37af6e0322d276b1ffcb7d0791206f67c6be67a259478a2baa14891dd602c"
+}

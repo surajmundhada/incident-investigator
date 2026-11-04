@@ -1,0 +1,20 @@
+{
+  "label": "frozen-pre-improvement-baseline",
+  "files": {
+    "knowledge/__init__.py": "eaca890d3303f7f88d9f9532783ac9e6439831c1921fecabc6cd210ddc330a5f",
+    "knowledge/cli.py": "d3b9c1644b01cedb37905e8d9c71fabcf8782c0cb02f2e607141034f9b49b1f2",
+    "knowledge/corpus.py": "d37e0f74d39225a16ba67977f336c025059004aa6d137562e3c2d192e70268c2",
+    "knowledge/embeddings.py": "570074bbf0d03b8ba646b5be947345244302a04cd2b56c4d91e3bdfcaf9b4190",
+    "knowledge/store.py": "e2a42e63d6af2f6edc0dda1608400575ab80f0495afc8319fdb21681a6dc080f",
+    "knowledge/tool.py": "c5b0649806082940ef24108cad9375df2a7f98aa9e105d6f9a22269e552186a5",
+    "embedding-lock.json": "8e1bb74c1a0d4e55c6cc982b4150b21b0837c17ed5168cae8697cc3ea50304af",
+    "manifest.json": "719b52a75c77564f16fb5bb297e4f259ec171cde9cc2dcbb8cee5bcce18117c6",
+    "runbooks/checkout-downstream.md": "ea5467f3d0139c0d1b13798cf5d6bc02aab1edf81293a2242fbf62a645bcf817",
+    "runbooks/inventory-errors.md": "1eee42adfb531f95d42c358fb51376c2bb0725db1e538c5e704ac7ba0c57c4a9",
+    "runbooks/missing-evidence.md": "0e97e67febd6947c88312e8d43083c4ff9edbc8b56e7d2516e35af1ec26aeead",
+    "runbooks/network-timeouts.md": "ea6d94209c9d87d812b327e4f28fc0f01b39ddae2603cdada17badef39224cdb",
+    "runbooks/payment-errors.md": "ef598b2bf05ba28f9026685e7d4d65ccb5edcf8ae663bf7c1f7c417f4392aaf1",
+    "runbooks/release-correlation.md": "1d6a7b97dd9960a642dadaae16a2afd7a55a57b81496869919006e6e078c214c",
+    "runbooks/service-map.md": "c8f4bc7330808dd18763af68efc62dd6a61a8c841e07d280f1a98834f2161134"
+  }
+}
